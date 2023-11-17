@@ -11,5 +11,9 @@
         public int Loss { get; set; }
         public int Draw { get; set; }
 
+        public required FighterRatings FighterRatings { get; set; }
+        public required FighterStrategies FighterStrategies { get; set; }
+
+
     }
 }
