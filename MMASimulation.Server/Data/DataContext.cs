@@ -17,7 +17,6 @@ namespace MMASimulation.Server.Data
         public DbSet<Fight> Fights { get; set; }
         public DbSet<FightPBP> FightPBPs { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -54,11 +53,10 @@ namespace MMASimulation.Server.Data
             .IsRequired();
 
             modelBuilder.Entity<Fight>()
-             .HasMany(f => f.Pbp)
-             .WithOne(pbp => pbp.Fight)
-             .HasForeignKey(pbp => pbp.FightId)
-             .OnDelete(DeleteBehavior.Cascade);
-
+            .HasMany(f => f.Pbp)
+            .WithOne(pbp => pbp.Fight)
+            .HasForeignKey(pbp => pbp.FightId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         }
 
