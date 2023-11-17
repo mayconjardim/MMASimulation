@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-
 namespace MMASimulation.Shared.Fighters
 {
     public class Fighter
@@ -19,8 +18,6 @@ namespace MMASimulation.Shared.Fighters
 
         [NotMapped]
         public FighterFightAttributes? FighterFightAttributes { get; set; }
-
-
 
     }
 }
