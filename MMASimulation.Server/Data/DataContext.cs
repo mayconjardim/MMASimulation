@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MMASimulation.Shared.Fighters;
+using MMASimulation.Shared.Models.Fighters;
+using MMASimulation.Shared.Models.Fights;
 
 namespace MMASimulation.Server.Data
 {
@@ -13,14 +14,17 @@ namespace MMASimulation.Server.Data
         public DbSet<FighterStrategies> FighterStrategies { get; set; }
         public DbSet<FighterStyles> FighterStyles { get; set; }
 
+        public DbSet<Fight> Fights { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            //Fighter
             modelBuilder.Entity<Fighter>()
-           .HasOne(f => f.FighterRatings)
-           .WithOne(fr => fr.Fighter)
-           .HasForeignKey<FighterRatings>(fr => fr.FighterId)
-           .IsRequired();
+            .HasOne(f => f.FighterRatings)
+            .WithOne(fr => fr.Fighter)
+            .HasForeignKey<FighterRatings>(fr => fr.FighterId)
+            .IsRequired();
 
             modelBuilder.Entity<Fighter>()
             .HasOne(f => f.FighterStrategies)
@@ -32,6 +36,19 @@ namespace MMASimulation.Server.Data
             .HasOne(f => f.FighterStyles)
             .WithOne(fr => fr.Fighter)
             .HasForeignKey<FighterStyles>(fr => fr.FighterId)
+            .IsRequired();
+
+            //Fight
+            modelBuilder.Entity<Fight>()
+            .HasOne(f => f.Fighter1)
+            .WithMany()
+            .HasForeignKey(f => f.Fighter1Id)
+            .IsRequired();
+
+            modelBuilder.Entity<Fight>()
+            .HasOne(f => f.Fighter2)
+            .WithMany()
+            .HasForeignKey(f => f.Fighter2Id)
             .IsRequired();
 
         }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-namespace MMASimulation.Shared.Fighters
+
+namespace MMASimulation.Shared.Models.Fighters
 {
     public class Fighter
     {

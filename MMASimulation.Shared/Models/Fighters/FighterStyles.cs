@@ -1,4 +1,4 @@
-﻿namespace MMASimulation.Shared.Fighters
+﻿namespace MMASimulation.Shared.Models.Fighters
 {
     public class FighterStyles
     {
