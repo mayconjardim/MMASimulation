@@ -29,13 +29,13 @@ namespace MMASimulation.Server.Data
 
             modelBuilder.Entity<Fighter>()
             .HasOne(f => f.FighterStrategies)
-            .WithOne(fr => fr.Fighter)
+            .WithOne()
             .HasForeignKey<FighterStrategies>(fr => fr.FighterId)
             .IsRequired();
 
             modelBuilder.Entity<Fighter>()
             .HasOne(f => f.FighterStyles)
-            .WithOne(fr => fr.Fighter)
+            .WithOne()
             .HasForeignKey<FighterStyles>(fr => fr.FighterId)
             .IsRequired();
 

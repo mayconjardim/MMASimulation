@@ -15,8 +15,8 @@ namespace MMASimulation.Shared.Models.Fighters
         public string Face { get; set; } = string.Empty;
 
         public required FighterRatings FighterRatings { get; set; }
-        public required FighterStrategies FighterStrategies { get; set; }
-        public required FighterStyles FighterStyles { get; set; }
+        public required FighterStrategies FighterStrategies { get; set; } = new FighterStrategies();
+        public required FighterStyles FighterStyles { get; set; } = new FighterStyles();
 
         [NotMapped]
         public FighterFightAttributes? FighterFightAttributes { get; set; }

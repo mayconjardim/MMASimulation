@@ -28,29 +28,5 @@
         public bool JudoTD { get; set; }
         public bool WrestlingTD { get; set; }
 
-        public FighterStylesDto()
-        {
-            FancyPunches = 0;
-            FightingStyle = 0;
-            TacticalStyle = 0;
-            FancyKicks = 0;
-            FancySubmissions = 0;
-            DirtyFighting = 0;
-            Stalling = 0;
-
-            EasySubs = true;
-            TechSubs = false;
-            UseKneesGround = false;
-            UseStomps = false;
-            UseSoccerKicks = false;
-            PullsGuard = false;
-
-            ClinchType = 1;
-            DirtyBoxing = true;
-            ThaiClinch = false;
-            JudoTD = false;
-            WrestlingTD = true;
-        }
-
     }
 }

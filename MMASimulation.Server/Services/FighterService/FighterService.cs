@@ -44,16 +44,6 @@ namespace MMASimulation.Server.Services.FighterService
             {
                 Fighter createdFighter = _mapper.Map<Fighter>(fighter);
 
-                createdFighter.FighterStrategies = new FighterStrategies
-                {
-                    Fighter = createdFighter
-                };
-
-                createdFighter.FighterStyles = new FighterStyles
-                {
-                    Fighter = createdFighter
-                };
-
                 _context.Add(createdFighter);
 
                 await _context.SaveChangesAsync();
