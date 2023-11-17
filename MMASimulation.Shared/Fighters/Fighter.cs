@@ -1,4 +1,6 @@
-﻿namespace MMASimulation.Shared.Fighters
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MMASimulation.Shared.Fighters
 {
     public class Fighter
     {
@@ -14,6 +16,11 @@
         public required FighterRatings FighterRatings { get; set; }
         public required FighterStrategies FighterStrategies { get; set; }
         public required FighterStyles FighterStyles { get; set; }
+
+        [NotMapped]
+        public FighterFightAttributes? FighterFightAttributes { get; set; }
+
+
 
     }
 }
