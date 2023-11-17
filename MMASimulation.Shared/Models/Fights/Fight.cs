@@ -20,6 +20,11 @@ namespace MMASimulation.Shared.Models.Fights
         [ForeignKey(nameof(Fighter2Id))]
         public required Fighter Fighter2 { get; set; }
 
+        [ForeignKey("FightId")]
+        public List<FightPBP> Pbp { get; set; } = new List<FightPBP>();
+
+        [NotMapped]
+        public FightAttributes? FightAttributes { get; set; }
 
     }
 }
