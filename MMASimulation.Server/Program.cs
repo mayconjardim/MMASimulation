@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using MMASimulation.Server.Data;
 
 namespace MMASimulation.Server
 {
@@ -7,7 +9,8 @@ namespace MMASimulation.Server
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Services.AddDbContext<DataContext>(DbContextOptions =>
+            DbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:MMADBConnectionString"]));
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
