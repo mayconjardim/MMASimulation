@@ -13,7 +13,7 @@
 
         public required FighterRatings FighterRatings { get; set; }
         public required FighterStrategies FighterStrategies { get; set; }
-
+        public required FighterStyles FighterStyles { get; set; }
 
     }
 }
