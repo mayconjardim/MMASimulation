@@ -1,0 +1,6 @@
+@MMASimulation.Server_HostAddress = http://localhost:5047
+
+GET {{MMASimulation.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
