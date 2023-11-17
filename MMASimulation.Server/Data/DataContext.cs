@@ -17,22 +17,22 @@ namespace MMASimulation.Server.Data
         {
 
             modelBuilder.Entity<Fighter>()
-              .HasOne(f => f.FighterRatings)
-              .WithOne()
-              .IsRequired()
-              .OnDelete(DeleteBehavior.Cascade);
+           .HasOne(f => f.FighterRatings)
+           .WithOne(fr => fr.Fighter)
+           .HasForeignKey<FighterRatings>(fr => fr.FighterId)
+           .IsRequired();
 
             modelBuilder.Entity<Fighter>()
-              .HasOne(f => f.FighterStrategies)
-              .WithOne()
-              .IsRequired()
-              .OnDelete(DeleteBehavior.Cascade);
+            .HasOne(f => f.FighterStrategies)
+            .WithOne(fr => fr.Fighter)
+            .HasForeignKey<FighterStrategies>(fr => fr.FighterId)
+            .IsRequired();
 
             modelBuilder.Entity<Fighter>()
-              .HasOne(f => f.FighterStrategies)
-              .WithOne()
-              .IsRequired()
-              .OnDelete(DeleteBehavior.Cascade);
+            .HasOne(f => f.FighterStyles)
+            .WithOne(fr => fr.Fighter)
+            .HasForeignKey<FighterStyles>(fr => fr.FighterId)
+            .IsRequired();
 
         }
 
