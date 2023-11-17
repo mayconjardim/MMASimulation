@@ -20,5 +20,6 @@ namespace MMASimulation.Shared.Models.Fights
         [ForeignKey(nameof(Fighter2Id))]
         public required Fighter Fighter2 { get; set; }
 
+
     }
 }
