@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MMASimulation.Server.Data;
+using MMASimulation.Server.Services.FighterService;
 
 namespace MMASimulation.Server
 {
@@ -18,6 +19,8 @@ namespace MMASimulation.Server
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+            builder.Services.AddScoped<IFighterService, FighterService>();
 
             var app = builder.Build();
 

@@ -23,9 +23,14 @@ namespace MMASimulation.Server.Services.FighterService
 
             var fighters = await _context.Fighters.ToListAsync();
 
+            var mappedFighters = _mapper.Map<List<FighterDto>>(fighters);
+
             var response = new ServiceResponse<List<FighterDto>>
             {
-                Data = _mapper.Map<List<FighterDto>>(fighters)
+                Data = mappedFighters,
+                Message = mappedFighters.Count == 0
+                    ? "Lista de lutadores vazia."
+                    : $"Lista com {mappedFighters.Count} lutadores retornada com sucesso."
             };
 
             return response;
