@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using MMASimulation.Server.Data;
 using MMASimulation.Shared.Dtos.Fighters;
+using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Utils;
+using System.Numerics;
 
 namespace MMASimulation.Server.Services.FighterService
 {
@@ -34,7 +36,32 @@ namespace MMASimulation.Server.Services.FighterService
             };
 
             return response;
-
         }
+
+        public async Task<ServiceResponse<FighterDto>> CreatePlayer(FighterCreateDto fighter)
+        {
+            ServiceResponse<FighterDto> response = new();
+
+            try
+            {
+                Fighter createdFighter = _mapper.Map<Fighter>(fighter);
+
+                _context.Add(createdFighter);
+
+                await _context.SaveChangesAsync();
+
+                response.Success = true;
+                response.Data = _mapper.Map<FighterDto>(createdFighter);
+                response.Message = "Jogador criado com sucesso.";
+            }
+            catch
+            {
+                response.Success = false;
+                response.Message = "Ocorreu um erro ao criar o jogador.";
+            }
+
+            return response;
+        }
+
     }
 }

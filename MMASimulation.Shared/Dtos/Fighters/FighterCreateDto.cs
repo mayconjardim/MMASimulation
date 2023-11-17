@@ -2,10 +2,9 @@
 
 namespace MMASimulation.Shared.Dtos.Fighters
 {
-    public class FighterDto
+    public class FighterCreateDto
     {
 
-        public int Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public int Age { get; set; }
@@ -17,7 +16,6 @@ namespace MMASimulation.Shared.Dtos.Fighters
         public FighterStrategiesDto? FighterStrategies { get; set; }
         public FighterStylesDto? FighterStyles { get; set; }
         public Face? Face { get; set; }
-
 
     }
 }

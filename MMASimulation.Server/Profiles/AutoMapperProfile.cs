@@ -12,6 +12,7 @@ namespace MMASimulation.Server.Profiles
 
             //Fighters
             CreateMap<Fighter, FighterDto>().ReverseMap();
+            CreateMap<Fighter, FighterCreateDto>().ReverseMap();
             CreateMap<FighterRatings, FighterRatingsDto>().ReverseMap();
             CreateMap<FighterStrategies, FighterStrategiesDto>().ReverseMap();
             CreateMap<FighterStyles, FighterStylesDto>().ReverseMap();

@@ -26,27 +26,5 @@
         public int StratLNP { get; set; }
         public int StratStandUp { get; set; }
 
-        public FighterStrategies()
-        {
-            // Geral
-            StratPunching = 25;
-            StratKicking = 25;
-            StratClinching = 25;
-            StratTakedowns = 25;
-
-            // Clinch
-            StratDirtyBoxing = 25;
-            StratThaiClinch = 25;
-            StratClinchTakedowns = 25;
-            StratAvoidClinch = 25;
-
-            // Chão
-            StratGNP = 20;
-            StratSub = 20;
-            StratPositioning = 20;
-            StratLNP = 20;
-            StratStandUp = 20;
-        }
-
     }
 }

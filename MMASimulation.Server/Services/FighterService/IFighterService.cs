@@ -7,6 +7,7 @@ namespace MMASimulation.Server.Services.FighterService
     {
 
         Task<ServiceResponse<List<FighterDto>>> GetAllFighters();
+        Task<ServiceResponse<FighterDto>> CreatePlayer(FighterCreateDto fighter);
 
     }
 }

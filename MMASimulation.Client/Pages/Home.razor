@@ -1,5 +1,12 @@
 ﻿@page "/"
-@inject IJSRuntime JS
+
+<div id="myDivId"></div>
+
+<script>
+    var faceJson = localStorage.getItem("face");
+    var face = JSON.parse(faceJson);
+    faces.display("myDivId", face);
+</script>
 
 @code {
   
