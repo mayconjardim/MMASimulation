@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
+using MMASimulation.Shared.Models.Utils.Faces;
 
 namespace MMASimulation.Server.Data
 {
@@ -13,9 +14,12 @@ namespace MMASimulation.Server.Data
         public DbSet<FighterRatings> FighterRatings { get; set; }
         public DbSet<FighterStrategies> FighterStrategies { get; set; }
         public DbSet<FighterStyles> FighterStyles { get; set; }
+        public DbSet<Face> Faces { get; set; }
+
 
         public DbSet<Fight> Fights { get; set; }
         public DbSet<FightPBP> FightPBPs { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -58,6 +62,8 @@ namespace MMASimulation.Server.Data
             .HasForeignKey(pbp => pbp.FightId)
             .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Face>()
+            .HasKey(f => f.DbId);
         }
 
     }
