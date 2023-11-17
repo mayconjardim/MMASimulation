@@ -3,9 +3,7 @@
     public class FighterRatingsDto
     {
 
-        public int Id { get; set; }
         public int FighterId { get; set; }
-        public required FighterDto Fighter { get; set; }
 
         // Luta em pé
         public double Punching { get; set; }

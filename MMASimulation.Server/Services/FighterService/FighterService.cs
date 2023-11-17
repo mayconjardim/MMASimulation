@@ -44,6 +44,16 @@ namespace MMASimulation.Server.Services.FighterService
             {
                 Fighter createdFighter = _mapper.Map<Fighter>(fighter);
 
+                createdFighter.FighterStrategies = new FighterStrategies
+                {
+                    Fighter = createdFighter
+                };
+
+                createdFighter.FighterStyles = new FighterStyles
+                {
+                    Fighter = createdFighter
+                };
+
                 _context.Add(createdFighter);
 
                 await _context.SaveChangesAsync();
@@ -52,10 +62,11 @@ namespace MMASimulation.Server.Services.FighterService
                 response.Data = _mapper.Map<FighterDto>(createdFighter);
                 response.Message = "Jogador criado com sucesso.";
             }
-            catch
+            catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "Ocorreu um erro ao criar o jogador.";
+                response.Message = $"Ocorreu um erro ao criar o jogador. {ex.Message}";
+                response.Error = ex.Message;
             }
 
             return response;

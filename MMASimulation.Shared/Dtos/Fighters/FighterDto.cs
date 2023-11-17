@@ -1,6 +1,4 @@
-﻿using MMASimulation.Shared.Models.Utils.Faces;
-
-namespace MMASimulation.Shared.Dtos.Fighters
+﻿namespace MMASimulation.Shared.Dtos.Fighters
 {
     public class FighterDto
     {
@@ -16,7 +14,6 @@ namespace MMASimulation.Shared.Dtos.Fighters
         public FighterRatingsDto? FighterRatings { get; set; }
         public FighterStrategiesDto? FighterStrategies { get; set; }
         public FighterStylesDto? FighterStyles { get; set; }
-        public Face? Face { get; set; }
 
 
     }
