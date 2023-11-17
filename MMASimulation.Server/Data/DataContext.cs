@@ -54,10 +54,11 @@ namespace MMASimulation.Server.Data
             .IsRequired();
 
             modelBuilder.Entity<Fight>()
-            .HasMany(f => f.Pbp)
-            .WithOne()
-            .OnDelete(DeleteBehavior.Cascade);
-              
+             .HasMany(f => f.Pbp)
+             .WithOne(pbp => pbp.Fight)
+             .HasForeignKey(pbp => pbp.FightId)
+             .OnDelete(DeleteBehavior.Cascade);
+
 
         }
 
