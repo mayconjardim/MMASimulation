@@ -4,8 +4,6 @@ using MMASimulation.Server.Data;
 using MMASimulation.Shared.Dtos.Fighters;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Utils;
-using System.Numerics;
-
 namespace MMASimulation.Server.Services.FighterService
 {
     public class FighterService : IFighterService
@@ -38,7 +36,7 @@ namespace MMASimulation.Server.Services.FighterService
             return response;
         }
 
-        public async Task<ServiceResponse<FighterDto>> CreatePlayer(FighterCreateDto fighter)
+        public async Task<ServiceResponse<FighterDto>> CreateFighter(FighterCreateDto fighter)
         {
             ServiceResponse<FighterDto> response = new();
 
