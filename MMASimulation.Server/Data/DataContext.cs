@@ -55,7 +55,6 @@ namespace MMASimulation.Server.Data
             modelBuilder.Entity<Fight>()
             .HasMany(f => f.Pbp)
             .WithOne(pbp => pbp.Fight)
-            .HasForeignKey(pbp => pbp.FightId)
             .OnDelete(DeleteBehavior.Cascade);
 
         }

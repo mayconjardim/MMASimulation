@@ -1,0 +1,3 @@
+%a1 jumps in the air and tries a flying knee!;Crushing shot! %d2's mouthpiece flies out of his mouth;%d2 blocks with his arms and moves laterally looking for a counter;7;2;0;8;Flying knee;1;1;0;2;3;0;0;
+%a2 spins around and tries a spinning back kick!;%d1 was not expecting something like that! It lands on his chin! Is this over?;%d2 ducks under and hesitates for a moment...;8;2;0;3;Spinning back kick;1;1;0;2;3;0;0;
+%a2 spins around and tries a spinning back kick!;%a1 hits hard %d2 ribs with that one! %d2's just wrenches like a little branch.;%d2 blocks with his arms and leg;10;2;1;2;Spinning back kick;1;1;0;2;3;0;0;

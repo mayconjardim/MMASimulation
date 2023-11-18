@@ -1,0 +1,4 @@
+%a2 throws some knees to the thighs of %d1 while in the clinch;Those hits seems to be causing trouble to %d1;Nothing to worry about for %d2 who knows how to block them;16;2;3;4;Knees;3;2;0;-5;0;12;12
+%a2 throws some knees to the thighs of %d1 while in the clinch;Those hits seems to be causing trouble to %d1;Nothing to worry about for %d2 who knows how to block them;15;2;3;4;Knees;3;2;0;-5;0;12;12
+%a2 tries to launch a knee to the body while in the clinch!;Glancing blow to %d2's abdomen!;%d2 pushes away %a1 before being hit;11;3;1;2;Knee;1;1;0;-1;0;12;1
+%a1 tries to stomp on %d2's feet while in the clinch.;Those hits are more annoying than damaging to %d2;%d2 seems barely affected. %a1 should look for a better strategy if he wants anything from this fight.;19;2;3;1;Stomps;2;2;0;-5;0;12;12

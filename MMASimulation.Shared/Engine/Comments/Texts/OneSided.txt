@@ -1,0 +1,9 @@
+This fight is very one sided. %a1 is mauling %d1.
+This may be a mismatch. %d1 doesn't know how to stand with %a1.
+%a1 is punishing %d2. What an absolutely astonishing performance!
+%d1 is being schooled today. What an awful performance.
+%d1 is being schooled... MMA lessons by professor %a2.
+%a2 is tooling %d2. It's a shame how one sided this match is.
+What an amateurish performance by %d2 tonight. His fans will not be pleased.
+%d1 is getting embarrassed here. %a2 just seems to be too much for him.
+%a2 has built a big lead over %d2. 

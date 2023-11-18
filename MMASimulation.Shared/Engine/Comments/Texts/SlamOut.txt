@@ -1,0 +1,2 @@
+%a2 tries to break the lock slamming %d1 against the mat!;After a couple of slams, %d2 loses the lock! What an impressive power demonstration!;%d1 doesn't allow %a1 to escape. He is tightening the %movename;10;0;0;0;Slam;1;1;0;1;1;2;0;
+%a1 lifts his opponent from the ground displaying great power! And down he goes!;%d1 loses the lock after that incredible blow against the mat! What a slam!;%d1 doesn't break the lock and %a1 is running out of time!;9;0;0;0;Slam;1;1;0;1;1;5;0;

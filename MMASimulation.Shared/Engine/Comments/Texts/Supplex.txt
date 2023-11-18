@@ -1,0 +1,4 @@
+%a2 lifts his opponent from the ground!;What an incredible suplex! That's awesome!;%d2 sprawls and manages to touch the ground again.;0;2;3;1;Supplex;1;1;-3;4;4;13;0
+%a1 puts his arms around his opponent and tries to lift him...;%a1 torques his body and gets a beautiful belly-to-belly suplex!;%d1 has strong hips and doesn't allow himself to be thrown.;12;1;9;1;Belly to Belly Suplex;1;1;-3;4;4;13;0;
+%a1 gets a nice grip on %d1 and looks for a big throw...;%a1 swings him up into the air and side slams him! That can't feel good on your back.;%d1 defends the throw and remains on his feet.;12;1;9;1;Side Slam;1;1;-1;2;1;13;0;
+%a1 gets a nice grip on %d1 and looks for a big throw...;%a1 propels %d1 into the air and dumps him on his head! Nasty throw by %a1!;%d1 defends the throw and remains on his feet.;0;3;9;1;Side Slam;1;1;-2;3;5;13;0;

@@ -1,0 +1,12 @@
+%a2 lifts his opponent off the ground and tries to slam him!;Down goes %d1! Brilliant slam!;%d2 shows nice sprawl skills and remains on his feet.;12;1;3;1;Slam;1;1;0;2;1;5;0
+%a2 lifts his opponent off the ground!;Brilliant side slam!;%d2 struggles and shows nice sprawl skills;10;0;3;1;Slam;1;1;0;0;0;13;1
+%a2 grabs %d1;He lifts him up and slams him hard to the mat!;%d2 shakes him off.;10;1;0;3;Slam;1;1;0;2;1;5;1
+%a2 lifts %d1 up off the ground;...big slam!;...before putting him back down.;12;1;3;1;Slam;1;1;0;2;1;5;0
+The fighters briefly tie up...;%d2 goes up and comes down hard as %a2 scores a brutal slam!;%d2 slips out of %a2's hooks.;12;1;3;1;Slam;1;1;0;2;1;5;0
+%a2 gets a grip on his opponent;and barrels forward, spiking him on his head!;but can't get the slam.;0;2;3;1;Spike;1;1;1;0;2;5;0
+%a1 goes for the suplex...;Wow, incredible!;His attempt goes nowhere.;12;2;4;9;Suplex;1;1;0;2;1;5;0
+%d2 is grappling.;Bad idea! %a1 lifts him up and launches him to the mat!;He looks for an opening to attack.;10;1;4;3;Slam;1;1;0;2;1;5;0
+%a2 is trying to lift %d2!;Brilliant side slam!;%d2 maneuvers out of the potential slam.;10;1;9;3;Slam;1;1;0;1;0;13;1
+%a1 is setting up a throw;He nearly drops %d2 on his head!;No dice, %d2 breaks free.;9;2;4;9;Throw;1;1;-1;2;2;5;0
+%a1 grabs %d2;%d1 gets thrown to the mat.;%d2 loosens %a2's hold.;10;2;4;9;Throw;1;1;0;1;1;5;0
+%a2 sets up a throw;%d1 flies through the air!;He fumbles and falls down!;12;0;0;0;Throw;1;1;0;1;1;5;9

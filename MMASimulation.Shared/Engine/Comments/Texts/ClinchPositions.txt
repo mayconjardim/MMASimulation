@@ -1,0 +1,6 @@
+%a1 is holding %d2 in a single collar tie.
+%a1 is holding %d1 in his thai clinch.
+%a1 is holding %d1 with a double underhooks clinch.
+%a1 is holding %d1 with an over / underhooks clinch.
+%a1 is holding %d1 with an overhooks clinch.
+%a1 is holding %d1 with a rear underhooks clinch.

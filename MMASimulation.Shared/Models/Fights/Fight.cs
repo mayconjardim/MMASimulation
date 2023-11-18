@@ -1,4 +1,5 @@
-﻿using MMASimulation.Shared.Models.Fighters;
+﻿using MMASimulation.Shared.Engine.FightUtils;
+using MMASimulation.Shared.Models.Fighters;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MMASimulation.Shared.Models.Fights
@@ -29,9 +30,12 @@ namespace MMASimulation.Shared.Models.Fights
         {
 
             //Inicia Atributos da Luta
-            FightAttributes = new FightAttributes();
+            FightAttributes atributtes = new FightAttributes();
 
+            //Prepara os lutadres
+            PrepareFights.PrepareFight(Fighter1, Fighter2, NumberRounds);
 
+            //Comentarios Iniciais
 
         }
 

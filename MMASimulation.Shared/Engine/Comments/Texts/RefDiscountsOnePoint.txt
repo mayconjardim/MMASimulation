@@ -1,0 +1,1 @@
+%ref takes away one point from %a1 for %param1.

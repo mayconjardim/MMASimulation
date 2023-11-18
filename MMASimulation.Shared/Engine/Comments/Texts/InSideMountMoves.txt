@@ -1,0 +1,5 @@
+%a2 tries to move to full mount!;Nice move. He is in full mount now.;%d2 won't allow him to take this position easily.;0;0;10;13;Ground move;0;0;0;0;0;4;13
+%a1 looks to pass to mount...;%a2 slides his knee across and achieves the mount position! Tough spot for %d1.;%d2 creates space and scrambles back to his feet.;0;0;0;0;Side Mount Pass;0;0;0;0;0;4;1;
+%a1 looks to mount %d1...;%a1 slides his knee across and gets to mount.;%d1 sees an opening and locks his opponent in half guard.;0;0;0;0;Ground move;0;0;0;0;0;4;15;
+%a1 looks to mount %d1...;%a1 slides his knee across and gets to mount.;%d1 takes advantage of his opponent's over commitment and traps him in full guard.;0;0;0;0;Ground move;0;0;0;0;0;4;5;
+%a1 looks to mount %d1...;%a1 slides his knee across and gets to mount.;%d1 takes advantage of his opponent's over commitment and traps him in full guard.;0;0;0;0;Ground move;0;0;0;0;0;4;6;

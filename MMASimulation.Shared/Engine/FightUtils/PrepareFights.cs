@@ -26,6 +26,8 @@ namespace MMASimulation.Shared.Engine.FightUtils
 
             CheckWeightDifference(fighter1, fighter2);
 
+            MaxHPandStamina(fighter1);
+            MaxHPandStamina(fighter2);
         }
 
         public static void UpdateFighterStyle(Fighter fighter)
@@ -122,7 +124,6 @@ namespace MMASimulation.Shared.Engine.FightUtils
                 fighter2.FighterFightAttributes.TakedownsDefMod += +Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
                 fighter2.FighterFightAttributes.ControlMod += +Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
 
-
                 if ((int)fighter2.WeightClass < (int)fighter1.WeightClass)
                 {
                     fighter2.FighterFightAttributes.AgilityMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
@@ -134,5 +135,10 @@ namespace MMASimulation.Shared.Engine.FightUtils
             }
         }
 
+        public static void MaxHPandStamina(Fighter fighter)
+        {
+            fighter.FighterFightAttributes.CurrentHP = ((fighter.FighterRatings.Toughness * 5 * 100) / 100);
+            fighter.FighterFightAttributes.CurrentStamina = ((fighter.FighterRatings.Conditioning * 5 * 100) / 100);
+        }
     }
 }

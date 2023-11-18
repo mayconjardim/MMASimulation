@@ -58,6 +58,7 @@ namespace MMASimulation.Shared.Models.Fights
         public bool ColorComments { get; set; }
         public bool CrowdBoo { get; set; }
         public int FightSeconds { get; set; }
+        public int CurrentTime { get; set; }
 
         public FightAttributes()
         {
@@ -113,6 +114,8 @@ namespace MMASimulation.Shared.Models.Fights
             ColorComments = true;
             CrowdBoo = false;
             FightSeconds = 0;
+            CurrentTime = 0;
+
         }
 
     }

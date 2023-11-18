@@ -1,0 +1,3 @@
+%a1 is on his feet again.
+%a2 climbs to his feet and is standing now.
+Back to the beginning! %a1 is standing now.

@@ -1,0 +1,6 @@
+%a1 tries to better his position on the ground...;%a2 is in a great position to begin a nice round of pounding!;%d1 tries to roll on the ground...;0;2;7;10;Ground move;0;0;0;0;0;0;10
+%d1 tries to roll to his side and get to half guard...;%a1 rolls %d1 to his stomach and takes his back!;%d1 creates enough space to control %a1's leg.;0;0;0;0;Ground move;0;0;0;0;0;7;15;
+%d1 tries to roll to his side and trap %a1 in his guard...;%a1 rolls him over and takes his back!;%d1 gets his hips out and gets to full guard.;0;0;0;0;Ground move;0;0;0;0;0;7;6;
+%a2 tries to keep hs position while looking to maybe begin a pounding session...;%a1 controls the situation despite %d1 efforts for escaping from the full mount.;%d2 struggles and frees his leg!;0;0;0;0;Ground move;0;0;0;0;0;0;15;
+%a2 tries to keep hs position while looking to maybe begin a pounding session...;%a1 controls the situation despite %d1 efforts for escaping from the full mount.;%d2 struggles and pushes his opponent maybe a bit anxiously;0;0;10;13;Ground move;0;0;0;0;0;0;0;
+%d2 tries to escape from the full mount...;%a1 is not caught off guard and moves to side mount to keep his superior position.;%d2 struggles and pushes his opponent maybe a bit anxiously;0;0;10;13;Ground move;0;0;0;0;0;13;0;

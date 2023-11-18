@@ -1,0 +1,65 @@
+%a1 %a2: Active fighter's name
+%d1 %d2: Defensive fighter's name
+%ref: Referee name
+
+Forumula: Intiate Text;Hit Text;Miss Text;Damage Location;Counter Probability;Counter Attack1;Counter Attack2;Move Name;Attacks Launched;Attacks Landed on Success;Cut Probability;Injury Probability;KO Probability;Position End on Success;Position End on Miss
+
+Location
+0 Head
+1 Forehead
+2 Left eye
+3 Right eye
+4 Left cheek
+5 Right cheek
+6 Nose
+7 Mouth
+8 Chin
+9 Upper body
+10 Ribs
+11 Abdomen
+12 Back
+13 Left arm
+14 Right arm
+15 Left thigh
+16 Right thigh
+17 Left Knee
+18 Right knee
+19 Left foot
+20 Right foot
+
+Counter Move
+1- Punch
+2- Kick
+3- Clinch
+4- Takedown
+5- Sub from the top
+6- Rear sub
+7- Sub from the bottom
+8- GnP
+9- Standing submission
+10 - Ground move 
+11 - Attack stand - ground
+12 - Attack ground - stand
+13 - Attack bottom fighter
+14 - Move to the ground
+15 - Stand up
+
+Position End
+
+0.) Same position before the move
+1.) Both Standing
+2.) Attacker Standing and Defender on Back
+3.) Defender Standing and Attacker on Back
+4.) Attacker in Full Mount
+5.) Attacker in Open Guard
+6.) Attacker in Closed Guard
+7.) Attacker in Rear Mount
+8.) Defender in Full Mount
+9.) Defender in Open Guard
+10.) Defender in Closed Guard
+11.) Defender in Rear Mount
+12.) Clinch
+13.) Attacker in Side Mount
+14.) Defender in Side Mount
+15.) Attacker in Half Guard
+16.) Defender in Half Guard

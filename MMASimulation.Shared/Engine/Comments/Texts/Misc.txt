@@ -1,0 +1,121 @@
+The fight goes to the judges.
+Judge:
+Winner is
+Unanimous decision
+Split decision
+Majority decision
+Majority draw
+Draw
+by
+between
+and
+Punches
+Kicks
+Takedowns
+Clinch strikes
+Submissions
+GnP strikes
+Statistics
+Damage caused
+Time on the ground
+Forehead
+Left eye
+Right eye
+Left cheek
+Right cheek
+Nose
+Mouth
+Chin
+Upper body
+Ribs
+Abdomen
+Back
+Left arm
+Right arm
+Left thigh
+Right thigh
+Left Knee
+Right knee
+Left foot
+Right foot
+KO
+TKO
+Submission
+Injury
+No contest
+Disqualification
+Time Out
+Record
+Clinch Attempts
+Clinch Damage
+Ground Damage
+Average Damage
+Caused
+Received
+Damage
+Cut
+Doctor Stoppage
+The referee of the bout is %ref.
+Freakshow
+Unfair
+Mismatch
+Fair
+Great Match
+Very Anticipated
+Dream Match
+The event takes place at %venue
+Attendance
+PPV buys
+Prelim card excitement
+Main card excitement
+Main and Co-Main event excitement
+Overall event quality
+Fights played
+SHW
+HW
+LHW
+MW
+WW
+LW
+FW
+BW
+Bout
+(T)KOs
+Injuries
+Decisions
+Disqualification
+Average Duration
+Most used referee
+Most used organization
+Total Duration
+Any organization
+Unknown
+%a1 has broken the record of 
+most damage caused in a fight
+most damage cause by a single attack
+fastest KO
+fastest submission
+Round
+%a1 has fight %d1 %param1 times.
+He has won %param2 of them.
+This is the first time they meet inside the %site
+He has lost %param2 of them.
+Towel Throw
+groin kick
+eye poke
+headbutt
+strangle
+%a1 defends the %param1 title!
+%a1 wins the %param1 title!
+Fighters will fight a tie break round.
+%a1 wins %param1 ranking points after the fight.
+%a1 loses %param1 ranking points after the fight.
+%a1 and %d1 had today the best fight of this organization!
+%a1 and %d1 had today the worst fight of this organization!
+%a1 comes with a %param1 fight winning streak.
+%a1 comes with a %param1 fight losing streak.
+Very Boring
+Dull
+Average
+Promising
+Exciting

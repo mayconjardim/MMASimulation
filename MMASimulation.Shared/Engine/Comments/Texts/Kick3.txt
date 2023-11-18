@@ -1,0 +1,13 @@
+%a1 moves forward and launches a high kick!;Vicious high kick!;%d2 ducks under.;4;-2;1;3;High kick;1;1;3;3;5;1;1
+%a1 tries a high kick!;%d2 was covering for a middle kick but that one almost knocked off his head!;%d2 blocks. Wow, that could have finished this match.;4;0;1;2;High kick;1;1;2;2;7;1;1
+Here comes %a1 with a vicious middle kick!;That lands hard on %d2's ribs!;%d1 dodges that one moving backwards;10;0;1;4;Middle kick;1;1;0;3;0;1;1
+%a1 steps forward and fires a high kick!;Vicious high kick, I can't believe that landed!;%d2 blocks decisively, as if to say, "No KO for me, thanks!";0;-1;1;4;High kick;1;1;3;2;5;1;1
+A bad move from %d1;allows %a2 to land a solid head kick.;almost puts his head in the path of %a2's kick.;0;1;3;4;High kick;1;1;1;0;3;1;1
+%d2 moves to shoot;but %a1 delivers a knee that wrecks him!;%a2 misses a knee.;0;1;4;3;Knee;1;1;3;2;7;1;1
+Brutal-looking high kick from %a1!;You could hear the impact from the back seats!;%d2 dodges!;0;-1;2;1;High kick;1;1;2;1;6;1;1
+%d2 attempts a shoot;%a1 hops back and delivers a powerful kick to his head!;but stops before running into %a2's kick.;0;1;4;2;High kick;1;1;2;2;5;1;1
+%a1 wants this win. He unleashes a kick.;Brutal high kick to %d2!;His opponent is elsewhere, looking to counter...;0;3;2;4;High kick;1;1;3;2;5;1;1
+High kick from %a1!;%d2 seems to be done!;He misses narrowly!;0;-2;1;3;High kick;1;1;2;1;7;1;1
+%a2 launches a solid middle kick;that wrenches %d2!;that whizzes past %d2.;11;0;2;4;High kick;1;1;-7;2;0;1;1
+%a2 goes for a low kick..;Faster than a blinking eye, he follows up with a high kick!;%d2 avoids the deadly blow.;0;-1;2;4;High kick;2;2;3;3;5;1;1
+Incredible high kick!;%d2 is worried!;%d2 deflects and sidesteps.;9;0;1;2;High kick;1;1;3;3;4;1;1

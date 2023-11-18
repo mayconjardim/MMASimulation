@@ -1,0 +1,2 @@
+%ref allows %d2 time to recover... The fight resumes with both fighters standing.
+%ref halts the fight to give %d2 time to recover. %d1 seems to be ready to fight again. The fight resumes with both fighters standing.

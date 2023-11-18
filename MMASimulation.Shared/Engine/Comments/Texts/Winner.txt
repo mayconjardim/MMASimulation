@@ -1,0 +1,1 @@
+Winner is %a1 by %method at %time_and_round

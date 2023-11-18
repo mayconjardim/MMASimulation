@@ -1,0 +1,2 @@
+%a2 tries to open up %d2 with a few strikes with his right elbow...;Some nice shots are landing and %d2 is trying to block them with his hands...;%d2 blocks a few elbows and now %a1 will have to look for another option here.;0;1;10;13;Elbows;4;2;2;0;0;0;0;
+%a2 is trying to better his position on the ground and launches a couple of elbows against %d2's ribs.;%d2 is noticing that and his face shows the pain.;%d2 blocks %a1's moves and tries to reverse the situation.;10;2;10;15;Elbows;2;2;0;1;0;0;0;

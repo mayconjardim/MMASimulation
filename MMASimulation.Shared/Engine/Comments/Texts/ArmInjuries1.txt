@@ -1,0 +1,4 @@
+%d1 [SIDE] arm has been Hyper-extended so much it appears its dislocated, the fight is over;Arm injury
+Thats a joint Hyper-extension you don't want, %d1 has broken his [SIDE] arm,this fight is over;Broken arm
+He hit him so hard %d1 has broken his [SIDE] hand;Broken hand
+It appears %d1 broke his [SIDE] wrist with that block;Broken wrist

@@ -1,0 +1,10 @@
+%a2 is in rear mount over %d2
+%a1 is in full mount over %d1
+%a1 is in closed guard over %d2
+%a1 is in side mount over %d1
+%a1 is in open guard over %d2
+%a1 is in half guard over %d2
+%a2 is in rear mount over %d2 with one hook in
+%a2 is in rear mount over %d2 with two hooks in
+%a2 is standing while %d2 is on the ground on his back
+%a2 is in butterfly guard over %d1

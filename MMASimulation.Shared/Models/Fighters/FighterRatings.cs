@@ -36,6 +36,19 @@
         public double KoResistance { get; set; }
         public double Toughness { get; set; }
 
+        public double Ranking()
+        {
+
+            Random random = new Random();
+            int number = random.Next(1, 6);
+
+            double statsRanking = Punching + Kicking + ClinchStriking + Takedowns + ClinchGrappling + Aggressiveness
+                    + Control + Motivation + Dodging + TakedownsDef + SubDefense + Strength + Toughness + Agility
+                    + KoResistance + Conditioning + GroundGame + Submission + Gnp / 19;
+
+            statsRanking += number;
+            return statsRanking;
+        }
 
     }
 }

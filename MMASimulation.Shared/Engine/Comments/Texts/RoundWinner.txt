@@ -1,0 +1,6 @@
+This round is clearly for %a1.
+The round is for %a2, who walks calmly to his corner.
+%a2 is the winner of this round.
+%a1 has to be confident that he won that round.
+I would be surprised if the judges didn't see that round for %a2.
+You have to give that round to %a1. 

@@ -1,0 +1,6 @@
+And there you go! I would put my money on %a1 today.
+%a1 is the favourite by the betting sites on internet.
+%a2 is the fighter that will win today if we pay attention to the bets.
+%a1 is the better fighter in my opinion. It would be an upset if he loses today.
+%d2 is not prefered by the MMA media to win tonight. He will have to do his best to score a win.
+%d1 is going to have a hard fight according to the bets.

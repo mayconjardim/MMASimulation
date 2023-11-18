@@ -365,17 +365,16 @@
         public static int THAI_CLINCH = 1;
         public static int SIMPLE_GRAPPLING = 2;
 
-        public static string UNKNOWN_STR = "Unknown";
         public static string RING = "ring";
         public static string CAGE = "cage";
-        public static string OCTAGON = "octógono";
-        public static string ROPES = "cordas";
-        public static string FENCE = "grades";
-        public static string ELBOW = "cotovelada";
-        public static string ELBOWS = "cotoveladas";
+        public static string OCTAGON = "octagon";
+        public static string ROPES = "ropes";
+        public static string FENCE = "fence";
+        public static string ELBOW = "elbow";
+        public static string ELBOWS = "elbows";
         public static string REF = "referee";
-        public static string LEFT = "esquerda";
-        public static string RIGHT = "direita";
+        public static string LEFT = "left";
+        public static string RIGHT = "right";
 
         public static bool oldUMSTime = false;
 

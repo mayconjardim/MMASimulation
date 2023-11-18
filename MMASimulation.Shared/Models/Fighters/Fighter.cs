@@ -9,6 +9,7 @@ namespace MMASimulation.Shared.Models.Fighters
         public int Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
+        public string Nickname { get; set; } = string.Empty;
         public int Age { get; set; }
         public int Wins { get; set; } = 0;
         public int Loss { get; set; } = 0;
@@ -23,6 +24,11 @@ namespace MMASimulation.Shared.Models.Fighters
 
         [NotMapped]
         public FighterFightAttributes? FighterFightAttributes { get; set; }
+
+        public string FullName()
+        {
+            return FirstName + " " + LastName;
+        }
 
     }
 }

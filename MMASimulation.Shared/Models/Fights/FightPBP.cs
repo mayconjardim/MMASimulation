@@ -6,11 +6,7 @@ namespace MMASimulation.Shared.Models.Fights
     {
 
         public int Id { get; set; }
-        public int FightId { get; set; }
-
-        [ForeignKey(nameof(FightId))]
-        public required Fight Fight { get; set; }
-
+        public Fight? Fight { get; set; }
         public string PbpData { get; set; } = string.Empty;
 
     }

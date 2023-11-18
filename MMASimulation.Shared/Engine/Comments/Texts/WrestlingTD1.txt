@@ -1,0 +1,12 @@
+%a1 is in good position and is looking to change levels for the takedown...;%a2 catches an ankle and %d2 is tripped to the mat!;%d2 doesn't let %a2 get in on his legs.;12;2;4;9;Ankle Pick;1;1;0;0;0;6;0;
+%a2 gets double underhooks and looks for the takedown...;%a2 blocks %d1's knee and hits a perfectly executed knee tap! Nice move.;%d2 pummels back into position.;12;2;4;9;Knee Tap;1;1;0;0;0;6;0;
+%a2 gets himself into good position and looks to change levels for the takedown...;%a2 gets hold of a leg and trips %d2 to the mat!;%d1 doesn't let %a1 get in on his legs.;12;2;4;9;Single Leg Takedown;1;1;0;0;0;6;0;
+%a1 shoots and grab one of %d1's leg, attempting to take him down with a Single Leg; %d2 lose his balance and falls to the mat; %d1 sprawls and remain on his feet;9;3;0;0;Single Leg Takedown;0;0;0;1;1;5;0;
+%a1 shoots and grab both of %d1's leg, attempting to take him down with a Double Leg; %a2 lifted %d2's off his feet and throws him on the mat; %d1 managed to pull back his leg from %a1's grip and move away from him;9;3;0;0; Double Leg Takedown;0;0;0;0;0;5;0;
+%a2 tries to take %d1 to the ground from the clinch...;Nicely done! %d2 is with is back on the ground now.;%d2 shows his sprawl skills and remains on his feet.;0;0;3;3;Clinch Takedown;1;1;0;0;0;5;0
+%a1 fakes a punch to %d1 ribs and the tries to trip him;%d1 loses balance and goes to the ground;%d2 loses balance for a moment but he remains on his feet after a small struggle.;0;0;3;3;Clinch Takedown;1;1;0;0;0;6;0
+%a2 tries to take %d1 to the ground from the clinch...;Nicely done! %d2 is with his back on the ground now.;%d2 shows his sprawl skills and remains on his feet.;0;0;3;3;Clinch Takedown;1;1;0;0;0;5;0
+%a1 fakes a punch to %d1 ribs and the tries to trip him;%d1 loses balance and goes to the ground;%d2 loses balance for a moment but he remains on his feet after a small struggle.;0;0;3;3;Clinch Takedown;1;1;0;0;0;6;0
+%a1 is in good position and is looking to change levels for the takedown...;%a2 catches an ankle and %d2 is tripped to the mat!;%d2 doesn't let %a2 get in on his legs.;12;2;4;9;Ankle Pick;1;1;0;0;0;6;0;
+%a2 gets double underhooks and looks for the takedown...;%a2 blocks %d1's knee and hits a perfectly executed knee tap! Nice move.;%d2 pummels back into position.;12;2;4;9;Knee Tap;1;1;0;0;0;6;0;
+%a2 gets himself into good position and looks to change levels for the takedown...;%a2 gets hold of a leg and trips %d2 to the mat!;%d1 doesn't let %a1 get in on his legs.;12;2;4;9;Single Leg Takedown;1;1;0;0;0;6;0;

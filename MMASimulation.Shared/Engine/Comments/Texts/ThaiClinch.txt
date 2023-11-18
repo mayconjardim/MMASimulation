@@ -1,0 +1,3 @@
+%a1 moves forward looking for some grappling action;%a2 has his opponent in a text book double collar thai clinch!;%d2 pushes his opponent and keep the fight at striking range;0;0;0;0;Thai Clinch;0;0;0;0;0;12;0;
+%a1 fakes a punch and launches himself over %d1;Great move by %a2 who pushes his opponent under a troublesome thai clinch;%d2 counters with a few fake punches and then backpedals;0;0;0;0;Thai Clinch;0;0;0;0;0;12;0;
+%a2 jumps over his opponent and tries to grapple;%a1 pushes his opponent against the %holdSite in a plum position;%d2 sees what was coming and ducks under his opponent and moves aside;0;0;0;0;Thai Clinch;0;0;0;0;0;12;0;

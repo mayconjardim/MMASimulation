@@ -1,0 +1,2 @@
+File cannot be loaded.
+Fighter strategies must equal 100% in each section.
