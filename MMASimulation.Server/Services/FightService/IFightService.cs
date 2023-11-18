@@ -8,7 +8,7 @@ namespace MMASimulation.Server.Services.FightService
 
         Task<ServiceResponse<List<FightDto>>> GetAllFights();
         Task<ServiceResponse<FightDto>> GetFightById(int fightId);
-        Task<ServiceResponse<FightDto>> CreateFight(FightDto fight);
+        Task<ServiceResponse<FightDto>> CreateFight(FightCreateDto fight);
 
     }
 }

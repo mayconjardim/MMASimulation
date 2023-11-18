@@ -1,4 +1,6 @@
-﻿namespace MMASimulation.Shared.Dtos.Fighters
+﻿using MMASimulation.Shared.Enums;
+
+namespace MMASimulation.Shared.Dtos.Fighters
 {
     public class FighterDto
     {
@@ -10,6 +12,8 @@
         public int Wins { get; set; }
         public int Loss { get; set; }
         public int Draw { get; set; }
+
+        public WeightClass WeightClass { get; set; }
 
         public FighterRatingsDto? FighterRatings { get; set; }
         public FighterStrategiesDto? FighterStrategies { get; set; }

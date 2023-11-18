@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MMASimulation.Server.Data;
-using MMASimulation.Shared.Dtos.Fighters;
 using MMASimulation.Shared.Dtos.Fights;
-using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
 using MMASimulation.Shared.Models.Utils;
 
@@ -70,7 +68,7 @@ namespace MMASimulation.Server.Services.FightService
             return response;
         }
 
-        public async Task<ServiceResponse<FightDto>> CreateFight(FightDto fight)
+        public async Task<ServiceResponse<FightDto>> CreateFight(FightCreateDto fight)
         {
 
             ServiceResponse<FightDto> response = new();
