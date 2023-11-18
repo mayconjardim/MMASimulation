@@ -25,5 +25,15 @@ namespace MMASimulation.Shared.Models.Fights
         [NotMapped]
         public FightAttributes? FightAttributes { get; set; }
 
+        public void FightSim()
+        {
+
+            //Inicia Atributos da Luta
+            FightAttributes = new FightAttributes();
+
+
+
+        }
+
     }
 }

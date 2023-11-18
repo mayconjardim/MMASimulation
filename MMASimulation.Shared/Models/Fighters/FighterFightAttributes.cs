@@ -131,6 +131,23 @@
             Cuts = 0;
             Moral = 0.0;
         }
+
+        public void ClearRoundPoints(int nRound)
+        {
+            RoundStandUpPoints[nRound] = 0;
+            RoundGroundPoints[nRound] = 0;
+            RoundAggPoints[nRound] = 0;
+            RoundTechPoints[nRound] = 0;
+        }
+
+        public void ClearAllRoundPoints() 
+        {
+		     for (int i = 1; i <= 5; i++)
+             {
+			    ClearRoundPoints(i);
+		     }
+	    }
+
     }
 
 }
