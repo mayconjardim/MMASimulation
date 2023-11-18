@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MMASimulation.Server.Data;
 using MMASimulation.Server.Services.FighterService;
+using MMASimulation.Server.Services.FightService;
 
 namespace MMASimulation.Server
 {
@@ -21,6 +22,7 @@ namespace MMASimulation.Server
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
             builder.Services.AddScoped<IFighterService, FighterService>();
+            builder.Services.AddScoped<IFightService, FightService>();
 
             var app = builder.Build();
 

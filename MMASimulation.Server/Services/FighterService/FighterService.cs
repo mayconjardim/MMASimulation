@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using MMASimulation.Server.Data;
 using MMASimulation.Shared.Dtos.Fighters;
-using MMASimulation.Shared.Engine.Comments.ReadTxt;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Utils;
 namespace MMASimulation.Server.Services.FighterService
@@ -56,7 +55,7 @@ namespace MMASimulation.Server.Services.FighterService
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = $"Ocorreu um erro ao criar o jogador. {ex.Message}";
+                response.Message = $"Ocorreu um erro ao criar o jogador.";
                 response.Error = ex.Message;
             }
 

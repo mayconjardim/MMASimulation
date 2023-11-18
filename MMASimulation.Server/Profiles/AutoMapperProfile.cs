@@ -23,7 +23,6 @@ namespace MMASimulation.Server.Profiles
             CreateMap<Fight, FightDto>().ReverseMap();
             CreateMap<Fight, FightCreateDto>().ReverseMap();
 
-
         }
 
     }
