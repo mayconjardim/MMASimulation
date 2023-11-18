@@ -24,6 +24,7 @@ namespace MMASimulation.Shared.Engine.FightUtils
             UpdateFighterStyle(fighter1);
             UpdateFighterStyle(fighter2);
 
+            CheckWeightDifference(fighter1, fighter2);
 
         }
 
@@ -88,6 +89,48 @@ namespace MMASimulation.Shared.Engine.FightUtils
                     fighter.FighterFightAttributes.InitMod += Sim.TECHLEVEL2INITMOD;
                     fighter.FighterFightAttributes.Accuracy = Sim.TECHLEVEL2ACCURACY;
                     break;
+            }
+        }
+
+        public static void CheckWeightDifference(Fighter fighter1, Fighter fighter2)
+        {
+            double WEIGHT_MOD = 1.5;
+            double weightDifference;
+
+            if (fighter1.WeightClass != fighter2.WeightClass)
+            {
+
+                weightDifference = ((int)fighter1.WeightClass - (int)fighter2.WeightClass) * WEIGHT_MOD;
+
+                fighter1.FighterFightAttributes.PunchingMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter1.FighterFightAttributes.KickingMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter1.FighterFightAttributes.ClinchStrikingMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter1.FighterFightAttributes.ClinchGrapplingMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter1.FighterFightAttributes.StrengthMod += Sim.STRENGTHONEWEIGHTCLASSDIFERENCE * weightDifference;
+                fighter1.FighterFightAttributes.TakedownsMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter1.FighterFightAttributes.TakedownsDefMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter1.FighterFightAttributes.ControlMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+
+                weightDifference = ((int)fighter2.WeightClass - (int)fighter1.WeightClass) * WEIGHT_MOD;
+
+                fighter2.FighterFightAttributes.PunchingMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter2.FighterFightAttributes.KickingMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter2.FighterFightAttributes.ClinchStrikingMod += +Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter2.FighterFightAttributes.ClinchGrapplingMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter2.FighterFightAttributes.StrengthMod += Sim.STRENGTHONEWEIGHTCLASSDIFERENCE * weightDifference;
+                fighter2.FighterFightAttributes.TakedownsMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter2.FighterFightAttributes.TakedownsDefMod += +Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                fighter2.FighterFightAttributes.ControlMod += +Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+
+
+                if ((int)fighter2.WeightClass < (int)fighter1.WeightClass)
+                {
+                    fighter2.FighterFightAttributes.AgilityMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                }
+                else if ((int)fighter1.WeightClass < (int)fighter2.WeightClass)
+                {
+                    fighter1.FighterFightAttributes.AgilityMod += Sim.ONEWEIGHTCLASSDIFFERENCE * weightDifference;
+                }
             }
         }
 

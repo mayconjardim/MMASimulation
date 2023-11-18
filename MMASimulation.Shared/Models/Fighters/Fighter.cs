@@ -15,7 +15,7 @@ namespace MMASimulation.Shared.Models.Fighters
         public int Draw { get; set; } = 0;
         public string Face { get; set; } = string.Empty;
 
-        public WeightClass weightClass { get; set; }
+        public WeightClass WeightClass { get; set; }
 
         public required FighterRatings FighterRatings { get; set; }
         public required FighterStrategies FighterStrategies { get; set; } = new FighterStrategies();
