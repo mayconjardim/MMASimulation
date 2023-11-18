@@ -28,4 +28,8 @@
     <ProjectReference Include="..\MMASimulation.Shared\MMASimulation.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\FightService\" />
+  </ItemGroup>
+
 </Project>
