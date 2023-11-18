@@ -1,0 +1,3 @@
+%a2 launches a barrage of elbows over %d2's face!;Those elbows may finish the fight soon if %d2 doesn't fight back!;%d1 blocks the elbows and tries to cool down the fight.;0;0;10;13;Elbows;5;3;4;2;3;0;0;
+%a1 storms over %d2 with a biblical punishment in the form of elbows!;%a2 doesn't stop and viciously hits again and again %d2's face with his elbows!;%d1 blocks them all showing some great skills here.;0;0;7;10;Elbows;6;4;4;2;4;0;0;
+%a2 delivers a few accurate elbows!;%d2 is being hit hard and trys to escape! He has to give his back!;%d1 blocks them all showing some great skills here.;0;0;13;10;Elbows;6;4;4;2;4;7;0;

@@ -1,0 +1,1 @@
+%a2 raises his leg...!;And stomps %d2's face!;%d2 covers himself and blocks the stomp.;6;0;15;12;Stomp;1;1;0;3;5;0;0

@@ -1,0 +1,3 @@
+%a1 tries to close the guard.;%a2 put %d1 in closed guard.;Nothing from this effort.;0;2;8;10;Ground move;0;0;0;0;0;10;0
+%a1 attempts to move to full guard;%a1 manages to switch to full guard.;%d1 keeps good control and remains in half guard.;0;0;0;0;Ground move;0;0;0;0;0;9;0;
+%a1 attempts to move to full guard;%a1 manages to switch to full guard.;%d1 keeps good control and remains in half guard.;0;0;0;0;Ground move;0;0;0;0;0;10;0;

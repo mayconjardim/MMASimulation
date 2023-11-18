@@ -1,0 +1,1 @@
+%a2 is moving on the ground...;Ouch! That was a headbutt! Did he do that intentionally?;%d2 tries to counter %a2's moves on the ground.;0;0;10;10;Headbutt;1;1;3;3;3;0;0

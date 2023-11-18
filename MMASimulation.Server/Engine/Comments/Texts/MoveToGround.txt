@@ -1,0 +1,5 @@
+%a2 decides to go after his opponent and jumps inside %d2's guard.;%d2 did not see that coming! %a1 is in open guard over %d2 now.;%d2 tries to fight back with his feet and %a2 just needs another plan now.;0;1;12;12;move to ground;1;1;0;0;0;5;0
+%a1 opts to go after his opponent and jumps inside %d2's guard.;%d2 didn't see that coming. %a2 is in open guard over %d2 now.;%d2 fights back with his feet, forcing %a2 to try something else.;0;1;12;12;Move to ground;1;1;0;0;0;5;0
+%a1 decides to jump inside %d2's guard.;%d2 didn't see that coming. %a2 is in open guard over %d2 now.;%d2 fights back with his feet, forcing %a2 to try something else.;0;1;12;15;Move to ground;1;1;0;0;0;5;0
+%a2 opts to jump inside %d2's guard.;%d2 didn't see that coming. %a1 is in open guard over %d2 now.;%d2 fights back with his feet, forcing %a2 to try something else.;0;1;12;12;Move to ground;1;1;0;0;0;5;0
+%a2 cartwheels towards %d2!;He lands in side mount over a surprised %d1.;%d2 fights back and evades the cartwheel guard pass.;0;2;15;12;Cartwheel guard pass;1;1;0;0;0;13;0

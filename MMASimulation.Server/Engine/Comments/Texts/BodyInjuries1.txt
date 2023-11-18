@@ -1,0 +1,3 @@
+%d1 has a broken rib. He can't continue fighting.;Broken Rib
+%d1 may have a broken rib. It's painful to see him losing this way.;Broken Ribs
+%d1's holding his side, he appears to be in terrible pain, he's broken a rib ;Broken Ribs

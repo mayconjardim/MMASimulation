@@ -1,0 +1,1 @@
+%a2 launches a kick to %d2's thigh;Loud pop!;%d2 checks that kick!;15;-2;15;12;Kick;1;1;0;-5;-10;0;0

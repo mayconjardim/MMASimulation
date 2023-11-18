@@ -1,0 +1,3 @@
+Brutal knees to %d2's face, followed by knees to the body from %a1!;Bang! %d2 can take many more shots like that!;%d2 doesn't want to finish it now and covers himself!;5;-2;3;1;Knees;6;4;4;2;2;12;12
+%a1 is controlling the clinch and launches a vicious knee!;Crushing blow to %d2's face.;He was aiming at %d2's face but his move was blocked;3;0;3;7;Knees;1;1;3;2;4;12;12
+One, two, three! %a2 doesn't stop launching those knees in the clinch!;Devastating knee that lands on %d2's chin! That pop was heard throughout the arena! The crowd erupts!;%d2 blocks and then pushes away %a1!;8;0;1;2;Knees;3;1;2;2;5;12;1

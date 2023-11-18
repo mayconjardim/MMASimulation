@@ -1,0 +1,2 @@
+%a2 tries a knee to the midsection...;Ouch! That seems to have landed on %d1's groin! Was that unintentional?;%d2 blocks that knee;11;1;3;3;Groin Knee;1;1;0;0;0;0;0
+%a1 launches a furious knee!;Bang! It clearly hits %d2's groin!;%d1 blocks and struggles while trying to take the initiative.;11;1;3;3;Groin Knee;1;1;0;0;0;0;0

@@ -1,0 +1,4 @@
+%a2 tries to show some ground skills;%a1 put %d2 in half guard.;%d2 uses his strength to keep %d2 at a disadvantage;0;2;10;8;Ground move;0;0;0;0;0;16;14
+%a1 attempts to trap %d1 in his guard.;%a1 manages to switch to half guard.;%d1 keeps control and remains in side mount.;0;0;0;0;Ground move;0;0;0;0;0;16;0;
+%a1 attempts to trap %d1 in his guard.;%a1 manages to switch to full guard.;%d1 keeps control and remains in side mount.;0;0;0;0;Ground move;0;0;0;0;0;9;0;
+%a1 attempts to trap %d1 in his guard.;%a1 manages to switch to full guard.;%d1 keeps control and remains in side mount.;0;0;0;0;Ground move;0;0;0;0;0;10;0;

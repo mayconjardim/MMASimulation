@@ -1,0 +1,2 @@
+%ref breaks %a1's lock! This is over! %d2 didn't want to tap but the ref decided he wouldn't be able to escape from it!
+%a2 secures the lock while %d1 refuses to tap... %ref jumps in and breaks the lock!

@@ -1,0 +1,1 @@
+%a2 has one hook in and is trying to get the second one! If he succeed things are goint to get very bad for %d2.;Nicely done! %a2 now has two hooks in! The end may be near!;%d2 uses his leg as leverage and manages to keep himself safe for now.;0;-2;0;0;Ground move;1;1;0;0;0;7;0

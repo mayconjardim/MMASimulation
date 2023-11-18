@@ -1,0 +1,3 @@
+%a1 is holding %d1's head and looking for angles...;Ouch! What a powerful knee by %a1! That one hits %a1 [SIDE] cheek like a hammer!;%d1 covers himself and blocks a powerful knee by his opponent!;5;0;10;15;Knee;1;1;0;2;2;0;0;
+%a1 is holding %d1's head and looking for angles...;Ouch! What a powerful knee by %a1! That one hits %a1 [SIDE] cheek like a hammer!;%d1 covers himself and blocks a powerful knee by his opponent!;4;0;10;15;Knee;1;1;0;2;2;0;0;
+%a2 launches a vicious knee to %d1's head!;Bang! You can hear %d1's coner yelling to their fighter to escape now!;%d2 pushes forward and rolls over his own back! Nice move! %d1 stands up!;0;0;0;0;Knee;1;1;0;2;3;0;3;

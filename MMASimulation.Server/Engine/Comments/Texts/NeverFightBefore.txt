@@ -1,0 +1,2 @@
+%a1 and %d2 have never met before in a %site.
+This is the first time %a1 fights %d2.

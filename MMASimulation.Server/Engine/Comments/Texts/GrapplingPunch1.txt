@@ -1,0 +1,2 @@
+%a1 launches a few punches towards %d2's ribs while holds him in a double overhooks!;%d1 receives a couple of blows in the ribs.;%d2 seems unaffected... those punches doesn't carry any power!;10;1;3;3;Punches;4;2;0;0;0;0;0;
+%a2 tries to breaks %d1's resistence with a few punches while tries to push him against oner corner.;%a2 launches a couple of punches that leave marks in %d2's ribs.;%a2 doesn't find the right way... He have to improve his position for causing any real damage;10;0;3;3;Punches;2;2;0;0;0;0;0;

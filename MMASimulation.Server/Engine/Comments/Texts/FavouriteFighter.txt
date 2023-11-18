@@ -1,0 +1,4 @@
+%a1 is the favourite fighter of the crowd at %venue.
+People are cheering for this fighter. You can hear %a1 chants all around the place!
+%a1! %a1! This is what the people are chanting here.
+%a2 enters the %site and this place seems about to burst! He may be sure the fans are with him today.

@@ -1,0 +1,8 @@
+%a2 fakes a punch and shoots a takedown!;%d1 didn't see it coming and has been put on the ground!;%d2 sprawls and remains on his feet.;12;2;2;3;Takedown;1;1;0;0;0;5;1
+%a2 is holding %d1's left leg... He's trying to take him down.;%d1 loses balance and goes to the ground.;%d1 shows great balance while pushing away %a1;13;3;1;3;One leg takedown;1;1;0;0;0;13;1
+%a2 is holding %d1's right leg... He's trying to take him down.;%d1 loses balance and goes to the ground.;%d1 shows great balance while pushing away %a1;14;3;1;3;One leg takedown;1;1;0;0;0;13;1
+%a2 grabs his opponent by the waist and tries to take the fight to the ground;Great takedown by %a1;%d2 struggles... %a1 is unable to take him down;12;1;3;1;Takedown;1;1;0;0;0;5;1
+%a1 tries to take the fight to the ground with a one leg takedown...;%d2 is unable to remain on his feet and falls to the ground;%d1 jumps backwards and frees his leg.;12;2;2;3;One leg takedown;1;1;0;0;0;5;1
+%a1 tries to bring the fight to the ground;%d2 goes down.;%d2 won't budge, forcing %a2 to pull guard.;12;0;0;0;Takedown;1;1;0;-1;0;5;10
+%a1 shoots for a double leg takedown!;He hits it! %d1 is taken off his feet, but he manages to pull %a2 into his guard.;%d1 sprawls and manages to stay on his feet.;12;2;7;3;Double Leg Takedown;1;1;0;0;1;6;1;
+%a1 attempts a sweep single...;%a1 catches %d1's far ankle and trips him to the mat! Slick takedown by %a2.;%d1 was ready and shrugs off the takedown attempt.;12;2;2;3;Sweep Single;1;1;0;0;0;6;0;

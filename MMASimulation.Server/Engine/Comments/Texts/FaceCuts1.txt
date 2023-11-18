@@ -1,0 +1,1 @@
+Nasty cut on %d1's %location;Nasty cut %location

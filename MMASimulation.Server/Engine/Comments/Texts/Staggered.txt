@@ -1,0 +1,3 @@
+%d2 seems a bit groggy... his movements are not very coordinated now.
+That punishment by %a1 has left %d2 staggered! %a1 should try push forward now and finish this!
+%d1 seems hurt! He stumbles backwards and he's an easy target for %a1!

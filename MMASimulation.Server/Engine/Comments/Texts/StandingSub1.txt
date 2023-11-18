@@ -1,0 +1,5 @@
+Big mistake from %d1! %a2 tries to finish him off with a RNC!;%d2 struggles helplessly but that choke by %a2 seems to be unbreakable! He is out!;%a2 is unable to lock that and %d2 breaks the lock;0;0;1;3;Rear Nacked Choke;1;1;0;0;1;0;0
+%a1 tries to finish this with a rear naked chocke!;%a2 closes the choke! %d1's face is turning crimson red! He taps!;%d2 ducks under and pushes away his opponent.;0;0;1;3;rear naked chocke;1;1;0;0;0;0;1
+%a1 locks up a guillotine with an arm in...;He brings %d1 down to the mat and it looks deep! %d1 quickly taps before passing out!;%d1 brings %a1 down to the ground and pulls his head out.;0;3;10;8;Arm-in Guillotine;1;1;-1;-2;0;0;10;
+%a1 locks up a guillotine and tries to pull guard...;It's deep! %d1 cannot escape and taps before going out!;%d1 slips his head out and ends up in %a1's guard.;0;3;15;10;Standing Guillotine;1;1;-2;0;0;0;10;
+%a1 gets control of %d1's neck and attempts a guillotine!;%d1 tries to wriggle free but it's deep. He can't slip out and has to tap!;%d1 shakes him off and staves off danger.;0;3;1;10;Standing Guillotine;1;1;-2;0;0;0;0;

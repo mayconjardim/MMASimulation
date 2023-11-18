@@ -1,0 +1,2 @@
+%a2 measures the resilience of %d2's ribs with a couple of big punches from guard.;Those hits are leaving hitches in %d2's side.;%d2 blocks the hits as he works on the ground.;10;0;8;10;Strikes from guard;2;2;0;0;0;0;0
+%a1 launches a few punches to %d2's cheek from the guard.;Those punches sure are annoying because %d2 tries to cover his face,;%d1 uses his head to cover the punches and presses his skull forward.;4;0;10;15;Strikes from guard;3;2;0;0;0;0;0

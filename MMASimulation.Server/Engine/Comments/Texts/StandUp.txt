@@ -1,0 +1,2 @@
+%a2 tries to stand up!;he is now on his feet;%d2 doesn't allow him!
+%a1 doesn't want to continue the fight in this position and tries to get back on his feet;He moves fast and now he is standing;He can't do it because of %d2's moves.

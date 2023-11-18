@@ -1,0 +1,2 @@
+%a2 has %d2 controlling his back while on the ground. He tries to roll and find an escape...;Showing some ground skills he transitions to a side mount.;%d2 is unable to move under %a2 control.;0;2;10;8;Ground move;1;1;0;0;0;14;0
+%a2 has %d2 controlling his back while on the ground. He tries to roll and find an escape...;Showing some ground skills %a2 manages to escape from that position and climb to his feet along %d2;%d2 is unable to move under %a2 control.;0;2;8;6;Ground move;1;1;0;0;0;1;10
