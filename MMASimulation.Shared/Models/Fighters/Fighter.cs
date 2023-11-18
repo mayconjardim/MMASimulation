@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using MMASimulation.Shared.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MMASimulation.Shared.Models.Fighters
 {
@@ -13,6 +14,8 @@ namespace MMASimulation.Shared.Models.Fighters
         public int Loss { get; set; } = 0;
         public int Draw { get; set; } = 0;
         public string Face { get; set; } = string.Empty;
+
+        public WeightClass weightClass { get; set; }
 
         public required FighterRatings FighterRatings { get; set; }
         public required FighterStrategies FighterStrategies { get; set; } = new FighterStrategies();
