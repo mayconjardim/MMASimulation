@@ -1,6 +1,0 @@
-%d2 can't see anything with that swollen left eye.;Swollen Eye
-%d2 can't see anything with that swollen right eye.;Swollen Eye
-%d2 is out! He has a broken orbital bone!;Broken orbital bone
-%d2 is out! He has a broken cheekbone!;Broken cheeckbone
-%d1 can't continue fighting. %ref doesn't allow him to continue fighting with his swollen right eye!;Swollen eye
-%d1 can't continue fighting. %ref doesn't allow him to continue fighting with his swollen left eye!;Swollen eye

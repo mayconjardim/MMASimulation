@@ -1,2 +1,0 @@
-%a2 tries a soccer kick to %d1's head;Awful hit! %d2 is in trouble!;%d1 rolls on the ground and escapes out of this one.;0;-1;15;12;Soccer Kick;1;1;0;2;4;0;0
-%a1 holds %d2's head on the ground and prepares a soccer kick...;That kick hits %d2's head hard.;%d1 blocks the kick but he has to do something soon or he will be screwed!;0;-1;12;15;Soccer Kick;1;1;0;2;4;0;0

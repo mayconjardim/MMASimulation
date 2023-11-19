@@ -1,4 +1,0 @@
-%a2 grabs %d1 from the hips!;Incredible suplex! %d2 must be wondering if he is fighting in WWE!;%d2 sprawls and remains on his feet.;0;1;3;9;Supplex;1;1;0;2;2;7;3
-%a2 tries to shoot a takedown...;What an incredible suplex here! %a2 just shows us his strength launching %d2 over his own head!;%d2 sprawls and remains on his feet.;0;1;1;3;Supplex;1;1;0;2;2;7;3
-%a1 shoots in for a takedown and turns the corner gaining control of %d1's waist behind him. He looks to throw him... ;%a1 lifts him into the air and arches his back slamming him right on his head! Awesome german suplex!;%d1 hits a switch and breaks %a1's grip on him.;0;3;9;1;German Suplex;1;1;-2;3;5;17;0;
-%a1 overhooks %d1's arms and looks to dump him.;%a1 torques his body and slams him to the mat with a flashy double overhook throw!;%d1 frees his arms and remains on his feet.;12;3;9;1;Overhook Throw;1;1;-2;3;5;13;0;

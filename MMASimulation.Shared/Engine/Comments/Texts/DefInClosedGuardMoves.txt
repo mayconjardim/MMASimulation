@@ -1,1 +1,0 @@
-%d2 is in closed guard... %a2 tries to roll on the ground!;Nice reversal! He is now in full mount over %d1!;%d1 uses his leg to keep his position on the ground;0;1;8;10;Ground Move;0;0;0;0;0;4;10

@@ -1,4 +1,0 @@
-%a2 knows his opponent is groggy and begins a relentless rain of punches!;%d1 is having a nightmare! %ref watches for the moment he has to end this!;%d2 blocks those punches!;0;0;10;7;GnP;6;4;1;1;3;0;0;
-%a1 positions himself and tries to finish this!;%a1 storms %d1's head with a few unblocked hammer fists! %ref is asking %d1 to defend himself!;%d1 blocks and dodges most of the punches! %a1 seems frustrated!;0;0;10;13;GnP;3;2;0;0;4;0;0;
-%a1 Swarms all over his opponent trying to finish this fight!;%d1 is taking a ton of punishment! He needs to defend himself or the ref will stop the fight.;%d1 regains his composure enough to avoid those blows.;0;0;10;13;GnP;6;3;0;0;3;0;0;
-%a1 Sees his opportunity to finish this fight on the ground and swarms all over %d1!;%d1 is taking a ton of punishment! He needs to defend himself or the ref will stop the fight.;%d1 regains his composure enough to avoid those blows.;0;0;10;13;GnP;5;2;0;0;4;0;0; 

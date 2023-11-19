@@ -1,6 +1,0 @@
-%a1 wants to finish his opponent on the ground;%a2 drills %d1's face with a huge right hand! What an impact!;%a1 can't find an opening in his opponent's guard!;6;-1;10;7;GnP;1;1;2;2;2;0;0
-%a1 moves to better his position on the ground...;%a1 viciously slams hammer blows to %d2's face!;%a1 wraps his arms around his opponents' and tries to switch positions;1;0;10;7;GnP;3;3;1;2;3;0;14
-%a2 leans back...;He clobbers %d1's face with a huge punch! Ouch!;%d2 eyes him warily.;0;0;10;7;GnP;1;1;1;1;2;0;0
-%a2 is looking to end this fight with strikes;He starts to pound away at %d1, who is barely covering up!;%d2 anticipates his moves and avoids danger.;0;-1;10;7;GnP;5;4;1;1;3;0;15
-%a2 fires a barrage of punches at %d2's head!;This is bad! %a2 is just pounding on %d1's head like he's a training dummy! The referee looks on anxiously!;The punches go wide.;0;0;10;7;GnP;5;4;1;1;2;0;0
-%a1 throws down elbows...;He's tearing up %d2's face with those brutal elbows! %d2 needs to do something! The referee is threatening to stop it!;%d2 is not making himself an easy target.;0;0;10;8;GnP;5;5;2;1;1;0;0

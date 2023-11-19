@@ -1,2 +1,0 @@
-%a2 launches a few weak punches;Those punches are hitting %d2's ribs.;%d2 blocks them effectively.;10;1;10;8;Strikes from guard;3;2;0;-2;-2;0;0
-Deep breaths from %a1 who tries a hammer punch to %d2's ribs.;That hit %d2 who moves on the ground in order to protect himself;%d2 blocks those punches;10;1;10;8;Strikes from guard;1;1;0;0;-2;0;0

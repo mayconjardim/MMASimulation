@@ -1,3 +1,0 @@
-Crushing shot to %d2's body! He's holding his side;Contused side
-Hard blow to %d2's mid-section, he seems hurt;Contused side
-%d2 ribs are getting hammered, they look bad!;Hammered ribs

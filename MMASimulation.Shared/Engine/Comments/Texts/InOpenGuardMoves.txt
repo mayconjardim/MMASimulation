@@ -1,9 +1,0 @@
-%a2 tries to move to full mount;%a2 succeeds;%a2's ground game is not enough to provide him any advantage;0;2;10;8;Ground move;0;0;0;0;0;4;5
-%a2 moves on the ground;%a1 moves to side mount;%a2 cannot take advantage in the ground;0;2;10;8;Ground move;0;0;0;0;0;13;5
-%a2 tries to jump to side mount.;%d1 closed his guard around %a1.;%d1 jumps and show some wrestling skills as he positions himself for continuing the fight in side control.;0;0;0;0;Ground move;0;0;0;0;0;13;10;
-%a1 pushes %d1 against the %HoldSite and then tries to improve his position.;%a2 jumps and tries to free his leg! %d2 doesn't allow this but %a1 is able to get half guard here.;%d1 struggles not allowing %a1 improve his position.;0;0;10;13;Ground move;0;0;0;0;0;15;0;
-%a1 tries to pass to half guard...;%d1 can't prevent his opponent from passing. %a2 looks to work from half guard.;%d1's guard is too good and he fails to pass.;0;0;0;0;Ground move;0;0;0;0;0;15;0;
-%a1 tries to pass to half guard...;%d1 can't prevent his opponent from passing. %a2 looks to work from half guard.;%d1's closes his guard to prevent the pass.;0;0;0;0;Ground move;0;0;0;0;0;15;6;
-%a2 moves on the ground..;He gets half guard.;...he makes no progress.;0;0;10;8;Ground move;0;0;0;0;0;15;5
-%a2 moves on the ground...;..and gets to half guard.;He remains in open guard.;0;0;10;8;Ground move;0;0;0;0;0;15;5
-%a2 tries to improve position.;He frees a leg.;%d2 adjusts and closes his guard.;0;0;10;8;Ground move;0;0;0;0;0;15;6

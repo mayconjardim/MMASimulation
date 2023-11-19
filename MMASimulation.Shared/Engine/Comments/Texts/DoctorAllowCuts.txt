@@ -1,5 +1,0 @@
-The doctor closes the cuts and %a1 is allowed to keep fighting.
-The cut doesn't look serious enough. The doctor lets %a2 continue. 
-The doctor asks if %a1 wants to continue. He does, and they will let him.
-The doctor examines the cut and deems %a1 fit to continue.
-Not a terrible cut. The doctor checks it for precautionary reasons and allows the fight to continue. 

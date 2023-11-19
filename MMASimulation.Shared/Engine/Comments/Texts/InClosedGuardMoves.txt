@@ -1,9 +1,0 @@
-%a1 tries to better his position on the ground...;%a2 breaks the closed guard of %d1 and moves to half guard;%d2  holds %a1's head against his chin in the closed guard.;0;2;7;10;Ground move;0;0;0;0;0;13;6
-%a2 struggles on the ground and tries to break %d1's guard...;%a1 is in %d2 open guard now;%d2 doesn't want to free his opponent and %a2 continues in closed guard;0;2;10;7;Ground move;0;0;0;0;0;5;6
-%a2 tries to escape from the closed guard;%a2 succeeds and he's now in open guard... he takes a second to breathe;%a1 any adventage in the ground.;0;2;7;10;Ground move;0;0;0;0;0;5;6
-%a2 tries to improve his position on the ground as he sits on his knees and tries to break the closed guard.;%a1 fakes a few punches and then slips one leg to get the half mount.;%d2 leans and gets %a1's arms as he brings him to the ground again.;11;0;10;7;Ground move;0;0;0;0;0;15;0;
-%a2 tries to escape from closed guard...;%a2 struggles to liberate his leg and jumps to half guard!;%d2 waits for the moment and tries to roll! Too late for %a1! He is reversed and nor %d1 is on half guard!;0;0;0;0;Ground move;0;0;0;0;0;15;16;
-%a2 use some of his wrestling skills to escape from the closed guard!;After a few tentative moves, he jumps to side mount! The crowd in %venue is cheering him!;%d1 holds %a1 and prevents him from moving to a better position!;0;0;7;10;Ground move;0;0;0;0;0;13;0;
-%a1 looks to posture up and open %d1's guard... ;%a1 forces %d1 to open his guard.;%d1 has a solid guard and keeps his ankles locked.;0;0;0;0;Ground move;0;0;0;0;0;5;0;
-%a1 is looking to pass %d1's guard...;%a1 gets his hips free and moves to half guard.;%d1 has a solid guard and keeps his ankles locked.;0;0;0;0;Ground move;0;0;0;0;0;15;0;
-%a1 tries to pass %d1's guard...;%a1 manages to get his leg free and moves to half guard.;%a1 passes momentarily but %d1 regains full guard.;0;0;0;0;Ground move;0;0;0;0;0;15;0;

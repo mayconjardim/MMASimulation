@@ -1,4 +1,0 @@
-%a2 moves forward and tries a Superman punch!;Bang! That crushes %d2's face and maybe his hopes of winning this fight too!;%d2 dodges just moving aside. %a1 has created a big hole that %d1 could use now!;5;2;1;4;Superman punch;1;1;1;2;4;0;0
-%a1 suddenly spins around...;and he connects with a spinning back fist just on %d2's chin!;%d1 was aware of that move and blocks it with confidence.;8;3;9;1;Spinning back fist;1;1;0;0;5;0;0
-%a1 put some serious power behind that superman punch!;That's just incredible! That punch hits %d1's face like a wrecking ball!;That punch barely misses as %d1 steps backwards!;6;2;2;1;Superman punch;1;1;0;1;5;0;0
-%a1 spins around suddenly...;...and his backfist connects flush with %d2's chin!;%d1 ducks under and that just passes over his head.;8;3;1;2;Spinning back fist;1;1;0;1;4;0;0

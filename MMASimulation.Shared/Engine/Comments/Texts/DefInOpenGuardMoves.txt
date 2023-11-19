@@ -1,1 +1,0 @@
-%a2 tries to close his guard around %d2;He succeeds!;He is not able to do it;0;2;0;0;Ground move;0;0;0;0;0;10;9

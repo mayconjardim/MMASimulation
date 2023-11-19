@@ -1,2 +1,0 @@
-%a2 launches a stiff jab!;That barely hits %d2's face but it seems like one finger has poked his eye! Does the referee see that?;%d2 ducks that one.;2;1;1;2;Eye poke;1;1;0;0;0;0;0
-%a2 launches a stiff jab!;That barely hits %d2's face but it seems like one finger has poked his eye! Does the referee see that?;%d2 ducks that one.;3;1;1;2;Eye poke;1;1;0;0;0;0;0

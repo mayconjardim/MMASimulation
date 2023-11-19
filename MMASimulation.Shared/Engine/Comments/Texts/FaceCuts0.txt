@@ -1,2 +1,0 @@
-%d2 has a small cut in his %location;Small cut %location
-There is a small laceration on %d1's %location;Small cut %location

@@ -1,2 +1,0 @@
-%a2 works on the ground with his fingers over %d2's face;He seems to have encountered the eye! What a classless move!;%d2 shakes his head and continues fighting on the ground.;2;0;0;0;Eye poke;1;1;0;0;0;0;0
-%a2 works on the ground with his fingers over %d2's face;He seems to have encountered the eye! What a classless move!;%d2 shakes his head and continues fighting on the ground.;3;0;0;0;Eye poke;1;1;0;0;0;0;0

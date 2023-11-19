@@ -1,4 +1,0 @@
-%d1's [SIDE] leg has been hammered so much, he can't stand on it, the fight is over;Leg injury
-Nasty joint hyper-extension on %d1's [SIDE] leg, he can't fight;Leg injury
-%d1's [SIDE] knee cap just popped, he can't fight on;Leg injury
-Bad leg defense, %d1 broke his [SIDE] ankle with that defense, this fight is over;Leg injury

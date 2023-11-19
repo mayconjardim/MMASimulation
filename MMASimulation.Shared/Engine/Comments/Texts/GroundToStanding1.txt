@@ -1,3 +1,0 @@
-%a2 tries to hit %d1 with a kick to his knee from the ground.;Nice kick. %d2 steps backwards trying to find a way to use his advantage now.;%d2 dodges that;17;2;11;14;Kick from the ground;1;1;0;-2;-10;0;0
-%a1 launches an up-kick intended for %d1's head...;It lands flush with %d1's head snapping it backwards due to the impact!;%d2 leans out of the way.;0;0;0;0;Up-kick;1;1;0;-2;-10;0;0;
-%a1 kicks his legs trying to keep %d1 away.;%d1 takes a kick to the body.;No damage done by those kicks.;11;0;0;0;Kicks;4;1;-10;-7;-5;0;0;

@@ -1,2 +1,0 @@
-%a2 is trying to escape from the rear mount.;%a2 holds %d1's arm over his shoulder and then rolls on the ground. Incredible move to get a half mount!;%d2 tries to use some of his tricky moves but %d2's is smart enough to counter him.;0;3;6;8;Ground move;1;1;0;0;0;13;0
-%a2 has to use some of his skills to escape safely from this position...;%a1 uses his ground skills to free one of his legs while working on the ground.;%a2 is unable to find a way to escape from this.;0;2;8;6;Ground move;1;1;0;0;0;17;0

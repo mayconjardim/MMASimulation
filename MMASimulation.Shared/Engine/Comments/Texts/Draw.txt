@@ -1,1 +1,0 @@
-The fight ends in a draw between %a1 and %d1.

@@ -1,5 +1,0 @@
-The referee separates the fighters as the buzzer sounds.
-The buzzer sounds, marking the end of the round. The ref tells the fighters to go to their corner.
-The ref stops the action. The round is over.
-%ref tells the fighters to go to their corners as the round is over.
-%ref separates the fighters as the round concludes. The fighters shake hands as they head back to their corners. 

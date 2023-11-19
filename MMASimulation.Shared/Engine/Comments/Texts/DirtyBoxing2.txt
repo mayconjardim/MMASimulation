@@ -1,4 +1,0 @@
-%d1's corner is turning out to be his worst enemy! %a2 is throwing a flurry of punches!;%d1 just can't get away!;%d2 ducks under and circles out of the corner.;5;0;2;1;Punches;5;3;2;0;1;12;1
-%a2 is launching some bone breaking punches to %d2's ribs while in the clinch.;Wow. You can see the pain in %d1's eyes.;%d2 blocks.;10;0;3;4;Punches;3;3;0;2;0;12;12
-%a2 pushes off of %d1 and starts launching a flurry of hooks and body shots!;%d2 stumbles backwards but %a1 chases him and continues the rain of blows!;%d2 holds his opponent tight while he tries to cool down the action.;3;0;3;9;Punches;6;4;0;1;1;12;12
-%a1 postures up and launches another series of punches!;A lot of them are hitting %d2 hard, who may be wondering how to scape from this!;%d2 pushes his opponent forward and blocks most of %a1's offensive.;9;0;1;3;Punches;5;3;0;0;0;0;0;

@@ -1,3 +1,0 @@
-%a2 struggles and launches a few punches to %d2's head;Those punches are hitting! %d2 covers his head!;Nothing from this... %a1 seems frustrated.;0;0;3;3;Punches;3;2;0;0;0;0;0;
-%a2 tries to take %d1 down... %d2 stumbles backwards and %a1 launches a few punches...;One swing hits hard %d2's jaw!;%d1 dodges and moves away a couple of steps...;8;1;1;9;Punch;3;1;0;0;2;0;1;
-%a2 launches a few hard punches to %d1's ribs!;%d1's ribs shows the damage! %a1 is working his opponent ribs!;%d2 struggles and protects himself.;10;0;3;3;Punches;4;3;0;1;0;0;0;

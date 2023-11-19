@@ -1,4 +1,0 @@
-The doctors are not going to allow %a2 continue fighting. Those cuts needs some atention!
-The doctor calls off the fight! That cut is too severe for %a1 to continue on. He tries to protest but the fight is over.
-%a1 does not look confident about the fight continuing. The doctor grimaces at the severity of the cut and waves the fight off!
-I'm not sure this fight can continue with such a severe cut. The doctor wipes the blood away and lifts the towel to examine the gash. Blood oozes out of %a1's cut and that's enough for the doctor to stop the fight! 

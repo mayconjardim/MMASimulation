@@ -1,5 +1,0 @@
-%a2 doesn't stop bleeding.
-%a1's face is covered in blood. He may be having problems seeing as he wipes the blood out of his eyes.
-You can see %a2's blood making stains in the mat.
-%a1 continues to bleed from that cut. It could be affecting his vision.
-%a1 is a bloody mess!

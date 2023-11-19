@@ -1,2 +1,0 @@
-%d2 is in %a2's butterfly guard...;%a2 extends his legs and sweeps %d1 to his back! He gains side mount.;%d1 kicks his leg back and resets.;0;1;8;10;Ground Move;0;0;0;0;0;13;0;
-%d2 is in %a2's butterfly guard...;%a2 extends his legs and sweeps %d1 to his back! He gains side mount.;%d1 shifts his hips and frees himself of the hooks.;0;1;8;10;Ground Move;0;0;0;0;0;13;10;

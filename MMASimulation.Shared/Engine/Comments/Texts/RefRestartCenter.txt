@@ -1,3 +1,0 @@
-%ref stops the action and restarts the fight in the center of the ring.
-%ref ask the fighters to restart the fight in the center of the ring.
-The fighters are almost out of the ring. %ref halts the action and the fighters continue in the center of the ring.

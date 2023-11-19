@@ -1,2 +1,0 @@
-%d2 has given his back to %a1 who is trying to get one hook in!;%a1 has one hook in!;%d2 struggles in the ground trying to break %a2's control;0;-2;10;10;Ground move;1;1;0;0;0;7;0
-%a2 tries to get a hook in!;Things get worse for %d2! %a2 has one hook in and keeps working!;%d2 rolls on the ground and manages to get a half guard!;0;-2;10;10;Ground move;1;1;0;0;0;7;15

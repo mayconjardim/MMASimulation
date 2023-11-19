@@ -1,4 +1,0 @@
-%a2 pushes his opponent down and launches a heavy knee to his head in an unorthodox move...;Wow! Big hit towards %d1's face!;%d2 easily blocks and looks for a counter!;0;2;1;2;Knee;1;1;1;1;1;1;1;
-%a1 launches a knee while holding %d2's in a double underhooks...;That knee hits %d2 in the abdomen;%d1 pushes %a1 and that knee goes nowhere!;11;1;2;1;Knee;1;1;0;0;0;1;1;
-%a2 launches a knee!;%a1 hits %d2's hard just below the ribs!;%d2 blocks that knee.;10;0;3;3;Knee;1;1;0;0;0;0;0;
-%d2 tries to break the clinch... %a1 launches a great knee when he finds a narrow space!;Awesome impact! %d2 stumbles backwards and %a1 shoots an incredible takedown!;%d2 breaks the clinch and the knee goes wide!;10;2;1;4;Knee;1;1;0;0;0;1;5;

@@ -1,3 +1,0 @@
-%a1 pushes away %d2 trying to keep the fight at striking range;%d2 stumbles backwards and %a1 circles to get the center of the %site;%d2 doesn't want to break the clinch as he still is grappling with %a1;0;0;3;9;Break Clinch;0;0;0;0;0;1;0
-%a2 doesn't want to clinch as he ducks under %d1 embrace and tries to move away...;Nice move from %a2 who put distance between them;%d1 pushes %a2 forward and doesn't allow him to break the clinch.;0;0;3;9;Break Clinch;0;0;0;0;0;1;0
-%a1 tries to shrug his way out of the clinch. ;%a2 circles out and slips free of %d1's grip. Nice job of getting out of that position.;%d2 is determined to work from the clinch. He pummeled through and managed to retain his position.;0;0;3;9;Break Clinch;0;0;0;0;0;1;0;

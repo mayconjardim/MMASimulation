@@ -1,4 +1,0 @@
-%a2 pushes down %d1 and tries to pull guard;%d2 clumsily falls into %a1's guard!;%d2 breaks the lock and %a1 falls to the ground!;0;0;0;0;Pull Guard;1;1;-5;-5;-5;10;3;
-%a2 is working in the clinch and suddenly tries to pull guard!;%a2 brings %d1 to the ground and quickly closes guard.;%d1 pushes forward and keeps the fight in the clinch.;10;2;3;9;Pull Guard;1;1;-5;-5;-5;10;0;
-%a1 tries for a takedown but can't get it. He decides to pull guard instead...;%a1 wraps him up tight and pulls him into his guard.;%d1 is a brick wall. He doesn't allow himself to be brought to the ground. %a1 abandons the guard pull attempt.;0;1;3;0;Pull Guard;1;1;-8;-9;-5;10;0;
-%a1 tries to pull guard on %d1...;He manages to bring him to the ground in his guard. ;%d1 pushes him down and remains on his feet.;0;0;0;0;Pull Guard;1;1;-6;-2;-5;10;3; 

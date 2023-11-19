@@ -37,6 +37,7 @@ namespace MMASimulation.Shared.Models.Fights
             PrepareFights.PrepareFight(Fighter1, Fighter2, NumberRounds);
 
             //Comentarios Iniciais
+            SpecificComments.MakeLocutorComment(Fighter1, Fighter2, Pbp, atributtes, TitleBout);
             SpecificComments.MakeOddsComment(Fighter1, Fighter2, Pbp, atributtes);
         }
 

@@ -1,4 +1,0 @@
-The bell announces the first round!
-%a2 and %d2 move forward as the bell signals the beginning of the fight!
-The fight gets underway.
-%a1 and %d1 touch gloves in the center to get this fight started!

@@ -1,3 +1,0 @@
-%ref has seen enough! The fight is over! %d2 was not intelligently defending himself!
-The ref pulls off %a1! %d2 seems confused and a bit dazed as the bell sounds the bout over.
-%ref is asking %d2 to defend himself! %ref jumps in between the fighters and stops the punishment for %d2.

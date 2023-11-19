@@ -1,1 +1,0 @@
-%ref halts the fight to stand up %a1. The fight resumes with both fighters standing.

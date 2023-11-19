@@ -1,5 +1,0 @@
-%a1 tries to finish with a leg lock!;This is over! %d2 can't stand the pain and taps!;%d2 is able to break the lock.;19;0;10;7;leglock;1;1;0;0;0;5;0
-%a1 tries to finish with a leg lock!;This is over! %d2 can't stand the pain and taps!;%d2 is able to break the lock.;20;0;10;7;leglock;1;1;0;0;0;5;0
-%a2 is in open guard over %d2... he fakes a move and then tries a kneebar!;%d1 screams in pain and taps! %ref forces %a2 to break the lock.;%d2 rolls on the ground trying to get free and after a few kicks of his own he escapes.;17;2;7;15;Kneebar;1;1;0;0;0;0;3;
-%a2 is in open guard over %d2... he fakes a move and then tries a kneebar!;%d1 screams in pain and taps! %ref forces %a2 to break the lock.;%d2 rolls on the ground trying to get free and after a few kicks of his own he escapes.;18;2;7;15;Kneebar;1;1;0;0;0;0;3;
-

@@ -7,6 +7,18 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
     public static class SpecificComments
     {
 
+        public static void MakeLocutorComment(Fighter fighter1, Fighter fighter2, List<FightPBP> Pbp, FightAttributes fightAttributes, bool titleBout)
+        {
+            if (titleBout)
+            {
+                Comment.DoComment(fighter1, fighter2, Comment.ReturnComment(ReadTxts.ReadFileToList("TitleIntro")), Pbp, fightAttributes);
+            }
+            else
+            {
+                Comment.DoComment(fighter1, fighter2, Comment.ReturnComment(ReadTxts.ReadFileToList("NoTitleIntro")), Pbp, fightAttributes);
+            }
+        }
+
         public static void MakeOddsComment(Fighter fighter1, Fighter fighter2, List<FightPBP> Pbp, FightAttributes fightAttributes)
         {
             double EQUALS_HIGH = 1.1;
