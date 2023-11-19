@@ -56,5 +56,18 @@ namespace MMASimulation.Server.Controllers
             }
         }
 
+        [HttpPut("update/{fightId}")]
+        public async Task<IActionResult> UpdateFight(int fightId)
+        {
+            ServiceResponse<bool> response = await _fightService.UpdateFight(fightId);
+
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
+        }
+
     }
 }

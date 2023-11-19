@@ -1,4 +1,5 @@
-﻿using MMASimulation.Shared.Engine.FightUtils;
+﻿using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -36,7 +37,7 @@ namespace MMASimulation.Shared.Models.Fights
             PrepareFights.PrepareFight(Fighter1, Fighter2, NumberRounds);
 
             //Comentarios Iniciais
-
+            SpecificComments.MakeOddsComment(Fighter1, Fighter2, Pbp, atributtes);
         }
 
     }

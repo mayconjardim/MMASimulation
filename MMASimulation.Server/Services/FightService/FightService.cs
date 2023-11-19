@@ -70,7 +70,6 @@ namespace MMASimulation.Server.Services.FightService
 
         public async Task<ServiceResponse<FightDto>> CreateFight(FightCreateDto fight)
         {
-
             ServiceResponse<FightDto> response = new();
 
             try
@@ -82,7 +81,7 @@ namespace MMASimulation.Server.Services.FightService
                 await _context.SaveChangesAsync();
 
                 response.Success = true;
-                response.Data = _mapper.Map<FightDto>(fight);
+                response.Data = _mapper.Map<FightDto>(createdFight);
                 response.Message = "Luta criada com sucesso.";
             }
             catch (Exception ex)
@@ -91,6 +90,38 @@ namespace MMASimulation.Server.Services.FightService
                 response.Message = $"Ocorreu um erro ao criar a luta.";
                 response.Error = ex.Message;
             }
+
+            return response;
+        }
+
+        public async Task<ServiceResponse<bool>> UpdateFight(int fightId)
+        {
+            ServiceResponse<bool> response = new ServiceResponse<bool>();
+
+            Fight fight = await _context.Fights
+                .Include(f => f.Fighter1)
+                .Include(f => f.Fighter1.FighterRatings)
+                .Include(f => f.Fighter1.FighterStrategies)
+                .Include(f => f.Fighter1.FighterStyles)
+                .Include(f => f.Fighter2)
+                .Include(f => f.Fighter2.FighterRatings)
+                .Include(f => f.Fighter2.FighterStrategies)
+                .Include(f => f.Fighter2.FighterStyles)
+                .FirstOrDefaultAsync(p => p.Id == fightId);
+
+            if (fight == null)
+            {
+                response.Success = false;
+                response.Message = "Jogo não encontrado.";
+                return response;
+            }
+
+            fight.FightSim();
+
+            await _context.SaveChangesAsync();
+
+            response.Success = true;
+            response.Data = true;
 
             return response;
         }
