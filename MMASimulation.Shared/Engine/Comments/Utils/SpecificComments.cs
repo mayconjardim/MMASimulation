@@ -1,6 +1,7 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
+using System.Xml.Linq;
 
 namespace MMASimulation.Shared.Engine.Comments.Utils
 {
@@ -43,6 +44,27 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             {
                 Comment.DoComment(fighter1, fighter2, Comment.ReturnComment(ReadTxts.ReadFileToList("Odds1")), Pbp, fightAttributes);
             }
+        }
+
+        public static void MakeCurrentRoundComment(List<FightPBP> Pbp, int currentRound)
+        {
+            string blank = "";
+            string comment = "=====Round " + currentRound + "=====";
+
+            Pbp.Add(new FightPBP
+            {
+                PbpData = blank
+            });
+
+            Pbp.Add(new FightPBP
+            {
+                PbpData = comment
+            });
+
+            Pbp.Add(new FightPBP
+            {
+                PbpData = blank
+            });
         }
 
     }

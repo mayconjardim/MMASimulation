@@ -2,6 +2,7 @@
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace MMASimulation.Shared.Models.Fights
 {
@@ -39,6 +40,21 @@ namespace MMASimulation.Shared.Models.Fights
             //Comentarios Iniciais
             SpecificComments.MakeLocutorComment(Fighter1, Fighter2, Pbp, atributtes, TitleBout);
             SpecificComments.MakeOddsComment(Fighter1, Fighter2, Pbp, atributtes);
+
+            FightController(atributtes);
+        }
+
+        public void FightController(FightAttributes atributtes)
+        {
+
+            //Simula os rounds
+            for (atributtes.CurrentRound = 1; atributtes.CurrentRound <= NumberRounds && !atributtes.BoutFinished; atributtes.CurrentRound++)
+            {
+                //Comentario indicando o Round
+                SpecificComments.MakeCurrentRoundComment(Pbp, atributtes.CurrentRound);
+
+
+            }
         }
 
     }

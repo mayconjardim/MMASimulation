@@ -112,16 +112,25 @@ namespace MMASimulation.Server.Services.FightService
             if (fight == null)
             {
                 response.Success = false;
-                response.Message = "Jogo não encontrado.";
+                response.Message = "Luta não encontrada.";
                 return response;
             }
 
-            fight.FightSim();
+            try
+            {
+                fight.FightSim();
+                await _context.SaveChangesAsync();
 
-            await _context.SaveChangesAsync();
-
-            response.Success = true;
-            response.Data = true;
+                response.Success = true;
+                response.Message = "Luta atualizada com suceesso.";
+                response.Data = true;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = $"Ocorreu um erro ao atualizar a luta.";
+                response.Error = ex.Message;
+            }
 
             return response;
         }

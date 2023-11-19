@@ -1,5 +1,6 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
 using MMASimulation.Shared.Engine.Constants;
+using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
 
@@ -55,10 +56,10 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
 
             // Time and round
-            comment = comment.Replace("%time_and_round", GetTime(fightAttributes.CurrentTime) + " Round " + fightAttributes.CurrentRound.ToString());
+            comment = comment.Replace("%time_and_round", TimeUtils.GetTime(fightAttributes.CurrentTime) + " Round " + fightAttributes.CurrentRound.ToString());
 
             // Time
-            comment = comment.Replace("%time", GetTime(fightAttributes.CurrentTime));
+            comment = comment.Replace("%time", TimeUtils.GetTime(fightAttributes.CurrentTime));
 
             // Round
             comment = comment.Replace("%round", fightAttributes.CurrentRound.ToString());
@@ -183,15 +184,7 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
         }
 
 
-        public static string GetTime(int currentTime)
-        {
-            int minutes = currentTime / 60;
-            int seconds = currentTime % 60;
 
-            string result = $"{minutes:D}:{seconds:D2}";
-
-            return result;
-        }
 
     }
 }
