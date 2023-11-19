@@ -30,6 +30,13 @@ namespace MMASimulation.Shared.Engine.FightUtils
             MaxHPandStamina(fighter2);
         }
 
+        public static void PrepareRound(Fighter fighter1, Fighter fighter2)
+        {
+            fighter1.FighterFightAttributes.OnTheGround = false;
+            fighter2.FighterFightAttributes.OnTheGround = false;
+        }
+
+
         public static void UpdateFighterStyle(Fighter fighter)
         {
             fighter.FighterFightAttributes.StaminaLoss = Sim.DEFAULTFIGHTERSTAMINALOSS;

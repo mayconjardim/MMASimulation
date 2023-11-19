@@ -1,6 +1,8 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
+using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
+using System.Numerics;
 using System.Xml.Linq;
 
 namespace MMASimulation.Shared.Engine.Comments.Utils
@@ -65,6 +67,25 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             {
                 PbpData = blank
             });
+        }
+
+        public static void MakeFightTimeComment(List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            if (fightAttributes.FightSeconds > 0 && fightAttributes.FightSeconds < 300)
+            {
+                string blank = "";
+                string comment = TimeUtils.SecondsToMinutes(fightAttributes.FightSeconds);
+
+                Pbp.Add(new FightPBP
+                {
+                    PbpData = blank
+                });
+
+                Pbp.Add(new FightPBP
+                {
+                    PbpData = comment
+                });
+            }
         }
 
     }
