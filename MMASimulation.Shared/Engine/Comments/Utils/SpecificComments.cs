@@ -82,7 +82,7 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             if (fightAttributes.FightSeconds > 0 && fightAttributes.FightSeconds < 300)
             {
                 string blank = "";
-                string comment = TimeUtils.SecondsToMinutes(fightAttributes.FightSeconds);
+                string comment = TimeUtils.SecondsToMinutes(fightAttributes.FightSeconds, fightAttributes.CurrentRound);
 
                 Pbp.Add(new FightPBP
                 {

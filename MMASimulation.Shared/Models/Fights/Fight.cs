@@ -2,7 +2,6 @@
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
 
 namespace MMASimulation.Shared.Models.Fights
 {
@@ -64,9 +63,40 @@ namespace MMASimulation.Shared.Models.Fights
                     //Comentario indicando os segundos passados do Round
                     SpecificComments.MakeFightTimeComment(Pbp, atributtes);
 
+                    //Chama os atributos de ação de luta
+
+                    //Finaliza a luta por finalização
+                    if (atributtes.BoutFinished)
+                    {
+                        break;
+                    }
+
                 }
 
+                //Finaliza o Round
+                if (atributtes.FightSeconds >= 300)
+                {
+                    //FinishRound();
+                }
+
+                //Finaliza a luta por tempo
+                if (atributtes.CurrentRound >= NumberRounds)
+                {
+                    atributtes.BoutFinished = true;
+                }
             }
+
+            if (atributtes.FighterWinner != null)
+            {
+                //FinishFight(atributtes.FighterWinner);
+
+            }
+            else
+            {
+                //JudgeFightRound(3);
+                //FinishFight(atributtes.FighterWinner);
+            }
+
         }
 
     }

@@ -25,18 +25,20 @@ namespace MMASimulation.Shared.Engine.FightUtils
             return result;
         }
 
-        public static string SecondsToMinutes(int currentTime)
+        public static string SecondsToMinutes(int currentTime, int currentRound)
         {
             int min = currentTime / 60;
             int sec = currentTime % 60;
+            string clock = "The clock says ";
+            string says = " in the round";
 
             if (sec > 9)
             {
-                return min + ":" + sec;
+                return clock + min + ":" + sec + says;
             }
             else
             {
-                return min + ":0" + sec;
+                return clock + min + ":0" + sec + says;
             }
         }
 
