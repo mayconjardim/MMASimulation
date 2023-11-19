@@ -56,9 +56,10 @@ namespace MMASimulation.Shared.Models.Fights
                 //Lutadores em Pé ao iniciar o Round
                 PrepareFights.PrepareRound(Fighter1, Fighter2);
 
-
                 for (atributtes.FightSeconds = 0; atributtes.FightSeconds <= 300; atributtes.FightSeconds += TimeUtils.DeltaTime(Fighter1, Fighter2))
                 {
+                    //Comentario indicando inicio da Luta
+                    SpecificComments.MakeFirstRoundComment(Fighter1, Fighter2, Pbp, atributtes);
 
                     //Comentario indicando os segundos passados do Round
                     SpecificComments.MakeFightTimeComment(Pbp, atributtes);

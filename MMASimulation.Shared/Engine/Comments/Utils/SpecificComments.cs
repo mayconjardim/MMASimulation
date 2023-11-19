@@ -48,6 +48,14 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
+        public static void MakeFirstRoundComment(Fighter fighter1, Fighter fighter2, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            if (fightAttributes.CurrentRound == 1 && fightAttributes.FightSeconds == 0)
+            {
+                Comment.DoComment(fighter1, fighter2, Comment.ReturnComment(ReadTxts.ReadFileToList("FirstRound")), Pbp, fightAttributes);
+            }
+        }
+
         public static void MakeCurrentRoundComment(List<FightPBP> Pbp, int currentRound)
         {
             string blank = "";
