@@ -60,6 +60,8 @@ namespace MMASimulation.Shared.Models.Fights
         public int FightSeconds { get; set; }
         public int CurrentTime { get; set; }
 
+
+
         public FightAttributes()
         {
             BoutFinished = false;
