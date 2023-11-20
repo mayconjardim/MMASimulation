@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using MMASimulation.Shared.Models.Utils;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MMASimulation.Shared.Models.Fights
 {
@@ -59,8 +60,7 @@ namespace MMASimulation.Shared.Models.Fights
         public bool CrowdBoo { get; set; }
         public int FightSeconds { get; set; }
         public int CurrentTime { get; set; }
-
-
+        public Statistics[] Statistics { get; set; }
 
         public FightAttributes()
         {
@@ -118,6 +118,8 @@ namespace MMASimulation.Shared.Models.Fights
             FightSeconds = 0;
             CurrentTime = 0;
 
+            //Stats
+            Statistics = new Statistics[2];
         }
 
     }

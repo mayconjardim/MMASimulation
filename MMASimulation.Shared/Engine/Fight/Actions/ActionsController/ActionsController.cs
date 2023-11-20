@@ -1,36 +1,56 @@
 ﻿using MMASimulation.Shared.Engine.Constants;
+using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
+using MMASimulation.Shared.Models.Fights;
+using System.Reflection.Emit;
 
 namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 {
     public static class ActionsController
     {
 
-        private static void ActionController(Fighter fighter1, Fighter fighter2)
+        public static void ActionsController(Fighter fighter1, Fighter fighter2, FightAttributes fightAttributes, int timeInc)
         {
-
             List<Fighter> fighters = [fighter1, fighter2];
 
             int fighterActive, fighterPassive;
             int fighterAction1, fighterAction2, fighterAction;
+            bool tempInTheClinch;
+            bool fighter1OnTheGround, fighter2OnTheGround;
             bool f1Ground, f2Ground;
 
-            fighterAction1 = GetFighterAction(fighters[0], fighters[1]);
-            fighterAction2 = GetFighterAction(fighters[1], fighters[0]);
+            // Aumenta o tempo no chão  para os lutadores
+            if (fighters[0].FighterFightAttributes.OnTheGround)
+            {
+                StatsUtils.UpdateTimeOnGround(fightAttributes.Statistics, 0, timeInc);
+            }
+            if (fighters[1].FighterFightAttributes.OnTheGround)
+            {
+                StatsUtils.UpdateTimeOnGround(fightAttributes.Statistics, 1, timeInc);
+            }
 
+            tempInTheClinch = fightAttributes.InTheClinch;
+            fighter1OnTheGround = fighters[0].FighterFightAttributes.OnTheGround;
+            fighter2OnTheGround = fighters[1].FighterFightAttributes.OnTheGround;
+
+
+            fighterAction1 = GetFighterActions.FighterAction(fighters[0], fighters[1], fightAttributes);
+            fighterAction2 = GetFighterActions.FighterAction(fighters[1], fighters[0], fightAttributes);
+
+
+            //Verifica  se ambos estão na mesma condição de atordoamento
             if (fighters[0].FighterFightAttributes.Dazed == fighters[1].FighterFightAttributes.Dazed)
             {
                 if (!fighters[0].FighterFightAttributes.OnTheGround && !fighters[1].FighterFightAttributes.OnTheGround)
                 {
-                    fighterActive = GetStandUpInitiative(fighters[0], fighters[1],
-                        GetActionBonus(fighterAction1), GetActionBonus(fighterAction2));
+                    fighterActive = GetStandUpInitiative(fighters[0], fighters[1], GetActionBonus(fighterAction1), GetActionBonus(fighterAction2));
                 }
                 else
                 {
-                    fighterActive = GetGroundInitiative(fighters[0], fighters[1],
-                        GetActionBonus(fighterAction1), GetActionBonus(fighterAction2));
+                    fighterActive = GetGroundInitiative(fighters[0], fighters[1], GetActionBonus(fighterAction1), GetActionBonus(fighterAction2));
                 }
             }
+            //Caso contrário, o lutador atordoado concede a iniciativa
             else
             {
                 fighterActive = fighters[0].FighterFightAttributes.Dazed ? 1 : 0;
@@ -38,6 +58,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 
             fighterPassive = (fighterActive == 1) ? 0 : 1;
             fighterAction = (fighterActive == 1) ? fighterAction2 : fighterAction1;
+
 
             WriteGuard(fighters[fighterActive], fighters[fighterPassive]);
             MakeColorComments(fighters[fighterActive], fighters[fighterPassive]);
@@ -47,10 +68,11 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
                 fighterAction = Moves.ACT_PUNCHEXCHANGE;
             }
 
-            f1Ground = fighters[fighterActive].OnTheGround;
-            f2Ground = fighters[fighterPassive].OnTheGround;
+            f1Ground = fighters[fighterActive].FighterFightAttributes.OnTheGround;
+            f2Ground = fighters[fighterPassive].FighterFightAttributes.OnTheGround;
 
-            switch (ightAction(fighterActiveOrPassive(fighterActive), fighterActiveOrPassive(fighterPasive)))
+            //O lutador ativo realiza a ação
+            switch (fightAction(fighterActiveOrPassive(fighterActive), fighterActiveOrPassive(fighterPasive)))
             {
                 case Moves.ACT_PUNCHES:
                     actPunch(fighterActiveOrPassive(fighterActive), fighterActiveOrPassive(fighterPasive));
@@ -176,7 +198,8 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
                     break;
             }
 
-            if (!BoutFinished)
+            //Métodos extras
+            if (!fightAttributes.BoutFinished)
             {
                 RefStandfighters(fighters[fighterActive], fighters[fighterPassive]);
                 ActKeepClinch(fighters[fighterActive], fighters[fighterPassive]);
@@ -184,11 +207,31 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
                 MakeStandUpComment(fighters[fighterActive], fighters[fighterPassive], !f1Ground, !f2Ground);
             }
 
+            //Cansaço dos lutadores
             ProcessStaminaLoss(fighters[fighterActive], true);
             ProcessStaminaLoss(fighters[fighterPassive], false);
 
+
+            //Recupera do estado atordoado
             RecoverForDazed(fighters[fighterActive]);
             RecoverForDazed(fighters[fighterPassive]);
+
+            //Atualização de status
+            if (tempInTheClinch && !fightAttributes.InTheClinch)
+            {
+                fightAttributes.Statistics[0].TempDamageClinch = 0;
+                fightAttributes.Statistics[1].TempDamageClinch = 0;
+            }
+
+            if (fighter1OnTheGround && !fighters[0].FighterFightAttributes.OnTheGround)
+            {
+                fightAttributes.Statistics[0].TempDamageGround = 0;
+            }
+
+            if (fighter2OnTheGround && !fighters[1].FighterFightAttributes.OnTheGround)
+            {
+                fightAttributes.Statistics[1].TempDamageGround = 0;
+            }
 
             if (!fighters[fighterActive].FighterFightAttributes.OnTheGround)
             {
@@ -197,7 +240,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             }
             else
             {
-                fighters[fighterActive].FighterFightAttributes.RoundsInTheGround++;
+                fighters[fighterActive].FighterFightAttributes.RoundsInTheGround += 1;
             }
 
             if (!fighters[fighterPassive].FighterFightAttributes.OnTheGround)
@@ -207,7 +250,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             }
             else
             {
-                fighters[fighterPassive].FighterFightAttributes.RoundsInTheGround++;
+                fighters[fighterPassive].FighterFightAttributes.RoundsInTheGround += 1;
             }
 
             CheckFightPerformance(fighters[fighterActive], fighters[fighterPassive]);
@@ -217,7 +260,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             CheckMoral(fighters[fighterActive]);
             CheckMoral(fighters[fighterPassive]);
 
-            if (!BoutFinished)
+            if (!fightAttributes.BoutFinished)
             {
                 ProcessTowelThrow(fighters[fighterPassive], fighters[fighterActive]);
                 RefRestartCentreRing(fighters[fighterPassive], fighters[fighterActive]);
@@ -227,6 +270,11 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             UpdatePerformance();
             UpdateMoral();
         }
+
+
+
+
+
 
     }
 }

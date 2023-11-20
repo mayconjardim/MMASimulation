@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MMASimulation.Shared.Engine.FightUtils
+﻿namespace MMASimulation.Shared.Engine.FightUtils
 {
     public static class RandomUtils
     {
@@ -20,6 +18,17 @@ namespace MMASimulation.Shared.Engine.FightUtils
             return (int)(aux / 2 + (random.NextDouble() * (aux / 2)) + 1 + doubleValue);
         }
 
+        public static int GetRandomValue(int value)
+        {
+            return random.Next(value);
+        }
+
+        public static int GetRandom()
+        {
+            int BIGRANDOM = 20;
+            int Randomness = 0;
+            return random.Next(BIGRANDOM + Randomness) + 1;
+        }
 
     }
 }

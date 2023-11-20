@@ -6,7 +6,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 {
     public static class GetFighterActions
     {
-        private static int GetFighterAction(Fighter act, Fighter pas, FightAttributes fightAttributes)
+        public static int FighterAction(Fighter act, Fighter pas, FightAttributes fightAttributes)
         {
             Random random = new Random();
 
