@@ -81,7 +81,7 @@ namespace MMASimulation.Shared.Models.Fights
             HitLocation = 0;
             FinishedType = string.Empty;
             FinishedDescription = string.Empty;
-            FighterWinner = 0;
+            FighterWinner = -1;
             MoveName = string.Empty;
 
             FullComment = string.Empty;

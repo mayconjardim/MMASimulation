@@ -64,6 +64,7 @@ namespace MMASimulation.Shared.Models.Fights
                     SpecificComments.MakeFightTimeComment(Pbp, atributtes);
 
                     //Chama os atributos de ação de luta
+                    //Action();
 
                     //Finaliza a luta por finalização
                     if (atributtes.BoutFinished)
@@ -86,7 +87,7 @@ namespace MMASimulation.Shared.Models.Fights
                 }
             }
 
-            if (atributtes.FighterWinner != null)
+            if (atributtes.FighterWinner != -1)
             {
                 //FinishFight(atributtes.FighterWinner);
 
