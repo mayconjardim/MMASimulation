@@ -1,5 +1,6 @@
 ﻿using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Models.Fighters;
+using MMASimulation.Shared.Models.Fights;
 
 namespace MMASimulation.Shared.Engine.FightUtils
 {
@@ -147,5 +148,12 @@ namespace MMASimulation.Shared.Engine.FightUtils
             fighter.FighterFightAttributes.CurrentHP = ((fighter.FighterRatings.Toughness * 5 * 100) / 100);
             fighter.FighterFightAttributes.CurrentStamina = ((fighter.FighterRatings.Conditioning * 5 * 100) / 100);
         }
+
+        public static void MakeTempFighters(FightAttributes fightAttributes, Fighter fighter1, Fighter fighter2)
+        {
+            fightAttributes.TempFigher1 = fighter1;
+            fightAttributes.TempFigher2 = fighter2;
+        }
+
     }
 }

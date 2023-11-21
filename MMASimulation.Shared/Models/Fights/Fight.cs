@@ -2,6 +2,7 @@
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MMASimulation.Shared.Models.Fights
 {
@@ -35,6 +36,7 @@ namespace MMASimulation.Shared.Models.Fights
 
             //Prepara os lutadres
             PrepareFights.PrepareFight(Fighter1, Fighter2, NumberRounds);
+            PrepareFights.MakeTempFighters(atributtes, Fighter1, Fighter2);
 
             //Comentarios Iniciais
             SpecificComments.MakeLocutorComment(Fighter1, Fighter2, Pbp, atributtes, TitleBout);
@@ -99,6 +101,7 @@ namespace MMASimulation.Shared.Models.Fights
             }
 
         }
+
 
     }
 }

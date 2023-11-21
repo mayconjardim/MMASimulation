@@ -15,7 +15,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
             int prob = RandomUtils.GetRandomValue(100) + 1;
             int gnPProb = act.FighterStrategies.StratGNP;
 
-            int subProb = GetSubmissionAvailable(act) ? gnPProb + GetSubmissionProbByPosition(act) : 0;
+            int subProb = Submissions.GetSubmissionAvailable(act, fightAttributes) ? gnPProb + Submissions.GetSubmissionProbByPosition(act, fightAttributes) : 0;
 
             //Se o lutador estiver em Full Guard ou Rear Mount, ele para de posicionar
             int posProb = (act.FullName == fighters[fightAttributes.FighterOnTop].FullName && (fightAttributes.GuardType == 0 || fightAttributes.GuardType == 1)) ? 0 : subProb + act.FighterStrategies.StratPositioning;
@@ -66,7 +66,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
                 }
             }
 
-
             //Joelhos no chão
             if (result == Moves.ACT_GNP && act.FullName == fighters[fightAttributes.FighterOnTop].FullName
                 && (fightAttributes.GuardType == 2 || fightAttributes.GuardType == 3
@@ -79,8 +78,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
                 }
             }
 
-
-            // Dirty fighting
+            // Luta suja
             if (act.FighterStrategies.CheckDirtyMove)
             {
                 result = Moves.ACT_POKE;
@@ -91,7 +89,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
                 result = Moves.ACT_HEADBUTT;
             }
 
-            // Controls the fighters go to ground and standing in a loop
+            // Controla os lutadores que vão para o chão e ficam em loop
             if (act.ActionsInGround > 0 && act.ActionsInGround < ApplicationUtils.MINACTIONSFORSWITCHING &&
                 result == Moves.ACT_STANDUP)
             {
@@ -104,7 +102,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
 
             act.ActionsInGround++;
 
-            // If the fighter is not on top, he can't GnP
+            // Se o lutador não estiver por cima, ele não pode fazer GnP
             if (act.FullName != fighters[FighterOnTop].FullName && result == Moves.ACT_GNP)
             {
                 result = Moves.ACT_STRIKESFROMGUARD;
@@ -128,7 +126,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
                     result = Moves.ACT_STANDUP;
                 }
             }
-
 
             // Lutadores agressivos tentarão capitalizar
             if (pas.Dazed && fixedRandomInt(act.getAggressiveness) > ApplicationUtils.CAPITALIZEPROB)

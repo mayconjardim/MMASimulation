@@ -2,7 +2,6 @@
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
-using System.Reflection.Emit;
 
 namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 {

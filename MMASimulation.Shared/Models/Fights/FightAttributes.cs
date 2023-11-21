@@ -1,4 +1,5 @@
-﻿using MMASimulation.Shared.Models.Utils;
+﻿using MMASimulation.Shared.Models.Fighters;
+using MMASimulation.Shared.Models.Utils;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MMASimulation.Shared.Models.Fights
@@ -61,6 +62,10 @@ namespace MMASimulation.Shared.Models.Fights
         public int FightSeconds { get; set; }
         public int CurrentTime { get; set; }
         public Statistics[] Statistics { get; set; }
+
+        public Fighter TempFigher1 { get; set; }
+        public Fighter TempFigher2 { get; set; }
+
 
         public FightAttributes()
         {
