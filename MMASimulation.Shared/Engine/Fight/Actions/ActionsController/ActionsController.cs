@@ -60,7 +60,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 
 
             SpecificComments.WriteGuard(fighters[fighterActive], fighters[fighterPassive], fightAttributes, Pbp);
-            SpecificComments.MakeColorComments(fighters[fighterActive], fighters[fighterPassive]);
+            SpecificComments.MakeColorComments(fighters[fighterActive], fighters[fighterPassive], fightAttributes, Pbp);
 
             if (CheckPunchesExchange(fighters[fighterActive], fighters[fighterPassive]))
             {
