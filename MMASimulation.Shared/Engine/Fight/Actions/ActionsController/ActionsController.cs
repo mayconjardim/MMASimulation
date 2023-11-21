@@ -40,7 +40,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             {
                 if (!fighters[0].FighterFightAttributes.OnTheGround && !fighters[1].FighterFightAttributes.OnTheGround)
                 {
-                    fighterActive = GetStandUpInitiative(fighters[0], fighters[1], GetActionBonus(fighterAction1), GetActionBonus(fighterAction2));
+                    fighterActive = GetFightersInitiatives.StandUpInitiative(fighters[0], fighters[1], GetActionBonus(fighterAction1), GetActionBonus(fighterAction2));
                 }
                 else
                 {
