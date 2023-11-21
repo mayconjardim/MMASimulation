@@ -189,7 +189,7 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
 
             MakeBleedingComment(act, pas, Pbp, fightAttributes);
-            MakeBleedingComment(act, pas, Pbp, fightAttributes);
+            MakeBleedingComment(pas, act, Pbp, fightAttributes);
 
             if (fightAttributes.CrowdBoo)
             {

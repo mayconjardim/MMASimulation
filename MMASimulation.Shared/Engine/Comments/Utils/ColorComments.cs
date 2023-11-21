@@ -171,5 +171,17 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
+        public static void MakeBleedingComment(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            if (act.FighterFightAttributes.Cuts > Sim.MINCUTSBLEEDING)
+            {
+                double randomValue = RandomUtils.GeSmallRandom();
+                if (randomValue <= act.FighterFightAttributes.Cuts)
+                {
+                    Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("Bleeding")), Pbp, fightAttributes);
+                }
+            }
+        }
+
     }
 }
