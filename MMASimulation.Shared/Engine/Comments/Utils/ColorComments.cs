@@ -110,5 +110,13 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
+        public static void MakeDangerousSubComment(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            if (act.FighterRatings.Submission > Sim.DANGEROUSCOMMENT && act.FighterFightAttributes.OnTheGround && pas.FighterFightAttributes.OnTheGround)
+            {
+                Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("DangerousSub")), Pbp, fightAttributes);
+            }
+        }
+
     }
 }
