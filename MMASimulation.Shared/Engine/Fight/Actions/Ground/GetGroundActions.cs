@@ -1,4 +1,5 @@
 ﻿using MMASimulation.Shared.Engine.Constants;
+using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
@@ -79,62 +80,61 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
             }
 
             // Luta suja
-            if (act.FighterStrategies.CheckDirtyMove)
+            if (act.FighterFightAttributes.CheckDirtyMove(act.FighterRatings.Aggressiveness, act.FighterStyles.DirtyFighting))
             {
                 result = Moves.ACT_POKE;
             }
 
-            if (act.CheckDirtyMove())
+            if (act.FighterFightAttributes.CheckDirtyMove(act.FighterRatings.Aggressiveness, act.FighterStyles.DirtyFighting))
             {
                 result = Moves.ACT_HEADBUTT;
             }
 
             // Controla os lutadores que vão para o chão e ficam em loop
-            if (act.ActionsInGround > 0 && act.ActionsInGround < ApplicationUtils.MINACTIONSFORSWITCHING &&
+            if (act.FighterFightAttributes.ActionsInGround > 0 && act.FighterFightAttributes.ActionsInGround < Sim.MINACTIONSFORSWITCHING &&
                 result == Moves.ACT_STANDUP)
             {
                 result = Moves.ACT_LNP;
-                if (act.ActionsInGround >= ApplicationUtils.MINACTIONSFORSWITCHING)
+                if (act.FighterFightAttributes.ActionsInGround >= Sim.MINACTIONSFORSWITCHING)
                 {
-                    act.ActionsInGround = -1;
+                    act.FighterFightAttributes.ActionsInGround = -1;
                 }
             }
 
-            act.ActionsInGround++;
+            act.FighterFightAttributes.ActionsInGround++;
 
             // Se o lutador não estiver por cima, ele não pode fazer GnP
-            if (act.FullName != fighters[FighterOnTop].FullName && result == Moves.ACT_GNP)
+            if (act.FullName != fighters[fightAttributes.FighterOnTop].FullName && result == Moves.ACT_GNP)
             {
                 result = Moves.ACT_STRIKESFROMGUARD;
             }
 
-            if (result == Moves.ACT_GNP && act.UseElbows && Organization.Elbows)
+            if (result == Moves.ACT_GNP && act.FighterFightAttributes.UseElbows)
             {
-                if (ApplicationUtils.GetRandom() < act.getAggressiveness)
+                if (RandomUtils.GetRandom() < act.FighterRatings.Aggressiveness)
                 {
                     result = Moves.ACT_GNPELBOWS;
                 }
             }
 
-
             // Substitui o plano de jogo padrão se ele estiver recebendo muito dano
-            if (Bout.Statistics[GetFighterNumber(act)].TempDamageGround >
-                act.getToughness * ApplicationUtils.MAXDAMAGEFORCHANGINGGAMEPLAN)
+            if (fightAttributes.Statistics[GetFighterActions.GetFighterNumber(act, fightAttributes)].TempDamageGround >
+                act.FighterRatings.Toughness * Sim.MAXDAMAGEFORCHANGINGGAMEPLAN)
             {
-                if (ApplicationUtils.GetRandom() < act.getControl)
+                if (RandomUtils.GetRandom() < act.FighterRatings.Control)
                 {
                     result = Moves.ACT_STANDUP;
                 }
             }
 
             // Lutadores agressivos tentarão capitalizar
-            if (pas.Dazed && fixedRandomInt(act.getAggressiveness) > ApplicationUtils.CAPITALIZEPROB)
+            if (pas.FighterFightAttributes.Dazed && RandomUtils.FixedRandomInt(act.FighterRatings.Aggressiveness) > Sim.CAPITALIZEPROB)
             {
                 result = Moves.ACT_CAPITALIZEGROUND;
             }
 
-            act.ActionsInGround = ApplicationUtils.SetLimits(act.ActionsInGround - 1,
-                ApplicationUtils.MINSROUNDSINTHEGROUND, 0);
+            act.FighterFightAttributes.ActionsInGround = RandomUtils.SetLimits(act.FighterFightAttributes.ActionsInGround - 1,
+                Sim.MINSROUNDSINTHEGROUND, 0);
 
             return result;
         }

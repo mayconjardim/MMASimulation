@@ -30,5 +30,17 @@
             return random.Next(BIGRANDOM + Randomness) + 1;
         }
 
+        public static int SetLimits(int actual, int max, int min)
+        {
+            if (actual > max)
+            {
+                actual = max;
+            }
+            else if (actual < min)
+            {
+                actual = min;
+            }
+            return actual;
+        }
     }
 }

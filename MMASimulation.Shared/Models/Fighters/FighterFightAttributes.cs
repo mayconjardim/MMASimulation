@@ -140,13 +140,44 @@
             RoundTechPoints[nRound] = 0;
         }
 
-        public void ClearAllRoundPoints() 
+        public void ClearAllRoundPoints()
         {
-		     for (int i = 1; i <= 5; i++)
-             {
-			    ClearRoundPoints(i);
-		     }
-	    }
+            for (int i = 1; i <= 5; i++)
+            {
+                ClearRoundPoints(i);
+            }
+        }
+
+        public bool CheckDirtyMove(double Aggressiveness, int DirtyFighting)
+        {
+            const int MAX_RANDOM = 120;
+            int modifiers = 0;
+
+            if (CurrentHP < 50)
+            {
+                modifiers += 1;
+            }
+            else if (CurrentHP < 20)
+            {
+                modifiers += 2;
+            }
+
+            if (CurrentStamina < 50)
+            {
+                modifiers += 1;
+            }
+            else if (CurrentStamina < 20)
+            {
+                modifiers += 2;
+            }
+
+            modifiers += (int)Math.Round(Aggressiveness / 7.0);
+
+            modifiers *= DirtyFighting;
+
+            return (new Random().NextDouble() * MAX_RANDOM <= modifiers);
+        }
+
 
     }
 
