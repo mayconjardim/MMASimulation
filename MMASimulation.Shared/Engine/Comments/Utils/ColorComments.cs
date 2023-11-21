@@ -1,4 +1,5 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
+using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
@@ -98,6 +99,15 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
 
             Comment.DoComment(act, pas, staminaComment, Pbp, fightAttributes);
+        }
+
+        public static void MakeDangerousStrikerComment(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            if (act.FighterRatings.Punching > Sim.DANGEROUSCOMMENT && !act.FighterFightAttributes.OnTheGround &&
+                !pas.FighterFightAttributes.OnTheGround && !fightAttributes.InTheClinch)
+            {
+                Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("DangerousStriker")), Pbp, fightAttributes);
+            }
         }
 
     }
