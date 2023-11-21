@@ -6,7 +6,7 @@ namespace MMASimulation.Shared.Engine.Fight.actions.actionsController
 {
     public static class GetFightersInitiatives
     {
-        public static int StandUpInitiative(Fighter act, Fighter pas, int bonus1, int bonus2)
+        public static int StandUpInitiative(Fighter act, Fighter pas)
         {
 
             //Fighter1 Iniciativa 

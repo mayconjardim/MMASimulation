@@ -1,4 +1,5 @@
 ﻿using MMASimulation.Shared.Engine.Constants;
+using MMASimulation.Shared.Engine.Fight.actions.actionsController;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
@@ -40,11 +41,11 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             {
                 if (!fighters[0].FighterFightAttributes.OnTheGround && !fighters[1].FighterFightAttributes.OnTheGround)
                 {
-                    fighterActive = GetFightersInitiatives.StandUpInitiative(fighters[0], fighters[1], GetActionBonus(fighterAction1), GetActionBonus(fighterAction2));
+                    fighterActive = GetFightersInitiatives.StandUpInitiative(fighters[0], fighters[1]);
                 }
                 else
                 {
-                    fighterActive = GetGroundInitiative(fighters[0], fighters[1], GetActionBonus(fighterAction1), GetActionBonus(fighterAction2));
+                    fighterActive = GetFightersInitiatives.GroundInitiative(fighters[0], fighters[1]);
                 }
             }
             //Caso contrário, o lutador atordoado concede a iniciativa
