@@ -126,5 +126,13 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
+        public static void MakeDangerousClinchComment(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            if (act.FighterRatings.ClinchMean() > Sim.DANGEROUSCOMMENT && fightAttributes.InTheClinch)
+            {
+                Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("DangerousClinch")), Pbp, fightAttributes);
+            }
+        }
+
     }
 }
