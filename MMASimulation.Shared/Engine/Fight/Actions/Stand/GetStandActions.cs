@@ -170,5 +170,25 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
             return result;
         }
 
+        public static bool CheckPunchesExchange(Fighter act, Fighter pas, FightAttributes fightAttributes)
+        {
+            const int PUNCHES_EXC_PROB = 8;
+            bool result = false;
+
+            if (!act.FighterFightAttributes.OnTheGround && !pas.FighterFightAttributes.OnTheGround && !fightAttributes.InTheClinch)
+            {
+                if (RandomUtils.GetRandom() < PUNCHES_EXC_PROB)
+                {
+                    if (RandomUtils.GetRandom() < Math.Round(act.FighterRatings.Aggressiveness - act.FighterRatings.Control / 2) ||
+                        RandomUtils.GetRandom() < Math.Round(pas.FighterRatings.Aggressiveness - pas.FighterRatings.Control / 2))
+                    {
+                        result = true;
+                    }
+                }
+            }
+
+            return result;
+        }
+
     }
 }
