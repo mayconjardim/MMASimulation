@@ -1,4 +1,5 @@
-﻿using MMASimulation.Shared.Engine.Constants;
+﻿using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.actions.actionsController;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
@@ -9,7 +10,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
     public static class ActionsController
     {
 
-        public static void ActionsController(Fighter fighter1, Fighter fighter2, FightAttributes fightAttributes, int timeInc)
+        public static void ActionsController(Fighter fighter1, Fighter fighter2, FightAttributes fightAttributes, int timeInc, List<FightPBP> Pbp)
         {
             List<Fighter> fighters = [fighter1, fighter2];
 
@@ -58,8 +59,8 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             fighterAction = (fighterActive == 1) ? fighterAction2 : fighterAction1;
 
 
-            WriteGuard(fighters[fighterActive], fighters[fighterPassive]);
-            MakeColorComments(fighters[fighterActive], fighters[fighterPassive]);
+            SpecificComments.WriteGuard(fighters[fighterActive], fighters[fighterPassive], fightAttributes, Pbp);
+            SpecificComments.MakeColorComments(fighters[fighterActive], fighters[fighterPassive]);
 
             if (CheckPunchesExchange(fighters[fighterActive], fighters[fighterPassive]))
             {

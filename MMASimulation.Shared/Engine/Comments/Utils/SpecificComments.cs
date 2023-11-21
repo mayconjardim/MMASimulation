@@ -2,8 +2,7 @@
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
-using System.Numerics;
-using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace MMASimulation.Shared.Engine.Comments.Utils
 {
@@ -93,6 +92,64 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
                 {
                     PbpData = comment
                 });
+            }
+        }
+
+        public static void WriteGuard(Fighter act, Fighter pas, FightAttributes fightAttributes, List<FightPBP> Pbp)
+        {
+            List<Fighter> fighters = [act, pas];
+
+            int fighterNotOnTop = (fightAttributes.FighterOnTop == 1) ? 0 : 1;
+
+            if (fightAttributes.InTheClinch)
+            {
+                Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("Clinching")), Pbp, fightAttributes);
+            }
+            else if (act.FighterFightAttributes.OnTheGround && pas.FighterFightAttributes.OnTheGround)
+            {
+                switch (fightAttributes.GuardType)
+                {
+                    case 0:
+                        switch (fightAttributes.NumHooks)
+                        {
+                            case 0:
+                                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 0), Pbp, fightAttributes);
+                                break;
+                            case 1:
+                                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",6), Pbp, fightAttributes);
+                                break;
+                            case 2:
+                                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",7), Pbp, fightAttributes);
+                                break;
+                        }
+                        break;
+                    case 1:
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",1), Pbp, fightAttributes);
+                        break;
+                    case 2:
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",3), Pbp, fightAttributes);
+                        break;
+                    case 3:
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",5), Pbp, fightAttributes);
+                        break;
+                    case 4:
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",4), Pbp, fightAttributes);
+                        break;
+                    case 5:
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",2), Pbp, fightAttributes);
+                        break;
+                    case 6:
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",9), Pbp, fightAttributes);
+                        break;
+                }
+            }
+            else if (act.FighterFightAttributes.OnTheGround && !pas.FighterFightAttributes.OnTheGround)
+            {
+                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",8), Pbp, fightAttributes);
+            }
+            else if (pas.FighterFightAttributes.OnTheGround && !act.FighterFightAttributes.OnTheGround)
+            {
+                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",8), Pbp, fightAttributes);
             }
         }
 
