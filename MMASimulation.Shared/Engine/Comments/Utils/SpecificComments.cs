@@ -1,4 +1,5 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
+using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
@@ -116,42 +117,86 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
                                 Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 0), Pbp, fightAttributes);
                                 break;
                             case 1:
-                                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",6), Pbp, fightAttributes);
+                                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 6), Pbp, fightAttributes);
                                 break;
                             case 2:
-                                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",7), Pbp, fightAttributes);
+                                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 7), Pbp, fightAttributes);
                                 break;
                         }
                         break;
                     case 1:
-                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",1), Pbp, fightAttributes);
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 1), Pbp, fightAttributes);
                         break;
                     case 2:
-                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",3), Pbp, fightAttributes);
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 3), Pbp, fightAttributes);
                         break;
                     case 3:
-                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",5), Pbp, fightAttributes);
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 5), Pbp, fightAttributes);
                         break;
                     case 4:
-                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",4), Pbp, fightAttributes);
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 4), Pbp, fightAttributes);
                         break;
                     case 5:
-                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",2), Pbp, fightAttributes);
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 2), Pbp, fightAttributes);
                         break;
                     case 6:
-                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",9), Pbp, fightAttributes);
+                        Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 9), Pbp, fightAttributes);
                         break;
                 }
             }
             else if (act.FighterFightAttributes.OnTheGround && !pas.FighterFightAttributes.OnTheGround)
             {
-                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",8), Pbp, fightAttributes);
+                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 8), Pbp, fightAttributes);
             }
             else if (pas.FighterFightAttributes.OnTheGround && !act.FighterFightAttributes.OnTheGround)
             {
-                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards",8), Pbp, fightAttributes);
+                Comment.DoComment(fighters[fightAttributes.FighterOnTop], fighters[fighterNotOnTop], ReadTxts.ReadListToComment("Guards", 8), Pbp, fightAttributes);
             }
         }
+
+        public static void MakeColorComments(Fighter act, Fighter pas, FightAttributes fightAttributes)
+        {
+
+            if (RandomUtils.GetRandom() < Sim.MOVECOMMMENTSFREQUENCY)
+            {
+                switch (RandomUtils.GetRandomValue(8))
+                {
+                    case 0:
+                        MakeMoveComment(act, pas);
+                        break;
+                    case 1:
+                        MakeStaminaComment(act, pas);
+                        break;
+                    case 2:
+                        MakeToughnessComment(act, pas);
+                        break;
+                    case 3:
+                        MakeDangerousStrikerComment(act, pas);
+                        break;
+                    case 4:
+                        MakeDangerousSubComment(act, pas);
+                        break;
+                    case 5:
+                        MakeDangerousClinchComment(act, pas);
+                        break;
+                    case 6:
+                        MakeDangerousGnPComment(act, pas);
+                        break;
+                    case 7:
+                        MakeFightStatusComment(act, pas);
+                        break;
+                }
+            }
+
+            MakeBleedingComment(act, pas);
+            MakeBleedingComment(pas, act);
+
+            if (fightAttributes.CrowdBoo)
+            {
+                MakeBooComment(act, pas);
+            }
+        }
+
 
     }
 }
