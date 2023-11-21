@@ -1,5 +1,6 @@
 ﻿using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Models.Fighters;
+using MMASimulation.Shared.Models.Fights;
 
 namespace MMASimulation.Shared.Engine.FightUtils
 {
@@ -50,6 +51,37 @@ namespace MMASimulation.Shared.Engine.FightUtils
             }
 
             return result;
+        }
+
+        public static int GetTotalTime(FightAttributes fightAttributes)
+        {
+            int result;
+
+            if (fightAttributes.CurrentRound > 1)
+            {
+                result = 5 * 60;
+
+                if (fightAttributes.CurrentRound > 2)
+                {
+                    result += (fightAttributes.CurrentRound - 1) * 5 + fightAttributes.CurrentTime;
+                }
+                else
+                {
+                    result += fightAttributes.CurrentTime;
+                }
+            }
+            else
+            {
+                result = fightAttributes.CurrentTime;
+            }
+
+            return result;
+        }
+
+        public static double GetFightAction(Fighter fighter1, Fighter fighter2, FightAttributes attributes)
+        {
+
+            return (fighter1.FighterFightAttributes.TotalPoints() + fighter21.FighterFightAttributes.TotalPoints() / (GetTotalTime(attributes) + 1));
         }
 
     }

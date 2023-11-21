@@ -134,8 +134,6 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
-
-
         public static void MakeFightStatusComment(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
         {
 
@@ -179,6 +177,32 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
                 if (randomValue <= act.FighterFightAttributes.Cuts)
                 {
                     Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("Bleeding")), Pbp, fightAttributes);
+                }
+            }
+        }
+
+        public static void MakeBooComment(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            double LOW_LEVEL = 0.25;
+            double MID_LEVEL = 1;
+            int MIN_TIME_BOO = 120;
+            int BOO_FREQUENCY = 4;
+
+            if (fightAttributes.TimeCurrent < MIN_TIME_BOO)
+            {
+                return;
+            }
+
+            double fAction = DuringFighterUtils.GetFightAction(act, pas, fightAttributes);
+            if ((fAction < MID_LEVEL) && (RandomUtils.GetRandom() < BOO_FREQUENCY))
+            {
+                if (fAction < LOW_LEVEL)
+                {
+                    Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("CrowdBoo")), Pbp, fightAttributes);
+                }
+                else
+                {
+                    Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("CrowdSlightlyBoo")), Pbp, fightAttributes);
                 }
             }
         }
