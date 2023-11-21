@@ -1,5 +1,6 @@
 ﻿using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.Actions.Ground;
+using MMASimulation.Shared.Engine.Fight.Actions.Stand;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
 
@@ -20,7 +21,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
                 }
                 else if (!act.FighterFightAttributes.OnTheGround && pas.FighterFightAttributes.OnTheGround)
                 {
-                    return GetStandToGroundAction(act, pas);
+                    return GetStandToGroundActions.StandToGroundAction(act, pas, fightAttributes);
                 }
                 else if (act.FighterFightAttributes.OnTheGround && !pas.FighterFightAttributes.OnTheGround)
                 {
