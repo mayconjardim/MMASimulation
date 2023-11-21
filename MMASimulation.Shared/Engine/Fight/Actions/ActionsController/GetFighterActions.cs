@@ -1,4 +1,5 @@
 ﻿using MMASimulation.Shared.Engine.Constants;
+using MMASimulation.Shared.Engine.Fight.Actions.Clinch;
 using MMASimulation.Shared.Engine.Fight.Actions.Ground;
 using MMASimulation.Shared.Engine.Fight.Actions.Stand;
 using MMASimulation.Shared.Models.Fighters;
@@ -21,19 +22,19 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
                 }
                 else if (!act.FighterFightAttributes.OnTheGround && pas.FighterFightAttributes.OnTheGround)
                 {
-                    return GetStandToGroundActions.StandToGroundAction(act, pas, fightAttributes);
+                    return GetStandActions.StandToGroundAction(act, pas, fightAttributes);
                 }
                 else if (act.FighterFightAttributes.OnTheGround && !pas.FighterFightAttributes.OnTheGround)
                 {
-                    return GetGroundToStandAction(act, pas);
+                    return GetGroundActions.GroundToStandAction(act, pas);
                 }
                 else if (fightAttributes.InTheClinch)
                 {
-                    return GetClinchAction(act, pas);
+                    return GetClinchActions.ClinchAction(act, pas);
                 }
                 else
                 {
-                    return GetStandUpAction(act, pas);
+                    return GetStandActions.StandUpAction(act, pas, fightAttributes);
                 }
             }
             else

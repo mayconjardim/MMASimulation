@@ -139,5 +139,20 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
             return result;
         }
 
+        public static int GroundToStandAction(Fighter act, Fighter pas)
+        {
+            int standUpProb = RandomUtils.FixedRandomInt(act.FighterStrategies.StratStandUp);
+            int kickProb = RandomUtils.FixedRandomInt(act.FighterStrategies.StratKicking / 2);
+
+            if (standUpProb > kickProb)
+            {
+                return Sim.ACT_STANDUP;
+            }
+            else
+            {
+                return Sim.ACT_GROUNDKICK;
+            }
+        }
+
     }
 }
