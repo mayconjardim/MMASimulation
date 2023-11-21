@@ -118,5 +118,13 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
+        public static void MakeDangerousGnPComment(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            if (act.FighterRatings.Gnp > Sim.DANGEROUSCOMMENT && act.FighterFightAttributes.OnTheGround && pas.FighterFightAttributes.OnTheGround)
+            {
+                Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("DangerousGnP")), Pbp, fightAttributes);
+            }
+        }
+
     }
 }
