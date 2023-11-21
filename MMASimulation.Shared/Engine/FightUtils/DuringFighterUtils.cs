@@ -39,6 +39,18 @@ namespace MMASimulation.Shared.Engine.FightUtils
             return result * Sim.HURTFACTOR;
         }
 
+        public static int GetPercentage(double max, double actual)
+        {
+            int result = 0;
+
+            if (max > 0)
+            {
+                double aux = 100.0 * actual / max;
+                result = (int)Math.Round(aux);
+            }
+
+            return result;
+        }
 
     }
 }

@@ -50,5 +50,30 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
+        public static void MakeStaminaComment(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+
+            //Um ​​lutador está cansado se estiver com menos de 65% de resistência
+            //E exausto se estiver abaixo de 30%
+            int percentage = DuringFighterUtils.GetPercentage(act.FighterRatings.Conditioning * 5, act.FighterFightAttributes.CurrentStamina);
+
+            string staminaComment = string.Empty;
+
+            if (percentage >= -99 && percentage <= 30)
+            {
+                staminaComment = Comment.ReturnComment(ReadTxts.ReadFileToList("Exhausted"));
+            }
+            else if (percentage >= 31 && percentage <= 65)
+            {
+                staminaComment = Comment.ReturnComment(ReadTxts.ReadFileToList("Tired"));
+            }
+            else if (percentage >= 85 && percentage <= 100)
+            {
+                staminaComment = Comment.ReturnComment(ReadTxts.ReadFileToList("GoodShape"));
+            }
+
+            Comment.DoComment(act, pas, staminaComment, Pbp, fightAttributes);
+        }
+
     }
 }

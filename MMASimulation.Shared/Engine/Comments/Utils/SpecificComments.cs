@@ -154,7 +154,7 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
-        public static void MakeColorComments(Fighter act, Fighter pas, FightAttributes fightAttributes)
+        public static void MakeColorComments(Fighter act, Fighter pas, FightAttributes fightAttributes, List<FightPBP> Pbp)
         {
 
             if (RandomUtils.GetRandom() < Sim.MOVECOMMMENTSFREQUENCY)
@@ -162,38 +162,38 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
                 switch (RandomUtils.GetRandomValue(8))
                 {
                     case 0:
-                        MakeMoveComment(act, pas);
+                        ColorComments.MakeMoveComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 1:
-                        MakeStaminaComment(act, pas);
+                        ColorComments.MakeStaminaComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 2:
-                        MakeToughnessComment(act, pas);
+                        MakeToughnessComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 3:
-                        MakeDangerousStrikerComment(act, pas);
+                        MakeDangerousStrikerComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 4:
-                        MakeDangerousSubComment(act, pas);
+                        MakeDangerousSubComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 5:
-                        MakeDangerousClinchComment(act, pas);
+                        MakeDangerousClinchComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 6:
-                        MakeDangerousGnPComment(act, pas);
+                        MakeDangerousGnPComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 7:
-                        MakeFightStatusComment(act, pas);
+                        MakeFightStatusComment(act, pas, Pbp, fightAttributes);
                         break;
                 }
             }
 
-            MakeBleedingComment(act, pas);
-            MakeBleedingComment(pas, act);
+            MakeBleedingComment(act, pas, Pbp, fightAttributes);
+            MakeBleedingComment(act, pas, Pbp, fightAttributes);
 
             if (fightAttributes.CrowdBoo)
             {
-                MakeBooComment(act, pas);
+                MakeBooComment(act, pas, Pbp, fightAttributes);
             }
         }
 
