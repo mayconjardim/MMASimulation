@@ -134,5 +134,42 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
+
+
+        public static void MakeFightStatusComment(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+
+            const int ONE_SIDED = 2;
+            const double EVEN = 0.15;
+
+            if (act.FighterFightAttributes.TotalPoints() > 0 && pas.FighterFightAttributes.TotalPoints() > 0)
+            {
+                int points1, points2;
+                double fightStatus;
+
+                if (act.FighterFightAttributes.TotalPoints() > pas.FighterFightAttributes.TotalPoints())
+                {
+                    points1 = act.FighterFightAttributes.TotalPoints();
+                    points2 = pas.FighterFightAttributes.TotalPoints();
+                }
+                else
+                {
+                    points1 = pas.FighterFightAttributes.TotalPoints();
+                    points2 = act.FighterFightAttributes.TotalPoints();
+                }
+
+                fightStatus = (double)points1 / points2;
+
+                if (fightStatus >= ONE_SIDED)
+                {
+                    Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("OneSided")), Pbp, fightAttributes);
+                }
+                else if (fightStatus > 1 - EVEN && fightStatus < 1 + EVEN)
+                {
+                    Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("EvenMatch")), Pbp, fightAttributes);
+                }
+            }
+        }
+
     }
 }

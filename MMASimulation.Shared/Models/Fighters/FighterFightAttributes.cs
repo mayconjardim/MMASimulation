@@ -148,6 +148,21 @@
             }
         }
 
+        public int TotalPoints()
+        {
+            int result = 0;
+
+            for (int index = 0; index < 10; index++)
+            {
+                result += RoundAggPoints[index];
+                result += RoundTechPoints[index];
+                result += RoundGroundPoints[index];
+                result += RoundStandUpPoints[index];
+            }
+
+            return result;
+        }
+
         public bool CheckDirtyMove(double Aggressiveness, int DirtyFighting)
         {
             const int MAX_RANDOM = 120;
