@@ -168,22 +168,22 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
                         ColorComments.MakeStaminaComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 2:
-                        MakeToughnessComment(act, pas, Pbp, fightAttributes);
+                        ColorComments.MakeToughnessComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 3:
-                        MakeDangerousStrikerComment(act, pas, Pbp, fightAttributes);
+                        ColorComments.MakeDangerousStrikerComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 4:
-                        MakeDangerousSubComment(act, pas, Pbp, fightAttributes);
+                        ColorComments.MakeDangerousSubComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 5:
-                        MakeDangerousClinchComment(act, pas, Pbp, fightAttributes);
+                        ColorComments.MakeDangerousClinchComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 6:
-                        MakeDangerousGnPComment(act, pas, Pbp, fightAttributes);
+                        ColorComments.MakeDangerousGnPComment(act, pas, Pbp, fightAttributes);
                         break;
                     case 7:
-                        MakeFightStatusComment(act, pas, Pbp, fightAttributes);
+                        ColorComments.MakeFightStatusComment(act, pas, Pbp, fightAttributes);
                         break;
                 }
             }
