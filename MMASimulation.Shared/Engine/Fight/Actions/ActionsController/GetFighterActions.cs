@@ -42,6 +42,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
                 return Sim.ACT_NOACTION;
             }
         }
+
         public static int GetFighterNumber(Fighter act, FightAttributes fightAttributes)
         {
             if (act.Id == fightAttributes.TempFigher1.Id)

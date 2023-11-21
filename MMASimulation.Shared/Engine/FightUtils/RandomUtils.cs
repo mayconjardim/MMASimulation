@@ -42,5 +42,25 @@
             }
             return actual;
         }
+
+        public static int GetBalancedRandom(double value)
+        {
+            if (value < 0)
+            {
+                return 0;
+            }
+
+            int sum = 0;
+            int roundValue = (int)Math.Round(value);
+
+            for (int rounds = 5; rounds >= 1; rounds--)
+            {
+                sum += new Random().Next(roundValue + 1);
+            }
+
+            return sum / 5;
+        }
+
+
     }
 }

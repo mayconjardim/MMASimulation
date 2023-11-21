@@ -50,5 +50,55 @@
             return statsRanking;
         }
 
+        public double InitiativeBonus(int Rush)
+        {
+            double result = (Agility / 4) + (Aggressiveness / 6) + Rush;
+            result = result * 100 / 100;
+            return result;
+        }
+
+        public double Mean()
+        {
+            double result = (DefenseMean() + FitnessMean() + GroundMean() + MentalMean() + StrikingMean())
+                    / 5;
+            return result;
+        }
+
+        public double ClinchMean()
+        {
+            return (ClinchStriking + ClinchGrappling) / 2;
+        }
+
+        public double GroundMean()
+        {
+            double result = (GroundGame + Submission + Gnp) * 100 / 60;
+            return result;
+        }
+
+        public double MentalMean()
+        {
+            double result = (Aggressiveness + Control + Motivation) * 100 / 60;
+            return result;
+        }
+
+        public double StrikingMean()
+        {
+            double result = (Punching + Kicking + ClinchStriking + ClinchGrappling + Takedowns)
+                    * 100 / 100;
+            return result;
+        }
+
+        public double FitnessMean()
+        {
+            double result = Strength + Toughness + Agility + KoResistance + Conditioning;
+            return result;
+        }
+
+        public double DefenseMean()
+        {
+            double result = (Dodging + TakedownsDef + SubDefense) * 100 / 60;
+            return result;
+        }
+
     }
 }

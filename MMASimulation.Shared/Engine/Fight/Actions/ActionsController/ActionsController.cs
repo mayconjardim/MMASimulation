@@ -32,10 +32,8 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             fighter1OnTheGround = fighters[0].FighterFightAttributes.OnTheGround;
             fighter2OnTheGround = fighters[1].FighterFightAttributes.OnTheGround;
 
-
             fighterAction1 = GetFighterActions.FighterAction(fighters[0], fighters[1], fightAttributes);
             fighterAction2 = GetFighterActions.FighterAction(fighters[1], fighters[0], fightAttributes);
-
 
             //Verifica  se ambos estão na mesma condição de atordoamento
             if (fighters[0].FighterFightAttributes.Dazed == fighters[1].FighterFightAttributes.Dazed)
