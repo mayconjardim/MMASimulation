@@ -1,4 +1,6 @@
-﻿using MMASimulation.Shared.Engine.Constants;
+﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
+using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
 
@@ -38,6 +40,12 @@ namespace MMASimulation.Shared.Engine.FightUtils
             }
 
             return result * Sim.HURTFACTOR;
+        }
+
+        public static int GetGasTankFactor(Fighter act, double Value)
+        {
+            double reducingFactor = act.FighterFightAttributes.CurrentStamina * Sim.FATIGUECUT / (act.FighterRatings.Conditioning * 5);
+            return (int)Math.Round(Value * reducingFactor);
         }
 
         public static int GetPercentage(double max, double actual)
@@ -81,8 +89,87 @@ namespace MMASimulation.Shared.Engine.FightUtils
         public static double GetFightAction(Fighter fighter1, Fighter fighter2, FightAttributes attributes)
         {
 
-            return (fighter1.FighterFightAttributes.TotalPoints() + fighter21.FighterFightAttributes.TotalPoints() / (GetTotalTime(attributes) + 1));
+            return (fighter1.FighterFightAttributes.TotalPoints() + fighter2.FighterFightAttributes.TotalPoints() / (GetTotalTime(attributes) + 1));
         }
+
+        public static void RefStandFighters(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+
+            List<Fighter> fighters = [act, pas];
+
+            if (fightAttributes.BoutFinished)
+            {
+                return;
+            }
+
+            // Levante-se dos lutadores quando eles estiverem parados no chão
+            if (GetFighterOnGround(act, pas) == 2)
+            {
+
+                if (5 < act.FighterStyles.Stalling + pas.FighterStyles.Stalling)
+                {
+                    act.FighterFightAttributes.OnTheGround = false;
+                    pas.FighterFightAttributes.OnTheGround = false;
+                    act.FighterStyles.Stalling = 0;
+                    pas.FighterStyles.Stalling = 0;
+
+                    Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("RefStandUp")), Pbp, fightAttributes);
+                }
+            }
+
+            // Levante-se dos lutadores quando um deles estiver no chão
+            else if (GetFighterOnGround(act, pas) >= 0 && GetFighterOnGround(act, pas) <= 1)
+            {
+
+                if (fighters[GetFighterOnGround(act, pas)].FighterFightAttributes.RoundsInTheGround > 1)
+                {
+                    if (5 + RandomUtils.GeSmallRandom()
+                        < (fighters[GetFighterOnGround(act, pas)].FighterFightAttributes.RoundsInTheGround) * Sim.REFTENDENCYTOSTANDUP)
+                    {
+                        act.FighterFightAttributes.OnTheGround = false;
+                        pas.FighterFightAttributes.OnTheGround = false;
+                        act.FighterStyles.Stalling = 0;
+                        pas.FighterStyles.Stalling = 0;
+                        fighters[0].FighterFightAttributes.RoundsInTheGround = 0;
+                        fighters[1].FighterFightAttributes.RoundsInTheGround = 0;
+
+                        if (act.FighterFightAttributes.OnTheGround)
+                        {
+                            Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("RefStandUpOneFighter")), Pbp, fightAttributes);
+
+                        }
+                        else
+                        {
+                            Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("RefStandUpOtherFighter")), Pbp, fightAttributes);
+
+                        }
+                    }
+                }
+            }
+        }
+
+        public static int GetFighterOnGround(Fighter fighter1, Fighter fighter2)
+        {
+            if (fighter1.FighterFightAttributes.OnTheGround && fighter2.FighterFightAttributes.OnTheGround)
+            {
+                return 2;
+            }
+            else if (!fighter1.FighterFightAttributes.OnTheGround && fighter2.FighterFightAttributes.OnTheGround)
+            {
+                return 1;
+            }
+            else if (fighter1.FighterFightAttributes.OnTheGround && !fighter2.FighterFightAttributes.OnTheGround)
+            {
+                return 0;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+
+
 
     }
 }

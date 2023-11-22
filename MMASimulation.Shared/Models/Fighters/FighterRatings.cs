@@ -1,4 +1,6 @@
-﻿namespace MMASimulation.Shared.Models.Fighters
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace MMASimulation.Shared.Models.Fighters
 {
     public class FighterRatings
     {
@@ -98,6 +100,23 @@
         {
             double result = (Dodging + TakedownsDef + SubDefense) * 100 / 60;
             return result;
+        }
+
+        public double AttackBonus(FighterFightAttributes attributes)
+        {
+            double bonus = attributes.Accuracy + (Agility / 4) + (Aggressiveness / 5) - attributes.DirtyMoveMalus;
+            return bonus;
+        }
+
+        public double DefenseBonus(FighterFightAttributes attributes)
+        {
+            double DAZED_MALUS = 7;
+            double bonus = attributes.Defense + (Agility / 4) + (Control / 5) - (Aggressiveness / 6) - attributes.DirtyMoveMalus;
+            if (attributes.Dazed)
+            {
+                bonus -= DAZED_MALUS;
+            }
+            return bonus;
         }
 
     }

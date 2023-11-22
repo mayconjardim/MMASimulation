@@ -1,6 +1,7 @@
 ﻿using MMASimulation.Shared.Engine.Comments.Utils;
 using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.actions.actionsController;
+using MMASimulation.Shared.Engine.Fight.Actions.Stand;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
@@ -62,7 +63,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             SpecificComments.WriteGuard(fighters[fighterActive], fighters[fighterPassive], fightAttributes, Pbp);
             SpecificComments.MakeColorComments(fighters[fighterActive], fighters[fighterPassive], fightAttributes, Pbp);
 
-            if (CheckPunchesExchange(fighters[fighterActive], fighters[fighterPassive]))
+            if (GetStandActions.CheckPunchesExchange(fighters[fighterActive], fighters[fighterPassive], fightAttributes))
             {
                 fighterAction = Moves.ACT_PUNCHEXCHANGE;
             }
@@ -200,10 +201,10 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             //Métodos extras
             if (!fightAttributes.BoutFinished)
             {
-                RefStandfighters(fighters[fighterActive], fighters[fighterPassive]);
-                ActKeepClinch(fighters[fighterActive], fighters[fighterPassive]);
-                MakeStaggeredComment(fighters[fighterActive], fighters[fighterPassive]);
-                MakeStandUpComment(fighters[fighterActive], fighters[fighterPassive], !f1Ground, !f2Ground);
+                DuringFighterUtils.RefStandFighters(fighters[fighterActive], fighters[fighterPassive], Pbp, fightAttributes);
+                ActKeepClinch(fighters[fighterActive], fighters[fighterPassive], Pbp, fightAttributes);
+                MakeStaggeredComment(fighters[fighterActive], fighters[fighterPassive], Pbp, fightAttributes);
+                MakeStandUpComment(fighters[fighterActive], fighters[fighterPassive], !f1Ground, !f2Ground, Pbp, fightAttributes);
             }
 
             //Cansaço dos lutadores
@@ -269,11 +270,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             UpdatePerformance();
             UpdateMoral();
         }
-
-
-
-
-
 
     }
 }
