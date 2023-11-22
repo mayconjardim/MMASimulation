@@ -1,5 +1,6 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
 using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
@@ -90,7 +91,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 
                 if (!fightAttributes.IsCounter)
                 {
-                    fightAttributes.IsCounter = CheckCounterAttack(act, pas, CounterProb);
+                    fightAttributes.IsCounter = CheckActions.CheckCounterAttack(act, pas, CounterProb, fightAttributes);
 
                     if (fightAttributes.IsCounter)
                     {

@@ -1,4 +1,5 @@
-﻿using MMASimulation.Shared.Engine.Constants;
+﻿using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
@@ -12,7 +13,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             double At, Def;
             int Counter1, Counter2;
 
-
             //Se não houver contra-golpe o resultado é falso
             Counter1 = Comment.ExtractCounterMove1(fightAttributes.FullComment);
             Counter2 = Comment.ExtractCounterMove2(fightAttributes.FullComment);
@@ -21,7 +21,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             {
                 return false;
             }
-
 
             // Valor do contra-golpe de ataque
             At = RandomUtils.FixedRandomInt(act.FighterRatings.Control);
@@ -44,7 +43,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
                 return false;
             }
         }
-
 
     }
 }
