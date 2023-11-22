@@ -75,7 +75,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             switch (fightAction(fighterActiveOrPassive(fighterActive), fighterActiveOrPassive(fighterPasive)))
             {
                 case Moves.ACT_PUNCHES:
-                    actPunch(fighterActiveOrPassive(fighterActive), fighterActiveOrPassive(fighterPasive));
+                    PunchActions.ActPunch(fighterActiveOrPassive(fighterActive), fighterActiveOrPassive(fighterPasive));
                     break;
                 case Moves.ACT_KICKS:
                     actKick(fighterActiveOrPassive(fighterActive), fighterActiveOrPassive(fighterPasive));

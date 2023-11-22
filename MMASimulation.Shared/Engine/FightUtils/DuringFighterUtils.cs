@@ -168,5 +168,64 @@ namespace MMASimulation.Shared.Engine.FightUtils
             }
         }
 
+        public static int GetAttackLevel(Fighter act, Fighter pas, double AtSkill, double PasSkill, FightAttributes fightAttributes)
+        {
+            const int DAZED_BONUS = 10;
+            double At, Def;
+
+            int result = 1;
+
+            //Valor de ataque
+            At = RandomUtils.FixedRandomInt(act.FighterRatings.Aggressiveness);
+            At += RandomUtils.FixedRandomInt(act.FighterRatings.Control / 2);
+            At += RandomUtils.FixedRandomInt(act.FighterRatings.Conditioning / 2);
+            At += RandomUtils.GeSmallRandom() + (act.FighterRatings.AttackBonus(act.FighterFightAttributes));
+            At += RandomUtils.FixedRandomInt(act.FighterRatings.Agility / 2);
+            At += RandomUtils.FixedRandomInt(AtSkill);
+
+            //Valor de defesa
+            Def = RandomUtils.FixedRandomInt(pas.FighterRatings.Control);
+            Def += RandomUtils.FixedRandomInt(pas.FighterRatings.Conditioning / 2);
+            Def -= RandomUtils.FixedRandomInt(pas.FighterRatings.Aggressiveness / 2);
+            Def += RandomUtils.GeSmallRandom() + (pas.FighterRatings.DefenseBonus(pas.FighterFightAttributes));
+            Def += RandomUtils.FixedRandomInt(act.FighterRatings.Agility / 2);
+            Def += RandomUtils.FixedRandomInt(PasSkill);
+
+            if (pas.FighterFightAttributes.Dazed)
+            {
+                At += DAZED_BONUS;
+            }
+
+            switch ((int)Math.Round(At - Def))
+            {
+                case int n when n >= 0 && n <= 5:
+                    result = 1;
+                    break;
+                case int n when n >= 6 && n <= 18:
+                    result = 2;
+                    break;
+                case int n when n >= 19 && n <= 99:
+                    result = 3;
+                    break;
+                default:
+                    result = 1;
+                    break;
+            }
+
+            // Skill limite
+            if ((result == 2) && (AtSkill < Sim.LEVEL2SKILL))
+            {
+                result = 1;
+            }
+            else if ((result == 3) && (AtSkill < Sim.LEVEL3SKILL))
+            {
+                result = 2;
+            }
+
+            act.FighterFightAttributes.IncreasePoints(fightAttributes.CurrentRound, (result * Sim.ATTACKLEVELPOINTS));
+
+            return result;
+        }
+
     }
 }

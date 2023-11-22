@@ -148,6 +148,25 @@
             }
         }
 
+        public int IncreasePoints(int NRound, int Points, bool standing = true)
+        {
+            int result = 0;
+            if (NRound <= 10)
+            {
+                if (standing)
+                {
+                    RoundStandUpPoints[NRound - 1] += Points;
+                    result = RoundStandUpPoints[NRound - 1];
+                }
+                else
+                {
+                    RoundGroundPoints[NRound - 1] += Points;
+                    result = RoundGroundPoints[NRound - 1];
+                }
+            }
+            return result;
+        }
+
         public int TotalPoints()
         {
             int result = 0;

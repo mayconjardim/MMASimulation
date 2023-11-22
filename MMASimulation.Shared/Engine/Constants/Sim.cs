@@ -378,7 +378,7 @@
 
         public static bool oldUMSTime = false;
 
-        public static int setLimits(int actual, int max, int min)
+        public static int SetLimits(int actual, int max, int min)
         {
             if (actual > max)
             {

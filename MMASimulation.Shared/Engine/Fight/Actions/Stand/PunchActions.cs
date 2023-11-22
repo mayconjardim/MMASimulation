@@ -1,6 +1,8 @@
-﻿using MMASimulation.Shared.Engine.Comments.Utils;
+﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
+using MMASimulation.Shared.Engine.Comments.Utils;
 using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
+using MMASimulation.Shared.Engine.Fight.Actions.Counter;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Enums;
 using MMASimulation.Shared.Models.Fighters;
@@ -16,18 +18,18 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
             double At, Def, DamageDone;
             int AttackLevel, InjuryType;
 
-            AttackLevel = GetAttackLevel(act, pas, act.FighterRatings.Punching, pas.FighterRatings.Dodging);
+            AttackLevel = DuringFighterUtils.GetAttackLevel(act, pas, act.FighterRatings.Punching, pas.FighterRatings.Dodging, fightAttributes);
 
             switch (AttackLevel)
             {
                 case 1:
-                    Comment.GetComment(ApplicationUtils.Punch1);
+                    Comment.GetComment(ReadTxts.ReadFileToList("Punch1"), fightAttributes);
                     break;
                 case 2:
-                    Comment.GetComment(ApplicationUtils.Punch2);
+                    Comment.GetComment(ReadTxts.ReadFileToList("Punch2"), fightAttributes);
                     break;
                 case 3:
-                    Comment.GetComment(ApplicationUtils.Punch3);
+                    Comment.GetComment(ReadTxts.ReadFileToList("Punch3"), fightAttributes);
                     break;
             }
 
@@ -87,20 +89,20 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
                 // Counter attack
                 if (!fightAttributes.IsCounter)
                 {
-                    fightAttributes.IsCounter = CheckCounterAttack(act, pas, fightAttributes.CounterProb);
+                    fightAttributes.IsCounter = CheckActions.CheckCounterAttack(act, pas, fightAttributes.CounterProb, fightAttributes);
                     if (fightAttributes.IsCounter)
                     {
-                        DoCounterAttack(pas, act);
+                        CounterActions.DoCounterAttack(pas, act, Pbp, fightAttributes);
                     }
                     else
                     {
-                        ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment));
+                        PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
                     }
                 }
                 else
                 {
                     fightAttributes.IsCounter = false;
-                    ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment));
+                    PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
                 }
             }
             else
