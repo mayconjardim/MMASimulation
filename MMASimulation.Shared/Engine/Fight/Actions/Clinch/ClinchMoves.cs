@@ -1,5 +1,6 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
 using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
@@ -88,10 +89,9 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
             {
                 Comment.DoComment(act, pas, Comment.ExtractInitComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
-
                 if (!fightAttributes.IsCounter)
                 {
-                    fightAttributes.IsCounter = CheckActions.CheckCounterAttack(act, pas, CounterProb, fightAttributes);
+                    fightAttributes.IsCounter = CheckActions.CheckCounterAttack(act, pas, fightAttributes.CounterProb, fightAttributes);
 
                     if (fightAttributes.IsCounter)
                     {

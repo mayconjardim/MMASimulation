@@ -168,8 +168,5 @@ namespace MMASimulation.Shared.Engine.FightUtils
             }
         }
 
-
-
-
     }
 }
