@@ -1,4 +1,6 @@
-﻿using MMASimulation.Shared.Engine.FightUtils;
+﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
+using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
 
@@ -28,12 +30,12 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
         {
             double At, Def;
 
-            GetComment(ApplicationUtils.BreakClinch1);
+            Comment.GetComment(ReadTxts.ReadFileToList("BreakClinch1"), fightAttributes);
 
-            DoComment(act, pas, ExtractInitComment(FullComment));
+            Comment.DoComment(act, pas, ExtractInitComment(fightAttributes.FullComment));
 
             At = RandomUtils.FixedRandomInt(act.FighterRatings.ClinchMean());
-            At += act.FighterRatings.DefenseBonus;
+            At += act.FighterRatings.DefenseBonus(act.FighterFightAttributes);
 
             switch (RandomUtils.GetRandomValue(4))
             {
@@ -55,10 +57,9 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
             At = DuringFighterUtils.GetGasTankFactor(act, At);
             At -= DuringFighterUtils.GetHurtFactor(act);
 
-
             // Valor defensivo
             Def = RandomUtils.FixedRandomInt(pas.FighterRatings.ClinchMean());
-            Def += pas.getAttackBonus;
+            Def += pas.FighterRatings.AttackBonus(pas.FighterFightAttributes);
 
             switch (RandomUtils.GetRandomValue(4))
             {

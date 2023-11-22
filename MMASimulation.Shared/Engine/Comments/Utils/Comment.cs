@@ -170,6 +170,19 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             return result;
         }
 
+        public static string ExtractInitComment(string Comment)
+        {
+            string result = "Unknown";
+            string[] splitFullString = Comment.Split(';');
+
+            if (splitFullString.Length > 0)
+            {
+                result = splitFullString[0];
+            }
+
+            return result;
+        }
+
         public static int ExtractHitLocation(string comment)
         {
             int result = 0;
