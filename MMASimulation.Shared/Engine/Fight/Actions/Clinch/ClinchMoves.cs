@@ -32,7 +32,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 
             Comment.GetComment(ReadTxts.ReadFileToList("BreakClinch1"), fightAttributes);
 
-            Comment.DoComment(act, pas, ExtractInitComment(fightAttributes.FullComment));
+            Comment.DoComment(act, pas, Comment.ExtractInitComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
             At = RandomUtils.FixedRandomInt(act.FighterRatings.ClinchMean());
             At += act.FighterRatings.DefenseBonus(act.FighterFightAttributes);
@@ -85,13 +85,14 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
             // Verificando dano
             if (Def >= At)
             {
-                DoComment(act, pas, ExtractFailureComment(FullComment));
+                Comment.DoComment(act, pas, Comment.ExtractInitComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
-                if (!IsCounter)
+
+                if (!fightAttributes.IsCounter)
                 {
-                    IsCounter = CheckCounterAttack(act, pas, CounterProb);
+                    fightAttributes.IsCounter = CheckCounterAttack(act, pas, CounterProb);
 
-                    if (IsCounter)
+                    if (fightAttributes.IsCounter)
                     {
                         DoCounterAttack(pas, act);
                     }
@@ -102,13 +103,13 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
                 }
                 else
                 {
-                    IsCounter = false;
+                    fightAttributes.IsCounter = false;
                     ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
                 }
             }
             else
             {
-                DoComment(act, pas, ExtractComment(FullComment));
+                Comment.DoComment(act, pas, Comment.ExtractInitComment(fightAttributes.FullComment), Pbp, fightAttributes);
                 ProcessAfterMovePosition(act, pas, ExtractFinalSuccessPosition(FullComment));
             }
         }

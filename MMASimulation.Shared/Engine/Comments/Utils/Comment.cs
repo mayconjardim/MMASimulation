@@ -196,8 +196,33 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             return result;
         }
 
+        public static int ExtractCounterMove1(string Comment)
+        {
+            string[] splitFullString = Comment.Split(';');
 
+            if (splitFullString.Length > 5)
+            {
+                return int.Parse(splitFullString[5]);
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
+        public static int ExtractCounterMove2(string Comment)
+        {
+            string[] splitFullString = Comment.Split(';');
+
+            if (splitFullString.Length > 6)
+            {
+                return int.Parse(splitFullString[6]);
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
     }
 }
