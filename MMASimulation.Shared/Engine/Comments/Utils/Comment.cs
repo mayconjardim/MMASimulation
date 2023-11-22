@@ -224,5 +224,57 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
         }
 
+        public static int ExtractHitsLaunched(string comment)
+        {
+            int result = 0;
+            string[] splitFullString = comment.Split(';');
+
+            if (splitFullString.Length > 8)
+            {
+                result = int.Parse(splitFullString[8]);
+            }
+
+            return result;
+        }
+
+        public static string ExtractFailureComment(string comment)
+        {
+            string result = "Unknown";
+            string[] splitFullString = comment.Split(';');
+
+            if (splitFullString.Length > 2)
+            {
+                result = splitFullString[2];
+            }
+
+            return result;
+        }
+
+        public static int ExtractFinalFailurePosition(string comment)
+        {
+            int result = 0;
+            string[] splitFullString = comment.Split(';');
+
+            if (splitFullString.Length > 14)
+            {
+                result = int.Parse(splitFullString[14]);
+            }
+
+            return result;
+        }
+
+        public static string ExtractComment(string comment)
+        {
+            string result = "Unknown";
+            string[] splitFullString = comment.Split(';');
+
+            if (splitFullString.Length > 1)
+            {
+                result = splitFullString[1];
+            }
+
+            return result;
+        }
+
     }
 }

@@ -1,4 +1,8 @@
-﻿using MMASimulation.Shared.Engine.Comments.Utils;
+﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
+using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.Constants;
+using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
+using MMASimulation.Shared.Engine.Fight.Actions.Clinch;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
 
@@ -6,18 +10,18 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Counter
 {
     public static class CounterActions
     {
-        public static void DoCounterAttack(Fighter Act, Fighter Pas, FightAttributes fightAttributes)
+        public static void DoCounterAttack(Fighter Act, Fighter Pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
         {
             int Counter1, Counter2, CounterProb1, CounterProb2, FinalMove, ClinchMove;
 
             Counter1 = Comment.ExtractCounterMove1(fightAttributes.FullComment);
             Counter2 = Comment.ExtractCounterMove2(fightAttributes.FullComment);
-            CounterProb1 = GetCounterMoveProb(Act, Counter1);
-            CounterProb2 = GetCounterMoveProb(Act, Counter2);
+            CounterProb1 = GetMoveProb.CounterMoveProb(Act, Counter1);
+            CounterProb2 = GetMoveProb.CounterMoveProb(Act, Counter2);
 
             FinalMove = (CounterProb1 > CounterProb2) ? Counter1 : Counter2;
 
-            DoComment(Act, Pas, ReturnComment(ApplicationUtils.Counter));
+            Comment.DoComment(Act, Pas, Comment.ReturnComment(ReadTxts.ReadFileToList("Counter")), Pbp, fightAttributes);
 
             switch (FinalMove)
             {
@@ -28,25 +32,25 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Counter
                     ActKick(Act, Pas);
                     break;
                 case 3:
-                    if (InTheClinch)
+                    if (fightAttributes.InTheClinch)
                     {
-                        ClinchMove = GetClinchAction(Act, Pas);
+                        ClinchMove = GetClinchActions.ClinchAction(Act, Pas);
 
                         switch (ClinchMove)
                         {
-                            case ACT_DIRTYBOXING:
+                            case Sim.ACT_DIRTYBOXING:
                                 ActPunchClinch(Act, Pas, DIRTY_BOXING);
                                 break;
-                            case ACT_THAICLINCH_KNEES:
+                            case Sim.ACT_THAICLINCH_KNEES:
                                 ActKickClinch(Act, Pas, THAI_ATTACK);
                                 break;
-                            case ACT_THAICLINCH_PUNCHES:
+                            case Sim.ACT_THAICLINCH_PUNCHES:
                                 ActPunchClinch(Act, Pas, THAI_ATTACK);
                                 break;
-                            case ACT_TAKEDOWNCLINCH:
+                            case Sim.ACT_TAKEDOWNCLINCH:
                                 ActClinchTakedown(Act, Pas);
                                 break;
-                            case ACT_BREAKCLINCH:
+                            case Sim.ACT_BREAKCLINCH:
                                 ActBreakClinch(Act, Pas);
                                 break;
                             default:
