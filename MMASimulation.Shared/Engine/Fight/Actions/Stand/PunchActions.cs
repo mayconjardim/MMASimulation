@@ -39,7 +39,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
 
             StatsUtils.UpdateStatistic(fightAttributes.Statistics, GetFighterActions.GetFighterNumber(act, fightAttributes), StatisticsTypes.stPunches, Comment.ExtractHitsLaunched(fightAttributes.FullComment), 0);
 
-            // Attacking value
+            //Valor ofensivo
             At = RandomUtils.FixedRandomInt(act.FighterRatings.Punching) + act.FighterRatings.AttackBonus(act.FighterFightAttributes);
             switch (RandomUtils.GetRandomValue(4))
             {
@@ -60,7 +60,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
             At = DuringFighterUtils.GetGasTankFactor(act, At);
             At -= DuringFighterUtils.GetHurtFactor(act);
 
-            // Defensive value
+            // Valor defensivo 
             Def = RandomUtils.FixedRandomInt(pas.FighterRatings.Dodging) + pas.FighterRatings.DefenseBonus(pas.FighterFightAttributes);
             switch (RandomUtils.GetRandomValue(4))
             {
@@ -81,7 +81,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
             Def = DuringFighterUtils.GetGasTankFactor(pas, Def);
             Def -= DuringFighterUtils.GetHurtFactor(pas);
 
-            // Checking damage
+            //Verificando dano
             if (Def >= At)
             {
                 Comment.DoComment(act, pas, Comment.ExtractFailureComment(fightAttributes.FullComment), Pbp, fightAttributes);
@@ -107,7 +107,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
             }
             else
             {
-                // Do comments
                 switch (AttackLevel)
                 {
                     case 1:
@@ -117,33 +116,33 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
                         break;
                 }
 
-                // Damage
+                // Dano
                 DamageDone = (At - Def) * act.FighterRatings.DamageBonus(act.FighterFightAttributes) * AttackLevel;
                 DuringFighterUtils.DamageFighter(act, pas, DamageDone, fightAttributes, fightAttributes.Statistics);
 
                 PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalSuccessPosition(fightAttributes.FullComment), fightAttributes);
 
-                // Check KO
+                // Verificar KO
                 if (CheckActions.CheckKO(act, pas, DamageDone, fightAttributes.KOSubProb, fightAttributes))
                 {
                     DuringFighterUtils.ProcessKO(act, pas, Pbp, fightAttributes);
                 }
 
-                // Check Injury
+                // Verificar Injury
                 InjuryType = CheckActions.CheckInjury(act, pas, DamageDone, fightAttributes.InjuryProb, fightAttributes);
                 if (InjuryType != Sim.INJURYORCUTFALSE)
                 {
                     DuringFighterUtils.ProcessInjury(act, pas, InjuryType, Pbp, fightAttributes);
                 }
 
-                // Check Cut
-                InjuryType = CheckCut(act, pas, DamageDone, fightAttributes.CutProb);
+                // Verificar Cut
+                InjuryType = CheckActions.CheckCut(act, pas, DamageDone, fightAttributes.CutProb, fightAttributes);
                 if (InjuryType != Sim.INJURYORCUTFALSE)
                 {
-                    ProcessCut(act, pas, InjuryType);
+                    DuringFighterUtils.ProcessCut(act, pas, InjuryType);
                 }
 
-                // Statistics
+                // Stats
                 StatsUtils.UpdateStatistic(fightAttributes.Statistics, GetFighterActions.GetFighterNumber(act, fightAttributes), StatisticsTypes.stPunches, 0, Comment.ExtractHitsLanded(fightAttributes.FullComment));
             }
         }

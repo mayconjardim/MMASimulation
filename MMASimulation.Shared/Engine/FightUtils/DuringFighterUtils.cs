@@ -422,5 +422,67 @@ namespace MMASimulation.Shared.Engine.FightUtils
             }
         }
 
+        public static void ProcessCut(Fighter act, Fighter pas, int cutType, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            bool finishedByCut = false;
+            string injuryComment = string.Empty;
+
+            if (!(fightAttributes.HitLocation >= 0 && fightAttributes.HitLocation <= 8))
+            {
+                return;
+            }
+
+            fightAttributes.HitLocation = Comment.ExtractHitLocation(fightAttributes.FullComment);
+
+            if (cutType == Sim.BIGINJURYORCUTTRUE)
+            {
+
+                //Impede uma mudança de luta finalizada de KO para Cut
+                if (!fightAttributes.BoutFinished)
+                {
+                    fightAttributes.BoutFinished = true;
+                    fightAttributes.FinishedType = ReadTxts.ReadListToComment("Misc", Sim.INJ);
+                    fightAttributes.FinishMode = Sim.RES_INJURY;
+                    fightAttributes.FighterWinner = GetFighterActions.GetFighterNumber(act, fightAttributes);
+                    finishedByCut = true;
+                }
+
+
+                //Comentário sobre lesão
+                switch (fightAttributes.HitLocation)
+                {
+                    case int n when (n >= 0 && n <= 8):
+                        {
+                            injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("FaceCut0"));
+                            Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                            pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                            pas.FighterFightAttributes.Cuts += 4;
+                            if (finishedByCut)
+                            {
+                                fightAttributes.FinishedDescription = Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes);
+                            }
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                switch (fightAttributes.HitLocation)
+                {
+                    case int n when (n >= 0 && n <= 8):
+                        {
+                            injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("FaceCut1"));
+                            Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                            pas.FighterFightAttributes.ControlMod -= 0.5;
+                            pas.FighterFightAttributes.Moral -= 0.5;
+                            pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                            pas.FighterFightAttributes.Cuts += 1;
+                            break;
+                        }
+                }
+            }
+        }
+
+
     }
 }
