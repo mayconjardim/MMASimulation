@@ -30,7 +30,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Counter
                     PunchActions.ActPunch(Act, Pas, Pbp, fightAttributes);
                     break;
                 case 2:
-                    ActKick(Act, Pas);
+                    KickActions.ActKick(Act, Pas, Pbp, fightAttributes);
                     break;
                 case 3:
                     if (fightAttributes.InTheClinch)

@@ -109,7 +109,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
                 Comment.DoComment(act, pas, Comment.ExtractComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
                 // Damage
-                double damageDone = (at - def) * act.FighterRatings.GetDamageBonus() * attackLevel * Sim.KICKDAMAGEBONUS;
+                double damageDone = (at - def) * act.FighterRatings.DamageBonus(act.FighterFightAttributes) * attackLevel * Sim.KICKDAMAGEBONUS;
                 DuringFighterUtils.DamageFighter(act, pas, damageDone, fightAttributes, fightAttributes.Statistics);
 
                 PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalSuccessPosition(fightAttributes.FullComment), fightAttributes);

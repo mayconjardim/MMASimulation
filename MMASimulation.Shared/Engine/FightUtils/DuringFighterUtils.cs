@@ -483,6 +483,17 @@ namespace MMASimulation.Shared.Engine.FightUtils
             }
         }
 
+        public static Fighter FighterActiveOrPassive(Fighter fighter1, Fighter fighter2, int number)
+        {
+            if (number == 0)
+            {
+                return fighter1;
+            }
+            else
+            {
+                return fighter2;
+            }
+        }
 
     }
 }
