@@ -1,7 +1,7 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
 using MMASimulation.Shared.Engine.Comments.Utils;
-using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
+using MMASimulation.Shared.Engine.Fight.Actions.Counter;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
@@ -95,23 +95,24 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 
                     if (fightAttributes.IsCounter)
                     {
-                        DoCounterAttack(pas, act);
+                        CounterActions.DoCounterAttack(pas, act, Pbp, fightAttributes);
+
                     }
                     else
                     {
-                        ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+                        PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
                     }
                 }
                 else
                 {
                     fightAttributes.IsCounter = false;
-                    ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+                    PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
                 }
             }
             else
             {
                 Comment.DoComment(act, pas, Comment.ExtractInitComment(fightAttributes.FullComment), Pbp, fightAttributes);
-                ProcessAfterMovePosition(act, pas, ExtractFinalSuccessPosition(FullComment));
+                PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalSuccessPosition(fightAttributes.FullComment), fightAttributes);
             }
         }
 
