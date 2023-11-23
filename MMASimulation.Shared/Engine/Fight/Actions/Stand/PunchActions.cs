@@ -124,7 +124,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
                 PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalSuccessPosition(fightAttributes.FullComment), fightAttributes);
 
                 // Check KO
-                if (CheckKO(act, pas, DamageDone, fightAttributes.KOSubProb))
+                if (CheckActions.CheckKO(act, pas, DamageDone, fightAttributes.KOSubProb, fightAttributes))
                 {
                     ProcessKO(act, pas);
                 }

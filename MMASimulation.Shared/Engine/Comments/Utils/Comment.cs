@@ -3,6 +3,7 @@ using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
+using System.Xml.Linq;
 
 namespace MMASimulation.Shared.Engine.Comments.Utils
 {
@@ -284,6 +285,19 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             if (splitFullString.Length > 13)
             {
                 int.TryParse(splitFullString[13], out result);
+            }
+
+            return result;
+        }
+
+        public static string ExtractMoveName(string comment)
+        {
+            string result = "Unknown";
+            string[] splitFullString = comment.Split(';');
+
+            if (splitFullString.Length > 7)
+            {
+                result = splitFullString[7];
             }
 
             return result;

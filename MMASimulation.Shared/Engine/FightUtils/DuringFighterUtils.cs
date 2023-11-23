@@ -267,5 +267,59 @@ namespace MMASimulation.Shared.Engine.FightUtils
             }
         }
 
+        public static void ProcessKO(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+
+            if (fightAttributes.BoutFinished)
+            {
+                return;
+            }
+
+            // KO
+            if (fightAttributes.FinishMode == Sim.RES_KO)
+            {
+                if (fightAttributes.HitLocation <= 8)
+                {
+                    fightAttributes.FinishedType = ReadTxts.ReadListToComment("Misc", Sim.KO);
+                    fightAttributes.FinishMode = Sim.RES_KO;
+
+
+                    // Isso é necessário para estruturas de comentários incomuns, como troca de socos
+                    if (fightAttributes.FinishedDescription == string.Empty)
+                    {
+                        fightAttributes.FinishedDescription = Comment.ExtractMoveName(fightAttributes.FullComment);
+                    }
+
+                    if (pas.FighterFightAttributes.OnTheGround)
+                    {
+                        Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("GroundKO")), Pbp, fightAttributes);
+                    }
+                    else
+                    {
+                        Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("StandingKO")), Pbp, fightAttributes);
+                    }
+
+                    fightAttributes.BoutFinished = true;
+                    fightAttributes.FighterWinner = GetFighterActions.GetFighterNumber(act, fightAttributes);
+                }
+                else
+                {
+                    pas.FighterFightAttributes.Dazed = true;
+                }
+            }
+            // TKO
+            else
+            {
+                fightAttributes.BoutFinished = true;
+                fightAttributes.FinishedType = ReadTxts.ReadListToComment("Misc", Sim.TKO);
+                fightAttributes.FinishMode = Sim.RES_TKO;
+                fightAttributes.FinishedDescription = Comment.ExtractMoveName(fightAttributes.FullComment);
+                Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("TKORef")), Pbp, fightAttributes);
+                fightAttributes.BoutFinished = true;
+                fightAttributes.FighterWinner = GetFighterActions.GetFighterNumber(act, fightAttributes);
+            }
+        }
+
+
     }
 }
