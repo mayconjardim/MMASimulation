@@ -51,7 +51,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 
             DamageDone = DuringFighterUtils.UpsetSystem(act, pas, DamageDone, fightAttributes);
 
-            double At = DamageDone / (Sim.KOPROBCUT + Sim.KOFREQUENCY);
+            double At = DamageDone / (Sim.KOPROBCUT + fightAttributes.KOFreq);
             At += Prob;
 
             // Defense KO Res
@@ -95,6 +95,31 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             }
 
             return result;
+        }
+
+        public static int CheckInjury(Fighter act, Fighter pas, double DamageDone, int InjuryProb, FightAttributes fightAttributes)
+        {
+            const int MAX_INJURY = 20;
+
+
+            int Prob = (int)Math.Round(DamageDone / (Sim.INJURYCUT + fightAttributes.InjuryFreq)) + InjuryProb + RandomUtils.GetRandom();
+
+            int value = RandomUtils.GetRandomValue(MAX_INJURY) * (act.FighterFightAttributes.InjuryResistance + 2);
+            int injuryLimitB = RandomUtils.GetBalancedRandom(value + Sim.BIGINJURIES);
+            int injuryLimitS = RandomUtils.GetBalancedRandom(value + Sim.SMALLINJURIES);
+
+            if (Prob >= injuryLimitB)
+            {
+                return Sim.BIGINJURYORCUTTRUE;
+            }
+            else if (Prob >= injuryLimitS)
+            {
+                return Sim.SMALLINJURYORCUTTRUE;
+            }
+            else
+            {
+                return Sim.INJURYORCUTFALSE;
+            }
         }
 
 

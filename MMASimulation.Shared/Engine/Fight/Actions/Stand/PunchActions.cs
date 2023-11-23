@@ -126,7 +126,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
                 // Check KO
                 if (CheckActions.CheckKO(act, pas, DamageDone, fightAttributes.KOSubProb, fightAttributes))
                 {
-                    ProcessKO(act, pas);
+                    DuringFighterUtils.ProcessKO(act, pas, Pbp, fightAttributes);
                 }
 
                 // Check Injury
