@@ -1,6 +1,9 @@
-﻿using MMASimulation.Shared.Engine.Constants;
+﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
+using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
+using MMASimulation.Shared.Models.Fights;
 
 namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 {
@@ -110,6 +113,26 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 
             return result;
         }
+
+        public static void RefBreakClinch(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+
+            if (fightAttributes.BoutFinished)
+            {
+                return;
+            }
+
+            //Quebra o clinche após movimentos falhos
+            if (fightAttributes.InTheClinch && Sim.BREAKCLINCHFREQUENCY > act.FighterFightAttributes.Rush * 2)
+            {
+                if (RandomUtils.FixedRandomInt(Sim.BREAKCLINCHPROB) > 5)
+                {
+                    Comment.DoComment(act, pas, Comment.ReturnComment(ReadTxts.ReadFileToList("RefBreakClinch")), Pbp, fightAttributes);
+                    fightAttributes.InTheClinch = false;
+                }
+            }
+        }
+
 
 
     }

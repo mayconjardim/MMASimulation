@@ -124,10 +124,11 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
             const double GRAPPLING_MOD = 0.6;
 
             double At, Def, DamageDone, DamageMod;
-            int AttackLevel, InjuryType;
+            int attackLevel, InjuryType;
 
-            AttackLevel = GetAttackLevel(act, pas, (act.GetPunching() + act.GetClinchStriking()) / 2,
-                    (pas.GetDodging() + pas.GetClinchStriking()) / 2);
+            attackLevel = DuringFighterUtils.GetAttackLevel(act, pas, (act.FighterRatings.Punching + act.FighterRatings.ClinchStriking) / 2,
+                    (pas.FighterRatings.Dodging + pas.FighterRatings.ClinchStriking) / 2, fightAttributes);
+
 
             if (ClinchType == -1)
             {
@@ -135,138 +136,151 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
             }
             DamageMod = 1;
 
+
+
             switch (ClinchType)
             {
                 case Sim.THAI_ATTACK:
-                    switch (AttackLevel)
+                    switch (attackLevel)
                     {
-                        case 1: GetComment(Comments.ThaiPunch1); break;
-                        case 2: GetComment(Comments.ThaiPunch2); break;
-                        case 3: GetComment(Comments.ThaiPunch3); break;
+                        case 1:
+                            Comment.GetComment(ReadTxts.ReadFileToList("ThaiPunch1"), fightAttributes);
+                            break;
+                        case 2:
+                            Comment.GetComment(ReadTxts.ReadFileToList("ThaiPunch2"), fightAttributes);
+                            break;
+                        case 3:
+                            Comment.GetComment(ReadTxts.ReadFileToList("ThaiPunch3"), fightAttributes);
+                            break;
                     }
                     DamageMod = 1;
                     break;
 
                 case Sim.DIRTY_BOXING:
-                    switch (AttackLevel)
+                    switch (attackLevel)
                     {
-                        case 1: GetComment(Comments.DirtyBoxing1); break;
-                        case 2: GetComment(Comments.DirtyBoxing2); break;
-                        case 3: GetComment(Comments.DirtyBoxing3); break;
+                        case 1:
+                            Comment.GetComment(ReadTxts.ReadFileToList("DirtyBoxing1"), fightAttributes);
+                            break;
+                        case 2:
+                            Comment.GetComment(ReadTxts.ReadFileToList("DirtyBoxing2"), fightAttributes);
+                            break;
+                        case 3:
+                            Comment.GetComment(ReadTxts.ReadFileToList("DirtyBoxing3"), fightAttributes);
+                            break;
                     }
                     DamageMod = 1;
                     break;
 
                 case Sim.GRAPPLING_ATTACK:
-                    switch (AttackLevel)
+                    switch (attackLevel)
                     {
-                        case 1: GetComment(Comments.GrapplingPunch1); break;
-                        case 2: GetComment(Comments.GrapplingPunch2); break;
-                        case 3: GetComment(Comments.GrapplingPunch2); break;
+                        case 1:
+                            Comment.GetComment(ReadTxts.ReadFileToList("GrapplingPunch1"), fightAttributes);
+                            break;
+                        case 2:
+                            Comment.GetComment(ReadTxts.ReadFileToList("GrapplingPunch2"), fightAttributes);
+                            break;
+                        case 3:
+                            Comment.GetComment(ReadTxts.ReadFileToList("GrapplingPunch2"), fightAttributes);
+                            break;
                     }
                     DamageMod = GRAPPLING_MOD;
                     break;
             }
 
-            DoComment(act, pas, ExtractInitComment(FullComment));
+            Comment.DoComment(act, pas, Comment.ExtractInitComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
-            HitLocation = ExtractHitLocation(FullComment);
+            fightAttributes.HitLocation = Comment.ExtractHitLocation(fightAttributes.FullComment);
 
-            At = fixedRandomInt((act.GetPunching() + act.GetClinchStriking()) / 2) + act.GetAttackBonus();
+            At = RandomUtils.FixedRandomInt((act.FighterRatings.Punching + act.FighterRatings.ClinchStriking) / 2) + act.FighterRatings.AttackBonus(act.FighterFightAttributes);
 
-            switch (Random.Next(4))
+            switch (RandomUtils.GetRandomValue(4))
             {
-                case 0: At += fixedRandomInt(act.GetStrength() / 2); break;
-                case 1: At += fixedRandomInt(act.GetAgility() / 2); break;
-                case 2: At += fixedRandomInt(act.GetDodging() / 2); break;
-                case 3: At += fixedRandomInt(act.GetClinchStriking() / 2); break;
+                case 0: At += RandomUtils.FixedRandomInt(act.FighterRatings.Strength / 2); break;
+                case 1: At += RandomUtils.FixedRandomInt(act.FighterRatings.Agility / 2); break;
+                case 2: At += RandomUtils.FixedRandomInt(act.FighterRatings.Dodging / 2); break;
+                case 3: At += RandomUtils.FixedRandomInt(act.FighterRatings.ClinchStriking / 2); break;
             }
 
-            At += ApplicationUtils.GetSRandom();
-            At = GetGasTankFactor(act, At);
-            At -= GetHurtFactor(act);
+            At += RandomUtils.GeSmallRandom();
+            At = DuringFighterUtils.GetGasTankFactor(act, At);
+            At -= DuringFighterUtils.GetHurtFactor(act);
 
-            Def = fixedRandomInt((pas.GetDodging() + pas.GetClinchStriking()) / 2) + pas.GetDefenseBonus();
+            Def = RandomUtils.FixedRandomInt((pas.FighterRatings.Dodging + pas.FighterRatings.ClinchStriking) / 2) + pas.FighterRatings.DefenseBonus(pas.FighterFightAttributes);
 
-            switch (Random.Next(4))
+            switch (RandomUtils.GetRandomValue(4))
             {
-                case 0: Def += fixedRandomInt(pas.GetStrength() / 2); break;
-                case 1: Def += fixedRandomInt(pas.GetAgility() / 2); break;
-                case 2: Def += fixedRandomInt(pas.GetClinchGrappling() / 2); break;
-                case 3: Def += fixedRandomInt(pas.GetClinchStriking() / 2); break;
+                case 0: Def += RandomUtils.FixedRandomInt(pas.FighterRatings.Strength / 2); break;
+                case 1: Def += RandomUtils.FixedRandomInt(pas.FighterRatings.Agility / 2); break;
+                case 2: Def += RandomUtils.FixedRandomInt(pas.FighterRatings.ClinchGrappling / 2); break;
+                case 3: Def += RandomUtils.FixedRandomInt(pas.FighterRatings.ClinchStriking / 2); break;
             }
 
-            Def += ApplicationUtils.GetSRandom();
-            Def = GetGasTankFactor(pas, Def);
-            Def -= GetHurtFactor(pas);
+            Def += RandomUtils.GeSmallRandom();
+            Def = DuringFighterUtils.GetGasTankFactor(pas, Def);
+            Def -= DuringFighterUtils.GetHurtFactor(pas);
 
             if (Def >= At)
             {
-                DoComment(act, pas, ExtractFailureComment(FullComment));
-                if (!IsCounter)
+                Comment.DoComment(act, pas, Comment.ExtractFailureComment(fightAttributes.FullComment), Pbp, fightAttributes);
+
+                if (!fightAttributes.IsCounter)
                 {
-                    IsCounter = CheckCounterAttack(act, pas, CounterProb);
-                    if (IsCounter)
+                    fightAttributes.IsCounter = CheckActions.CheckCounterAttack(act, pas, fightAttributes.CounterProb, fightAttributes);
+                    if (fightAttributes.IsCounter)
                     {
-                        DoCounterAttack(pas, act);
+                        CounterActions.DoCounterAttack(pas, act, Pbp, fightAttributes);
                     }
                     else
                     {
-                        ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
-                        RefBreakClinch(act, pas);
+                        PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
+                        GetClinchActions.RefBreakClinch(act, pas, Pbp, fightAttributes);
                     }
                 }
                 else
                 {
-                    IsCounter = false;
-                    ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+                    fightAttributes.IsCounter = false;
+                    PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
                 }
             }
             else
             {
-                switch (AttackLevel)
+                switch (attackLevel)
                 {
-                    case 1: DoComment(act, pas, ExtractComment(FullComment)); break;
-                    case 2: DoComment(act, pas, ExtractComment(FullComment)); break;
-                    case 3: DoComment(act, pas, ExtractComment(FullComment)); break;
+                    case 1: Comment.DoComment(act, pas, Comment.ExtractComment(fightAttributes.FullComment), Pbp, fightAttributes); break;
+                    case 2: Comment.DoComment(act, pas, Comment.ExtractComment(fightAttributes.FullComment), Pbp, fightAttributes); ; break;
+                    case 3: Comment.DoComment(act, pas, Comment.ExtractComment(fightAttributes.FullComment), Pbp, fightAttributes); break;
                 }
 
-                DamageDone = (At - Def) * act.GetDamageBonus() * AttackLevel * DamageMod;
-                DamageFighter(act, pas, DamageDone);
+                DamageDone = (At - Def) * act.FighterRatings.DamageBonus(act.FighterFightAttributes) * attackLevel * DamageMod;
+                DuringFighterUtils.DamageFighter(act, pas, DamageDone, fightAttributes, fightAttributes.Statistics);
 
-                ProcessAfterMovePosition(act, pas, ExtractFinalSuccessPosition(FullComment));
+                PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
 
-                if (CheckKO(act, pas, DamageDone, KOSubProb))
+
+                if (CheckActions.CheckKO(act, pas, DamageDone, fightAttributes.KOSubProb, fightAttributes))
                 {
-                    ProcessKO(act, pas);
+                    DuringFighterUtils.ProcessKO(act, pas, Pbp, fightAttributes);
                 }
 
-                InjuryType = CheckInjury(act, pas, DamageDone, InjuryProb);
-                if (InjuryType != ApplicationUtils.INJURYORCUTFALSE)
+                int injuryType = CheckActions.CheckInjury(act, pas, DamageDone, fightAttributes.InjuryProb, fightAttributes);
+                if (injuryType != Sim.INJURYORCUTFALSE)
                 {
-                    ProcessInjury(act, pas, InjuryType);
+                    DuringFighterUtils.ProcessInjury(act, pas, injuryType, Pbp, fightAttributes);
                 }
 
-                InjuryType = CheckCut(act, pas, DamageDone, CutProb);
-                if (InjuryType != ApplicationUtils.INJURYORCUTFALSE)
+                injuryType = CheckActions.CheckCut(act, pas, DamageDone, fightAttributes.CutProb, fightAttributes);
+                if (injuryType != Sim.INJURYORCUTFALSE)
                 {
-                    ProcessCut(act, pas, InjuryType);
+                    DuringFighterUtils.ProcessCut(act, pas, injuryType, Pbp, fightAttributes);
                 }
             }
         }
 
-        private void HandleClinchType(Comment punch1, Comment punch2, Comment punch3, ref double damageMod, double grapplingMod = 1)
-        {
-            switch (AttackLevel)
-            {
-                case 1: GetComment(punch1); break;
-                case 2: GetComment(punch2); break;
-                case 3: GetComment(punch3); break;
-            }
-            damageMod = ClinchType == GRAPPLING_ATTACK ? grapplingMod : 1;
-        }
+
     }
 
 
 }
-}
+
