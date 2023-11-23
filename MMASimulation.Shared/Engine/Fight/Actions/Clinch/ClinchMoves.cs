@@ -278,7 +278,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
             }
         }
 
-
     }
 
 
