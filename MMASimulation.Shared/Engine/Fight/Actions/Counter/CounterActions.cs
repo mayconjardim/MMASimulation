@@ -3,6 +3,7 @@ using MMASimulation.Shared.Engine.Comments.Utils;
 using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
 using MMASimulation.Shared.Engine.Fight.Actions.Clinch;
+using MMASimulation.Shared.Engine.Fight.Actions.Stand;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
 
@@ -26,7 +27,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Counter
             switch (FinalMove)
             {
                 case 1:
-                    ActPunch(Act, Pas);
+                    PunchActions.ActPunch(Act, Pas, Pbp, fightAttributes);
                     break;
                 case 2:
                     ActKick(Act, Pas);
