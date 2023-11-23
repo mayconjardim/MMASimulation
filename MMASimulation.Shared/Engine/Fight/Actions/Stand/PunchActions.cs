@@ -133,7 +133,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
                 InjuryType = CheckActions.CheckInjury(act, pas, DamageDone, fightAttributes.InjuryProb, fightAttributes);
                 if (InjuryType != Sim.INJURYORCUTFALSE)
                 {
-                    ProcessInjury(act, pas, InjuryType);
+                    DuringFighterUtils.ProcessInjury(act, pas, InjuryType, Pbp, fightAttributes);
                 }
 
                 // Check Cut

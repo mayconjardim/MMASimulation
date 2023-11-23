@@ -122,6 +122,31 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             }
         }
 
+        public static int CheckCut(Fighter act, Fighter pas, double damageDone, int cutProb, FightAttributes fightAttributes)
+        {
+            const int MAX_CUT = 20;
+
+            int prob = (int)Math.Round(damageDone / (Sim.INJURYCUT + fightAttributes.InjuryFreq)) + cutProb + RandomUtils.GetRandom();
+
+            int value = new Random().Next(MAX_CUT) * (act.FighterFightAttributes.CutResistance + 2);
+            int injuryLimitB = RandomUtils.GetBalancedRandom(value + Sim.BIGINJURIES);
+            int injuryLimitS = RandomUtils.GetBalancedRandom(value + Sim.SMALLINJURIES);
+
+            if (prob >= injuryLimitB)
+            {
+                return Sim.BIGINJURYORCUTTRUE;
+            }
+            else if (prob >= injuryLimitS)
+            {
+                return Sim.SMALLINJURYORCUTTRUE;
+            }
+            else
+            {
+                return Sim.INJURYORCUTFALSE;
+            }
+        }
+
+
 
     }
 }
