@@ -314,5 +314,11 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             return splitFullString.Length > 1 ? splitFullString[1] : string.Empty;
         }
 
+        public static int ExtractHitsLanded(string comment)
+        {
+            string[] splitFullString = comment.Split(';');
+            return splitFullString.Length > 9 ? int.Parse(splitFullString[9]) : 0;
+        }
+
     }
 }

@@ -10,10 +10,10 @@ using MMASimulation.Shared.Models.Fights;
 
 namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
 {
-    internal class PunchActions
+    public static class PunchActions
     {
 
-        public void ActPunch(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        public static void ActPunch(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
         {
             double At, Def, DamageDone;
             int AttackLevel, InjuryType;
@@ -139,7 +139,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
                 InjuryType = CheckActions.CheckCut(act, pas, DamageDone, fightAttributes.CutProb, fightAttributes);
                 if (InjuryType != Sim.INJURYORCUTFALSE)
                 {
-                    DuringFighterUtils.ProcessCut(act, pas, InjuryType);
+                    DuringFighterUtils.ProcessCut(act, pas, InjuryType, Pbp, fightAttributes);
                 }
 
                 // Stats
