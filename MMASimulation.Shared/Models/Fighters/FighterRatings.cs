@@ -128,5 +128,10 @@ namespace MMASimulation.Shared.Models.Fighters
             return result;
         }
 
+        public double GetKoResistance(FighterFightAttributes attributes)
+        {
+            return KoResistance + attributes.KoResistanceMod;
+        }
+
     }
 }

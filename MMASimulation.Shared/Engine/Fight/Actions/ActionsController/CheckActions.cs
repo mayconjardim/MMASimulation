@@ -49,13 +49,13 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             const double DAZED_PROB = 1.5;
             bool result = false;
 
-            DamageDone = UpsetSystem(act, pas, DamageDone);
+            DamageDone = DuringFighterUtils.UpsetSystem(act, pas, DamageDone, fightAttributes);
 
-            double At = DamageDone / ApplicationUtils.GetKOFrequency();
+            double At = DamageDone / (Sim.KOPROBCUT + Sim.KOFREQUENCY);
             At += Prob;
 
             // Defense KO Res
-            double Def = (Pas.GetKORes() + RandomUtils.FixedRandomInt(pas.FighterFightAttributes.CurrentHP / 5)) / Sim.KOFREQUENCY;
+            double Def = (pas.FighterRatings.GetKoResistance(pas.FighterFightAttributes) + RandomUtils.FixedRandomInt(pas.FighterFightAttributes.CurrentHP / 5)) / Sim.KOFREQUENCY;
 
             // Resolution
             if (At > Def)
@@ -64,12 +64,11 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
                 {
                     result = true;
                     fightAttributes.FinishMode = Sim.RES_KO;
-                    CheckKOTN(DamageDone);
                 }
             }
             else if (At * DAZED_PROB > Def)
             {
-                pas.FighterFightAttributes.KOResistanceMod--;
+                pas.FighterFightAttributes.KoResistanceMod--;
                 result = false;
                 pas.FighterFightAttributes.Dazed = true;
             }
@@ -78,6 +77,21 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             {
                 result = CheckTKO(act, pas, DamageDone, Prob);
                 fightAttributes.FinishMode = Sim.RES_TKO;
+            }
+
+            return result;
+        }
+
+        public static bool CheckTKO(Fighter act, Fighter pas, double DamageDone, int Prob)
+        {
+            bool result = false;
+
+            if (pas.FighterFightAttributes.Dazed && act.FighterFightAttributes.Rush > Sim.TKORUSHMINIMUN && pas.FighterFightAttributes.CurrentHP < Sim.TKOMINHITPOINTS)
+            {
+                if (RandomUtils.GetBalancedRandom(Sim.TKOFREQUENCY) < 7) // 7 = Referee.TKOAwareness
+                {
+                    result = true;
+                }
             }
 
             return result;
