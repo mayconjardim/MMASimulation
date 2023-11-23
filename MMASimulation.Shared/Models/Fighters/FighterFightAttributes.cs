@@ -69,6 +69,9 @@
         public int[] RoundTechPoints { get; set; } = new int[10];
         public int[] PointsPenalization { get; set; } = new int[10];
 
+        // Machucados
+        public List<string> Injury = new List<string>();
+
         public FighterFightAttributes()
         {
             StrengthMod = 0.0;
@@ -210,6 +213,19 @@
             modifiers *= DirtyFighting;
 
             return (new Random().NextDouble() * MAX_RANDOM <= modifiers);
+        }
+
+        public void AddInjuryToList(string injuryName)
+        {
+            if (Injury == null)
+            {
+                Injury = new List<string>();
+            }
+
+            if (!Injury.Contains(injuryName))
+            {
+                Injury.Add(injuryName);
+            }
         }
 
 

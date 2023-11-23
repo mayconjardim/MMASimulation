@@ -320,6 +320,107 @@ namespace MMASimulation.Shared.Engine.FightUtils
             }
         }
 
+        public static void ProcessInjury(Fighter act, Fighter pas, int injuryType, List<FightPBP> Pbp, FightAttributes fightAttributes)
+        {
+            bool finishedByInj = false;
+            fightAttributes.HitLocation = Comment.ExtractHitLocation(fightAttributes.FullComment);
+            string injuryComment = string.Empty;
+
+            if (injuryType == Sim.BIGINJURYORCUTTRUE)
+            {
+                // Impede que uma luta finalizada seja alterada de KO para vitória por lesão
+                if (!fightAttributes.BoutFinished)
+                {
+                    fightAttributes.BoutFinished = true;
+                    fightAttributes.FinishedType = ReadTxts.ReadListToComment("Misc", Sim.INJ);
+                    fightAttributes.FinishMode = Sim.RES_INJURY;
+                    fightAttributes.FighterWinner = GetFighterActions.GetFighterNumber(act, fightAttributes);
+                    finishedByInj = true;
+                }
+
+                // Comentário sobre lesão
+
+                switch (fightAttributes.HitLocation)
+                {
+                    case int n when (n >= 0 && n <= 8):
+                        injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("FaceInjuries1"));
+                        Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                        pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                        pas.FighterFightAttributes.FaceInjury += 4;
+                        break;
+                    case int n when (n >= 9 && n <= 12):
+                        injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("BodyInjuries1"));
+                        Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                        pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                        if (n >= 9 && n <= 10)
+                        {
+                            pas.FighterFightAttributes.TorsoInjury += 4;
+                        }
+                        else
+                        {
+                            pas.FighterFightAttributes.BackInjury += 4;
+                        }
+                        break;
+                    case int n when (n >= 13 && n <= 14):
+                        injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("ArmInjuries1"));
+                        Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                        pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                        pas.FighterFightAttributes.LeftArmInjury += (n == 13) ? 4 : 4;
+                        break;
+                    case int n when (n >= 15 && n <= 20):
+                        injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("LegInjuries1"));
+                        Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                        pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                        pas.FighterFightAttributes.LeftLegInjury += (n == 15 || n == 17 || n == 19) ? 4 : 4;
+                        break;
+                }
+
+                if (finishedByInj)
+                {
+                    fightAttributes.FinishedDescription = Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes);
+                }
+            }
+            else
+            {
+
+                switch (fightAttributes.HitLocation)
+                {
+                    case int n when (n >= 0 && n <= 8):
+                        injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("FaceInjuries0"));
+                        Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                        pas.FighterFightAttributes.ControlMod -= 0.5;
+                        pas.FighterFightAttributes.Moral -= 0.5;
+                        pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                        pas.FighterFightAttributes.FaceInjury += 1;
+                        break;
+                    case int n when (n >= 9 && n <= 12):
+                        injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("BodyInjuries0"));
+                        Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                        pas.FighterFightAttributes.AgilityMod -= 0.5;
+                        pas.FighterFightAttributes.StrengthMod -= 0.5;
+                        pas.FighterFightAttributes.DodgingMod -= 0.5;
+                        pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                        pas.FighterFightAttributes.TorsoInjury += (n >= 9 && n <= 10) ? 1 : 1;
+                        break;
+                    case int n when (n >= 13 && n <= 14):
+                        injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("ArmInjuries0"));
+                        Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                        pas.FighterFightAttributes.PunchingMod -= 0.5;
+                        pas.FighterFightAttributes.StrengthMod -= 0.5;
+                        pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                        pas.FighterFightAttributes.LeftArmInjury += (n == 13) ? 1 : 1;
+                        break;
+                    case int n when (n >= 15 && n <= 20):
+                        injuryComment = Comment.ReturnComment(ReadTxts.ReadFileToList("LegInjuries0"));
+                        Comment.DoComment(act, pas, Comment.ExtractInjuryCutComment(injuryComment), Pbp, fightAttributes);
+                        pas.FighterFightAttributes.KickingMod -= 0.5;
+                        pas.FighterFightAttributes.AgilityMod -= 0.5;
+                        pas.FighterFightAttributes.AddInjuryToList(Comment.ReplaceTokens(act, pas, Comment.ExtractInjuryCutName(injuryComment), fightAttributes));
+                        pas.FighterFightAttributes.LeftLegInjury += (n == 15 || n == 17 || n == 19) ? 1 : 1;
+                        break;
+                }
+            }
+        }
 
     }
 }

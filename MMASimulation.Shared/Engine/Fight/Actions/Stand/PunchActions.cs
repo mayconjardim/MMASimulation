@@ -130,7 +130,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
                 }
 
                 // Check Injury
-                InjuryType = CheckInjury(act, pas, DamageDone, fightAttributes.InjuryProb);
+                InjuryType = CheckActions.CheckInjury(act, pas, DamageDone, fightAttributes.InjuryProb, fightAttributes);
                 if (InjuryType != Sim.INJURYORCUTFALSE)
                 {
                     ProcessInjury(act, pas, InjuryType);

@@ -3,7 +3,6 @@ using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
-using System.Xml.Linq;
 
 namespace MMASimulation.Shared.Engine.Comments.Utils
 {
@@ -301,6 +300,18 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             }
 
             return result;
+        }
+
+        public static string ExtractInjuryCutComment(string comment)
+        {
+            string[] splitFullString = comment.Split(';');
+            return splitFullString.Length > 0 ? splitFullString[0] : string.Empty;
+        }
+
+        public static string ExtractInjuryCutName(string comment)
+        {
+            string[] splitFullString = comment.Split(';');
+            return splitFullString.Length > 1 ? splitFullString[1] : string.Empty;
         }
 
     }
