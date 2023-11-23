@@ -44,5 +44,45 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             }
         }
 
+        public static bool CheckKO(Fighter act, Fighter pas, double DamageDone, int Prob, FightAttributes fightAttributes)
+        {
+            const double DAZED_PROB = 1.5;
+            bool result = false;
+
+            DamageDone = UpsetSystem(act, pas, DamageDone);
+
+            double At = DamageDone / ApplicationUtils.GetKOFrequency();
+            At += Prob;
+
+            // Defense KO Res
+            double Def = (Pas.GetKORes() + RandomUtils.FixedRandomInt(pas.FighterFightAttributes.CurrentHP / 5)) / Sim.KOFREQUENCY;
+
+            // Resolution
+            if (At > Def)
+            {
+                if (RandomUtils.FixedRandomInt(At) > RandomUtils.FixedRandomInt(Def))
+                {
+                    result = true;
+                    fightAttributes.FinishMode = Sim.RES_KO;
+                    CheckKOTN(DamageDone);
+                }
+            }
+            else if (At * DAZED_PROB > Def)
+            {
+                pas.FighterFightAttributes.KOResistanceMod--;
+                result = false;
+                pas.FighterFightAttributes.Dazed = true;
+            }
+
+            if (!result)
+            {
+                result = CheckTKO(act, pas, DamageDone, Prob);
+                fightAttributes.FinishMode = Sim.RES_TKO;
+            }
+
+            return result;
+        }
+
+
     }
 }

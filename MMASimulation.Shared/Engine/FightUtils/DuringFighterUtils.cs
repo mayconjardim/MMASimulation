@@ -252,6 +252,20 @@ namespace MMASimulation.Shared.Engine.FightUtils
             act.FighterFightAttributes.IncreasePoints(fightAttributes.CurrentRound, (int)(DamageDone / Sim.DAMAGECUTPOINTS));
         }
 
+        public static double UpsetSystem(Fighter act, Fighter pas, double value, FightAttributes fightAttributes)
+        {
+            const int UPSET_POWER = 100;
+
+            if (act.FighterRatings.Ranking() < pas.FighterRatings.Ranking() &&
+                (RandomUtils.GetRandomValue(1000) <= Sim.UPSET_FREQUENCY + fightAttributes.Randomness))
+            {
+                return value * UPSET_POWER;
+            }
+            else
+            {
+                return value;
+            }
+        }
 
     }
 }
