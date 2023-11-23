@@ -119,5 +119,14 @@ namespace MMASimulation.Shared.Models.Fighters
             return bonus;
         }
 
+        public double DamageBonus(FighterFightAttributes attributes)
+        {
+            double result = (Strength / 2) + attributes.DamageMod + Math.Round(Aggressiveness / 8) - attributes.DirtyMoveMalus + attributes.AggPower;
+
+            result = Math.Max(1, Math.Min(100, result));
+
+            return result;
+        }
+
     }
 }

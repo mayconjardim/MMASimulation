@@ -1,8 +1,10 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
 using MMASimulation.Shared.Engine.Comments.Utils;
 using MMASimulation.Shared.Engine.Constants;
+using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
+using MMASimulation.Shared.Models.Utils;
 
 namespace MMASimulation.Shared.Engine.FightUtils
 {
@@ -226,6 +228,30 @@ namespace MMASimulation.Shared.Engine.FightUtils
 
             return result;
         }
+
+        public static void DamageFighter(Fighter act, Fighter pas, double DamageDone, FightAttributes fightAttributes, Statistics[] Statistics)
+        {
+
+            if (DamageDone < 0)
+            {
+                DamageDone = 1;
+            }
+
+            //Aumenta as estatísticas
+            StatsUtils.UpdateDamageDone(Statistics, GetFighterActions.GetFighterNumber(act, fightAttributes), DamageDone, fightAttributes.InTheClinch, act.FighterFightAttributes.OnTheGround);
+            StatsUtils.UpdateDamageReceived(Statistics, GetFighterActions.GetFighterNumber(pas, fightAttributes), DamageDone, fightAttributes.InTheClinch, pas.FighterFightAttributes.OnTheGround);
+
+            DamageDone = DamageDone;
+            pas.FighterFightAttributes.CurrentHP -= DamageDone / Sim.DAMAGECUT;
+
+            if (pas.FighterFightAttributes.CurrentHP < 0)
+            {
+                pas.FighterFightAttributes.CurrentHP = 1;
+            }
+
+            act.FighterFightAttributes.IncreasePoints(fightAttributes.CurrentRound, (int)(DamageDone / Sim.DAMAGECUTPOINTS));
+        }
+
 
     }
 }

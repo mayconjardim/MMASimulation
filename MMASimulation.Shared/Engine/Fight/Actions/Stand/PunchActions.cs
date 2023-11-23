@@ -118,10 +118,10 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Stand
                 }
 
                 // Damage
-                DamageDone = (At - Def) * act.FighterRatings.DamageBonus() * AttackLevel;
-                DamageFighter(act, pas, DamageDone);
+                DamageDone = (At - Def) * act.FighterRatings.DamageBonus(act.FighterFightAttributes) * AttackLevel;
+                DuringFighterUtils.DamageFighter(act, pas, DamageDone, fightAttributes, fightAttributes.Statistics);
 
-                ProcessAfterMovePosition(act, pas, ExtractFinalSuccessPosition(fightAttributes.FullComment));
+                PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalSuccessPosition(fightAttributes.FullComment), fightAttributes);
 
                 // Check KO
                 if (CheckKO(act, pas, DamageDone, fightAttributes.KOSubProb))

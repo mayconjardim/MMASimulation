@@ -276,5 +276,18 @@ namespace MMASimulation.Shared.Engine.Comments.Utils
             return result;
         }
 
+        public static int ExtractFinalSuccessPosition(string comment)
+        {
+            int result = 0;
+            string[] splitFullString = comment.Split(';');
+
+            if (splitFullString.Length > 13)
+            {
+                int.TryParse(splitFullString[13], out result);
+            }
+
+            return result;
+        }
+
     }
 }
