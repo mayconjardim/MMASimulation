@@ -66,5 +66,51 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
             }
         }
 
+        public static int GetClinchPunchType(Fighter act)
+        {
+            const double NO_SKILL_PROB = 0.5;
+            const double IN_CLINCH_TYPE_PROB = 1.5;
+
+            double thaiProb = RandomUtils.GetRandom();
+            double dirtyProb = RandomUtils.GetRandom();
+            double grapplingProb = RandomUtils.GetRandom();
+
+            if (!act.FighterStyles.ThaiClinch)
+            {
+                thaiProb *= NO_SKILL_PROB;
+            }
+            else if (act.FighterStyles.ClinchType == Sim.THAI_CLINCH)
+            {
+                thaiProb *= IN_CLINCH_TYPE_PROB;
+            }
+
+            if (!act.FighterStyles.DirtyBoxing)
+            {
+                dirtyProb *= NO_SKILL_PROB;
+            }
+            else if (act.FighterStyles.ClinchType == Sim.CLINCH_DIRTY_BOXING)
+            {
+                dirtyProb *= IN_CLINCH_TYPE_PROB;
+            }
+
+            int result = Sim.GRAPPLING_ATTACK;
+
+            if (grapplingProb > thaiProb && grapplingProb > dirtyProb)
+            {
+                result = Sim.GRAPPLING_ATTACK;
+            }
+            else if (dirtyProb > thaiProb && dirtyProb > grapplingProb)
+            {
+                result = Sim.DIRTY_BOXING;
+            }
+            else if (thaiProb > dirtyProb && thaiProb > grapplingProb)
+            {
+                result = Sim.THAI_ATTACK;
+            }
+
+            return result;
+        }
+
+
     }
 }
