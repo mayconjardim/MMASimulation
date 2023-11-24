@@ -10,8 +10,8 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 {
     public static class ActionsController
     {
-
-        public static void ActionsController(Fighter fighter1, Fighter fighter2, FightAttributes fightAttributes, int timeInc, List<FightPBP> Pbp)
+        /*
+        public static void ActionsControllers(Fighter fighter1, Fighter fighter2, FightAttributes fightAttributes, int timeInc, List<FightPBP> Pbp)
         {
             List<Fighter> fighters = [fighter1, fighter2];
 
@@ -273,6 +273,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
             UpdatePerformance();
             UpdateMoral();
         }
-
+        */
     }
 }

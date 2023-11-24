@@ -6,7 +6,6 @@ using MMASimulation.Shared.Engine.Fight.Actions.Counter;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
-using System.Diagnostics.Metrics;
 
 namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 {

@@ -40,7 +40,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Counter
                         switch (ClinchMove)
                         {
                             case Sim.ACT_DIRTYBOXING:
-                                ActPunchClinch(Act, Pas, Sim.DIRTY_BOXING);
+                                ClinchMoves.ActPunchClinch(Act, Pas, Sim.DIRTY_BOXING, Pbp, fightAttributes);
                                 break;
                             case Sim.ACT_THAICLINCH_KNEES:
                                 ActKickClinch(Act, Pas, Sim.THAI_ATTACK);
