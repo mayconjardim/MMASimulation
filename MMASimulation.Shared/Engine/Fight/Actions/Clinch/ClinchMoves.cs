@@ -3,10 +3,12 @@ using MMASimulation.Shared.Engine.Comments.Utils;
 using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
 using MMASimulation.Shared.Engine.Fight.Actions.Counter;
+using MMASimulation.Shared.Engine.Fight.Actions.Ground;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Enums;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
+using System.Diagnostics.Metrics;
 
 namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 {
@@ -438,6 +440,161 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 			}
 
 		}
+
+		public static void ActClinchTakedown(Fighter act, Fighter pas)
+		{
+			double at, def, damageDone;
+			int attackLevel, injuryType;
+
+			attackLevel = DuringFighterUtils.GetAttackLevel(act, pas, act.FighterRatings.ClinchGrappling, (pas.FighterRatings.ClinchGrappling + pas.FighterRatings.TakedownsDef) / 2, fightAttributes);
+
+			if (TakedownUtils.TakedownType(act) == Sim.JUDO)
+			{
+				switch (attackLevel)
+				{
+					case 1:
+					case 2:
+					case 3:
+						GetComment(ApplicationUtils.JudoTD1);
+						break;
+				}
+			}
+			else
+			{
+				switch (attackLevel)
+				{
+					case 1:
+					case 2:
+					case 3:
+						GetComment(ApplicationUtils.WrestlingTD1);
+						break;
+				}
+			}
+
+			// Initial comment
+			DoComment(act, pas, ExtractInitComment(FullComment));
+
+			// Modifying statistics
+			Bout.UpdateStatistic(GetFighterNumber(act), StatisticType.Takedowns, ExtractHitsLaunched(FullComment), 0);
+
+			// Attacking value
+			at = fixedRandomInt(act.GetClinchGrappling()) + act.GetAttackBonus();
+
+			switch (Random(4))
+			{
+				case 0:
+					at += fixedRandomInt(act.GetStrength() / 2);
+					break;
+				case 1:
+					at += fixedRandomInt(act.GetAgility() / 2);
+					break;
+				case 2:
+					at += fixedRandomInt(act.GetClinchStriking() / 2);
+					break;
+				case 3:
+					at += fixedRandomInt(act.GetTakedown() / 2);
+					break;
+			}
+
+			at += ApplicationUtils.GetSRandom();
+			at = GetGasTankFactor(act, at);
+			at -= GetHurtFactor(act);
+
+			// Defensive value
+			def = fixedRandomInt((pas.GetTakedownDef() + pas.GetClinchGrappling()) / 2);
+			def += pas.GetDefenseBonus();
+
+			switch (Random(4))
+			{
+				case 0:
+					def += fixedRandomInt(pas.GetStrength() / 2);
+					break;
+				case 1:
+					def += fixedRandomInt(pas.GetAgility() / 2);
+					break;
+				case 2:
+					def += fixedRandomInt(pas.GetDodging() / 2);
+					break;
+				case 3:
+					def += fixedRandomInt(pas.GetClinchGrappling() / 2);
+					break;
+			}
+
+			def += ApplicationUtils.GetSRandom();
+			def = GetGasTankFactor(pas, def);
+			def -= GetHurtFactor(pas);
+
+			// Checking damage
+			if (def >= at)
+			{
+				DoComment(act, pas, ExtractFailureComment(FullComment));
+
+				// Counter attack
+				if (!IsCounter)
+				{
+					IsCounter = CheckCounterAttack(act, pas, CounterProb);
+
+					if (IsCounter)
+					{
+						DoCounterAttack(pas, act);
+					}
+					else
+					{
+						ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+						RefBreakClinch(act, pas);
+					}
+				}
+				else
+				{
+					IsCounter = false;
+					ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+				}
+			}
+			else
+			{
+				// Do comments
+				switch (attackLevel)
+				{
+					case 1:
+					case 2:
+					case 3:
+						DoComment(act, pas, ExtractComment(FullComment));
+						break;
+				}
+
+				// Damage
+				damageDone = ((at - def) * act.GetDamageBonus() * attackLevel) / 4;
+				DamageFighter(act, pas, damageDone);
+
+				act.RoundsInTheGround = ApplicationUtils.MINSROUNDSINTHEGROUND;
+				ProcessAfterMovePosition(act, pas, ExtractFinalSuccessPosition(FullComment));
+
+				// Check KO
+				if (CheckKO(act, pas, damageDone, KOSubProb))
+				{
+					ProcessKO(act, pas);
+				}
+
+				// Check Injury
+				injuryType = CheckInjury(act, pas, damageDone, InjuryProb);
+				if (injuryType != ApplicationUtils.INJURYORCUTFALSE)
+				{
+					ProcessInjury(act, pas, injuryType);
+				}
+
+				// Check Cut
+				injuryType = CheckCut(act, pas, damageDone, CutProb);
+				if (injuryType != ApplicationUtils.INJURYORCUTFALSE)
+				{
+					ProcessCut(act, pas, injuryType);
+				}
+
+				// Modifying statistics
+				Bout.UpdateStatistic(GetFighterNumber(act), StatisticType.Takedowns, 0, ExtractHitsLanded(FullComment));
+			}
+		}
+
+
 
 	}
 
