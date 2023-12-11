@@ -15,6 +15,110 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 	public static class ClinchMoves
 	{
 
+		public static void ActClinch(Fighter act, Fighter pas)
+		{
+			double at, def;
+
+
+			switch (GetClinchType(act))
+			{
+				case Sim.CLINCH_DIRTY_BOXING:
+					GetComment(ApplicationUtils.DirtyClinch);
+					break;
+				case Sim.THAI_CLINCH:
+					GetComment(ApplicationUtils.ThaiClinch);
+					break;
+				case Sim.SIMPLE_GRAPPLING:
+					GetComment(ApplicationUtils.Clinch);
+					break;
+			}
+
+			DoComment(act, pas, ExtractInitComment(FullComment));
+
+			Bout.UpdateStatistic(GetFighterNumber(act), StatisticType.Grappling, ExtractHitsLaunched(FullComment), 0);
+
+			at = RandomUtils.FixedRandomInt(act.GetClinchGrappling()) + act.GetAttackBonus() + ApplicationUtils.CLINCHMALUS;
+
+			switch (Random(4))
+			{
+				case 0:
+					at += RandomUtils.FixedRandomInt(act.GetStrength() / 2);
+					break;
+				case 1:
+					at += RandomUtils.FixedRandomInt(act.GetAgility() / 2);
+					break;
+				case 2:
+					at += RandomUtils.FixedRandomInt(act.GetDodging() / 2);
+					break;
+				case 3:
+					at += RandomUtils.FixedRandomInt(act.GetClinchGrappling() / 2);
+					break;
+			}
+
+			at += RandomUtils.GeSmallRandom();
+			at = DuringFighterUtils.GetGasTankFactor(act, at);
+			at -= DuringFighterUtils.GetHurtFactor(act);
+
+			// Defensive value
+			def = RandomUtils.FixedRandomInt(pas.GetClinchGrappling());
+			def += pas.GetDefenseBonus();
+
+			switch (Random(4))
+			{
+				case 0:
+					def += RandomUtils.FixedRandomInt(pas.GetStrength() / 2);
+					break;
+				case 1:
+					def += RandomUtils.FixedRandomInt(pas.GetAgility() / 2);
+					break;
+				case 2:
+					def += RandomUtils.FixedRandomInt(pas.GetDodging() / 2);
+					break;
+				case 3:
+					def += RandomUtils.FixedRandomInt(pas.GetClinchGrappling() / 2);
+					break;
+			}
+
+			def += RandomUtils.GeSmallRandom();
+			def = DuringFighterUtils.GetGasTankFactor(pas, def);
+			def -= DuringFighterUtils.GetHurtFactor(pas);
+
+			// Checking damage
+			if (def >= at)
+			{
+				DoComment(act, pas, ExtractFailureComment(FullComment));
+
+				// Counter attack
+				if (!IsCounter)
+				{
+					IsCounter = CheckCounterAttack(act, pas, CounterProb);
+
+					if (IsCounter)
+					{
+						DoCounterAttack(pas, act);
+					}
+					else
+					{
+						ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+					}
+				}
+				else
+				{
+					IsCounter = false;
+					ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+				}
+			}
+			else
+			{
+				// Do comments
+				DoComment(act, pas, ExtractComment(FullComment));
+
+				ProcessAfterMovePosition(act, pas, ExtractFinalSuccessPosition(FullComment));
+
+				Bout.UpdateStatistic(GetFighterNumber(act), StatisticType.Grappling, 0, ExtractHitsLaunched(FullComment));
+			}
+		}
+
 		public static void ActKeepClinch(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
 		{
 			if (fightAttributes.RoundFinished)

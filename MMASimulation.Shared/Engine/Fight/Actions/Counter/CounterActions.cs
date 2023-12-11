@@ -55,7 +55,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Counter
 								ClinchMoves.ActBreakClinch(Act, Pas, Pbp, fightAttributes);
 								break;
 							default:
-								ClinchMoves.ActPunchClinch(Act, Pas, -1);
+								ClinchMoves.ActPunchClinch(Act, Pas, -1, Pbp, fightAttributes);
 								break;
 						}
 					}
