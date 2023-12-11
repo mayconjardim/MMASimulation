@@ -49,7 +49,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Counter
 								ClinchMoves.ActPunchClinch(Act, Pas, Sim.THAI_ATTACK, Pbp, fightAttributes);
 								break;
 							case Sim.ACT_TAKEDOWNCLINCH:
-								ClinchMoves.ActClinchTakedown(Act, Pas);
+								ClinchMoves.ActClinchTakedown(Act, Pas, Pbp, fightAttributes);
 								break;
 							case Sim.ACT_BREAKCLINCH:
 								ClinchMoves.ActBreakClinch(Act, Pas, Pbp, fightAttributes);
@@ -77,7 +77,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Counter
 					ActSubmission(Act, Pas);
 					break;
 				case 8:
-					if (FighterOnTop == GetFighterNumber(Act))
+					if (fightAttributes.FighterOnTop == GetFighterNumber(Act))
 					{
 						ActGnP(Act, Pas);
 					}
