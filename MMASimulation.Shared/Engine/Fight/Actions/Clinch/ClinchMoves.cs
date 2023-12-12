@@ -8,50 +8,49 @@ using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Enums;
 using MMASimulation.Shared.Models.Fighters;
 using MMASimulation.Shared.Models.Fights;
-using System.Diagnostics.Metrics;
 
 namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 {
 	public static class ClinchMoves
 	{
 
-		public static void ActClinch(Fighter act, Fighter pas)
+		public static void ActClinch(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
 		{
 			double at, def;
 
 
-			switch (GetClinchType(act))
+			switch (GetClinchActions.GetClinchType(act))
 			{
 				case Sim.CLINCH_DIRTY_BOXING:
-					GetComment(ApplicationUtils.DirtyClinch);
+					Comment.GetComment(ReadTxts.ReadFileToList("DirtyClinch"), fightAttributes);
 					break;
 				case Sim.THAI_CLINCH:
-					GetComment(ApplicationUtils.ThaiClinch);
+					Comment.GetComment(ReadTxts.ReadFileToList("ThaiClinch"), fightAttributes);
 					break;
 				case Sim.SIMPLE_GRAPPLING:
-					GetComment(ApplicationUtils.Clinch);
+					Comment.GetComment(ReadTxts.ReadFileToList("Clinch"), fightAttributes);
 					break;
 			}
 
-			DoComment(act, pas, ExtractInitComment(FullComment));
+			Comment.DoComment(act, pas, Comment.ExtractInitComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
-			Bout.UpdateStatistic(GetFighterNumber(act), StatisticType.Grappling, ExtractHitsLaunched(FullComment), 0);
+			StatsUtils.UpdateStatistic(fightAttributes.Statistics, GetFighterActions.GetFighterNumber(act, fightAttributes), StatisticsTypes.stGrappling, 0, Comment.ExtractHitsLanded(fightAttributes.FullComment));
 
-			at = RandomUtils.FixedRandomInt(act.GetClinchGrappling()) + act.GetAttackBonus() + ApplicationUtils.CLINCHMALUS;
+			at = RandomUtils.FixedRandomInt(act.FighterRatings.ClinchGrappling) + act.FighterRatings.AttackBonus(act.FighterFightAttributes) + Sim.CLINCHMALUS;
 
-			switch (Random(4))
+			switch (RandomUtils.GetRandomValue(4))
 			{
 				case 0:
-					at += RandomUtils.FixedRandomInt(act.GetStrength() / 2);
+					at += RandomUtils.FixedRandomInt(act.FighterRatings.Strength / 2);
 					break;
 				case 1:
-					at += RandomUtils.FixedRandomInt(act.GetAgility() / 2);
+					at += RandomUtils.FixedRandomInt(act.FighterRatings.Agility / 2);
 					break;
 				case 2:
-					at += RandomUtils.FixedRandomInt(act.GetDodging() / 2);
+					at += RandomUtils.FixedRandomInt(act.FighterRatings.Dodging / 2);
 					break;
 				case 3:
-					at += RandomUtils.FixedRandomInt(act.GetClinchGrappling() / 2);
+					at += RandomUtils.FixedRandomInt(act.FighterRatings.ClinchGrappling / 2);
 					break;
 			}
 
@@ -60,22 +59,22 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 			at -= DuringFighterUtils.GetHurtFactor(act);
 
 			// Defensive value
-			def = RandomUtils.FixedRandomInt(pas.GetClinchGrappling());
-			def += pas.GetDefenseBonus();
+			def = RandomUtils.FixedRandomInt(pas.FighterRatings.ClinchGrappling);
+			def += pas.FighterRatings.DefenseBonus(pas.FighterFightAttributes);
 
-			switch (Random(4))
+			switch (RandomUtils.GetRandomValue(4))
 			{
 				case 0:
-					def += RandomUtils.FixedRandomInt(pas.GetStrength() / 2);
+					def += RandomUtils.FixedRandomInt(pas.FighterRatings.Strength / 2);
 					break;
 				case 1:
-					def += RandomUtils.FixedRandomInt(pas.GetAgility() / 2);
+					def += RandomUtils.FixedRandomInt(pas.FighterRatings.Agility / 2);
 					break;
 				case 2:
-					def += RandomUtils.FixedRandomInt(pas.GetDodging() / 2);
+					def += RandomUtils.FixedRandomInt(pas.FighterRatings.Dodging / 2);
 					break;
 				case 3:
-					def += RandomUtils.FixedRandomInt(pas.GetClinchGrappling() / 2);
+					def += RandomUtils.FixedRandomInt(pas.FighterRatings.ClinchGrappling / 2);
 					break;
 			}
 
@@ -83,39 +82,37 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Clinch
 			def = DuringFighterUtils.GetGasTankFactor(pas, def);
 			def -= DuringFighterUtils.GetHurtFactor(pas);
 
-			// Checking damage
 			if (def >= at)
 			{
-				DoComment(act, pas, ExtractFailureComment(FullComment));
+				Comment.DoComment(act, pas, Comment.ExtractFailureComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
-				// Counter attack
-				if (!IsCounter)
+				if (!fightAttributes.IsCounter)
 				{
-					IsCounter = CheckCounterAttack(act, pas, CounterProb);
+					fightAttributes.IsCounter = CheckActions.CheckCounterAttack(act, pas, fightAttributes.CounterProb, fightAttributes);
 
-					if (IsCounter)
+					if (fightAttributes.IsCounter)
 					{
-						DoCounterAttack(pas, act);
+						CounterActions.DoCounterAttack(pas, act, Pbp, fightAttributes);
 					}
 					else
 					{
-						ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+						PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
 					}
 				}
 				else
 				{
-					IsCounter = false;
-					ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+					fightAttributes.IsCounter = false;
+					PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
 				}
 			}
 			else
 			{
-				// Do comments
-				DoComment(act, pas, ExtractComment(FullComment));
+				Comment.DoComment(act, pas, Comment.ExtractComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
-				ProcessAfterMovePosition(act, pas, ExtractFinalSuccessPosition(FullComment));
+				PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalSuccessPosition(fightAttributes.FullComment), fightAttributes);
 
-				Bout.UpdateStatistic(GetFighterNumber(act), StatisticType.Grappling, 0, ExtractHitsLaunched(FullComment));
+				StatsUtils.UpdateStatistic(fightAttributes.Statistics, GetFighterActions.GetFighterNumber(act, fightAttributes), StatisticsTypes.stGrappling, 0, Comment.ExtractHitsLanded(fightAttributes.FullComment));
+
 			}
 		}
 
