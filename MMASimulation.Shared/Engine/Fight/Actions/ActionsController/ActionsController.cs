@@ -1,6 +1,7 @@
 ﻿using MMASimulation.Shared.Engine.Comments.Utils;
 using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.actions.actionsController;
+using MMASimulation.Shared.Engine.Fight.Actions.Clinch;
 using MMASimulation.Shared.Engine.Fight.Actions.Stand;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
@@ -84,19 +85,19 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 					KickActions.ActKick(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_CLINCH:
-					actClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					ClinchMoves.ActClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_TAKEDOWNS:
 					actTakedown(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
 					break;
 				case Moves.ACT_DIRTYBOXING:
-					actPunchClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Sim.DIRTY_BOXING);
+					ClinchMoves.ActPunchClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Sim.DIRTY_BOXING, Pbp, fightAttributes);
 					break;
 				case Moves.ACT_TAKEDOWNCLINCH:
-					actClinchTakedown(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					ClinchMoves.ActClinchTakedown(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_BREAKCLINCH:
-					actBreakClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					ClinchMoves.ActBreakClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_GNP:
 					actGnP(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
@@ -186,18 +187,20 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 					actFancySubmission(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
 					break;
 				case Moves.ACT_THAICLINCH_PUNCHES:
-					actPunchClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Sim.THAI_ATTACK);
+					ClinchMoves.ActPunchClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive),
+						Sim.THAI_ATTACK, Pbp, fightAttributes);
 					break;
 				case Moves.ACT_THAICLINCH_KNEES:
-					actKickClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Sim.THAI_ATTACK);
+					ClinchMoves.ActKickClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive),
+						Sim.THAI_ATTACK, Pbp, fightAttributes);
 					break;
 				case Moves.ACT_GRAPPLING_PUNCH:
-					actPunchClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive),
-							 Sim.GRAPPLING_ATTACK);
+					ClinchMoves.ActPunchClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive),
+							 Sim.GRAPPLING_ATTACK, Pbp, fightAttributes);
 					break;
 				case Moves.ACT_GRAPPLING_KNEE:
-					actKickClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive),
-							Sim.GRAPPLING_ATTACK);
+					ClinchMoves.ActKickClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive),
+							Sim.GRAPPLING_ATTACK, Pbp, fightAttributes);
 					break;
 			}
 
@@ -205,7 +208,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 			if (!fightAttributes.BoutFinished)
 			{
 				DuringFighterUtils.RefStandFighters(fighters[fighterActive], fighters[fighterPassive], Pbp, fightAttributes);
-				ActKeepClinch(fighters[fighterActive], fighters[fighterPassive], Pbp, fightAttributes);
+				ClinchMoves.ActKeepClinch(fighters[fighterActive], fighters[fighterPassive], Pbp, fightAttributes);
 				MakeStaggeredComment(fighters[fighterActive], fighters[fighterPassive], Pbp, fightAttributes);
 				MakeStandUpComment(fighters[fighterActive], fighters[fighterPassive], !f1Ground, !f2Ground, Pbp, fightAttributes);
 			}
