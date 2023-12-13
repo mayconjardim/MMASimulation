@@ -61,7 +61,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Counter
 					}
 					else
 					{
-						ActClinch(Act, Pas);
+						ClinchMoves.ActClinch(Act, Pas, Pbp, fightAttributes);
 					}
 					break;
 				case 4:
