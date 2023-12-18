@@ -1,6 +1,8 @@
 ﻿using MMASimulation.Shared.Engine.Comments.ReadTxt;
 using MMASimulation.Shared.Engine.Comments.Utils;
+using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.Actions.ActionsController;
+using MMASimulation.Shared.Engine.Fight.Actions.Counter;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Enums;
 using MMASimulation.Shared.Models.Fighters;
@@ -31,68 +33,70 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
 
 			StatsUtils.UpdateStatistic(fightAttributes.Statistics, GetFighterActions.GetFighterNumber(act, fightAttributes), StatisticsTypes.stTakedowns, 0, Comment.ExtractHitsLanded(fightAttributes.FullComment));
 
-			double at = RandomUtils.FixedRandomInt(act.GetTakedown()) + act.GetAttackBonus();
-			at += RandomUtils.GetRandomValue(act, 4);
-			at = GetGasTankFactor(act, at);
-			at -= GetHurtFactor(act);
+			double at = RandomUtils.FixedRandomInt(act.FighterRatings.Takedowns) + act.FighterRatings.AttackBonus(act.FighterFightAttributes);
+			at += RandomUtils.GeSmallRandom();
+			at = DuringFighterUtils.GetGasTankFactor(act, at);
+			at -= DuringFighterUtils.GetHurtFactor(act);
 
-			double def = RandomUtils.FixedRandomIn(pas.GetTakedownDef()) + pas.GetDefenseBonus();
-			def += GetRandomValue(pas, 4);
-			def = GetGasTankFactor(pas, def);
-			def -= GetHurtFactor(pas);
+			double def = RandomUtils.FixedRandomInt(pas.FighterRatings.TakedownsDef) + pas.FighterRatings.DefenseBonus(pas.FighterFightAttributes);
+			def += RandomUtils.GeSmallRandom();
+			def = DuringFighterUtils.GetGasTankFactor(pas, def);
+			def -= DuringFighterUtils.GetHurtFactor(pas);
 
 			if (def >= at)
 			{
-				DoComment(act, pas, ExtractFailureComment(FullComment));
+				Comment.DoComment(act, pas, Comment.ExtractFailureComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
-				if (!IsCounter)
+				if (!fightAttributes.IsCounter)
 				{
-					IsCounter = CheckCounterAttack(act, pas, CounterProb);
-					if (IsCounter)
+					fightAttributes.IsCounter = CheckActions.CheckCounterAttack(act, pas, fightAttributes.CounterProb, fightAttributes);
+					if (fightAttributes.IsCounter)
 					{
-						DoCounterAttack(pas, act);
+						CounterActions.DoCounterAttack(pas, act, Pbp, fightAttributes);
 					}
 					else
 					{
-						ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+						PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
 					}
 				}
 				else
 				{
-					IsCounter = false;
-					ProcessAfterMovePosition(act, pas, ExtractFinalFailurePosition(FullComment));
+					fightAttributes.IsCounter = false;
+					PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
+
 				}
 			}
 			else
 			{
-				DoComment(act, pas, ExtractComment(FullComment));
-				act.RoundsInTheGround = ApplicationUtils.MINSROUNDSINTHEGROUND;
+				Comment.DoComment(act, pas, Comment.ExtractComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
-				double damageDone = ((at - def) * act.GetDamageBonus() * attackLevel) / 4;
-				DamageFighter(act, pas, damageDone);
+				act.FighterFightAttributes.RoundsInTheGround = Sim.MINSROUNDSINTHEGROUND;
 
-				act.IncreasePoints(Bout.CurrentRound, ApplicationUtils.SUCCESSFULTAKEDOWNPOINTS);
+				double damageDone = ((at - def) * act.FighterRatings.DamageBonus(act.FighterFightAttributes) * attackLevel) / 4;
+				DuringFighterUtils.DamageFighter(act, pas, damageDone, fightAttributes, fightAttributes.Statistics);
 
-				ProcessAfterMovePosition(act, pas, ExtractFinalSuccessPosition(FullComment));
+				act.FighterFightAttributes.IncreasePoints(fightAttributes.CurrentRound, Sim.SUCCESSFULTAKEDOWNPOINTS);
 
-				int injuryType = CheckInjury(act, pas, damageDone, InjuryProb);
-				if (injuryType != ApplicationUtils.INJURYORCUTFALSE)
+				PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalSuccessPosition(fightAttributes.FullComment), fightAttributes);
+
+				int injuryType = CheckActions.CheckInjury(act, pas, damageDone, fightAttributes.InjuryProb, fightAttributes);
+				if (injuryType != Sim.INJURYORCUTFALSE)
 				{
-					ProcessInjury(act, pas, injuryType);
+					DuringFighterUtils.ProcessInjury(act, pas, injuryType, Pbp, fightAttributes);
 				}
 
-				injuryType = CheckCut(act, pas, damageDone, CutProb);
-				if (injuryType != ApplicationUtils.INJURYORCUTFALSE)
+				injuryType = CheckActions.CheckCut(act, pas, damageDone, fightAttributes.CutProb, fightAttributes);
+				if (injuryType != Sim.INJURYORCUTFALSE)
 				{
-					ProcessCut(act, pas, injuryType);
+					DuringFighterUtils.ProcessCut(act, pas, injuryType, Pbp, fightAttributes);
 				}
 
-				if (CheckKO(act, pas, damageDone, KOSubProb))
+				if (CheckActions.CheckKO(act, pas, damageDone, fightAttributes.KOSubProb, fightAttributes))
 				{
-					ProcessKO(act, pas);
+					DuringFighterUtils.ProcessKO(act, pas, Pbp, fightAttributes);
 				}
 
-				Bout.UpdateStatistic(GetFighterNumber(act), StatisticType.Takedowns, 0, ExtractHitsLanded(FullComment));
+				StatsUtils.UpdateStatistic(fightAttributes.Statistics, GetFighterActions.GetFighterNumber(act, fightAttributes), StatisticsTypes.stTakedowns, 0, Comment.ExtractHitsLanded(fightAttributes.FullComment));
 			}
 		}
 
