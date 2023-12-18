@@ -18,7 +18,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
 
 			int attackLevel = DuringFighterUtils.GetAttackLevel(act, pas, act.FighterRatings.GroundGame, pas.FighterRatings.Dodging, fightAttributes);
 
-
 			switch (attackLevel)
 			{
 				case 1:
@@ -32,7 +31,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
 					break;
 			}
 
-
 			Comment.DoComment(act, pas, Comment.ExtractInitComment(fightAttributes.FullComment), Pbp, fightAttributes);
 
 			fightAttributes.HitLocation = Comment.ExtractHitLocation(fightAttributes.FullComment);
@@ -40,7 +38,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
 			StatsUtils.UpdateStatistic(fightAttributes.Statistics, GetFighterActions.GetFighterNumber(act, fightAttributes), StatisticsTypes.stGnP, 0, Comment.ExtractHitsLanded(fightAttributes.FullComment));
 
 
-			double at = RandomUtils.FixedRandomInt(act.FighterRatings.Gnp) + act.FighterRatings.AttackBonus(act.FighterFightAttributes) + GetGnPBonusByGuard();
+			double at = RandomUtils.FixedRandomInt(act.FighterRatings.Gnp) + act.FighterRatings.AttackBonus(act.FighterFightAttributes) + GnpUtils.GetGnPBonusByGuard(fightAttributes);
 
 			switch (new Random().Next(4))
 			{
@@ -146,7 +144,6 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
 				StatsUtils.UpdateStatistic(fightAttributes.Statistics, GetFighterActions.GetFighterNumber(act, fightAttributes), StatisticsTypes.stGnP, 0, Comment.ExtractHitsLanded(fightAttributes.FullComment));
 			}
 		}
-
 
 	}
 }
