@@ -2,6 +2,7 @@
 using MMASimulation.Shared.Engine.Constants;
 using MMASimulation.Shared.Engine.Fight.actions.actionsController;
 using MMASimulation.Shared.Engine.Fight.Actions.Clinch;
+using MMASimulation.Shared.Engine.Fight.Actions.Ground;
 using MMASimulation.Shared.Engine.Fight.Actions.Stand;
 using MMASimulation.Shared.Engine.FightUtils;
 using MMASimulation.Shared.Models.Fighters;
@@ -88,7 +89,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 					ClinchMoves.ActClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_TAKEDOWNS:
-					actTakedown(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					TakedownMoves.ActTakedown(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_DIRTYBOXING:
 					ClinchMoves.ActPunchClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Sim.DIRTY_BOXING, Pbp, fightAttributes);
