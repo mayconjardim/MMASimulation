@@ -16,7 +16,7 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
             int prob = RandomUtils.GetRandomValue(100) + 1;
             int gnPProb = act.FighterStrategies.StratGNP;
 
-            int subProb = Submissions.GetSubmissionAvailable(act, fightAttributes) ? gnPProb + Submissions.GetSubmissionProbByPosition(act, fightAttributes) : 0;
+            int subProb = SubmissionsUtils.GetSubmissionAvailable(act, fightAttributes) ? gnPProb + SubmissionsUtils.GetSubmissionProbByPosition(act, fightAttributes) : 0;
 
             //Se o lutador estiver em Full Guard ou Rear Mount, ele para de posicionar
             int posProb = (act.FullName == fighters[fightAttributes.FighterOnTop].FullName && (fightAttributes.GuardType == 0 || fightAttributes.GuardType == 1)) ? 0 : subProb + act.FighterStrategies.StratPositioning;

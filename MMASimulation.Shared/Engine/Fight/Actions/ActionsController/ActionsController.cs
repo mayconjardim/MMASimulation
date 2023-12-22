@@ -104,10 +104,10 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 					GnpMoves.ActGnP(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_POSITIONING:
-					actPositioning(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					GroundMoves.ActPositioning(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_SUBMISSION:
-					actSubmission(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					SubmissionMoves.ActSubmission(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
 					break;
 				case Moves.ACT_STANDUP:
 					actStandUp(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
