@@ -107,85 +107,85 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.ActionsController
 					GroundMoves.ActPositioning(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_SUBMISSION:
-					SubmissionMoves.ActSubmission(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					SubmissionMoves.ActSubmission(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_STANDUP:
-					actStandUp(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					StandActions.ActStandUp(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_LNP:
-					actLnP(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actLnP(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_FANCYPUNCH:
-					actFancyPunch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actFancyPunch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_FANCYKICK:
-					actFancyKick(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actFancyKick(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_HEADBUTT:
-					actHeadButt(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actHeadButt(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_POKE:
-					actPoke(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actPoke(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_REST:
-					actRest(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actRest(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_GROINKICK:
-					actGroinKick(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actGroinKick(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_SLAM:
-					actSlam(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actSlam(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_SUPPLEX:
-					actSupplex(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actSupplex(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_SOCCERKICKS:
-					actSoccerKicks(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actSoccerKicks(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_STOMPS:
-					actStomps(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actStomps(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_STANDKICK:
-					actStandKickToGround(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actStandKickToGround(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_MOVETOGROUND:
-					actMoveToGround(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actMoveToGround(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_STRIKESFROMGUARD:
-					actStrikesFromGuard(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actStrikesFromGuard(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_GROUNDKICK:
-					actGroundKicksToStand(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actGroundKicksToStand(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_RESTCLINCH:
-					actRestInClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actRestInClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_NOACTION:
-					actNoAction(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actNoAction(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_ALLOWSTAND:
-					actAllowToStand(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actAllowToStand(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_PUNCHEXCHANGE:
-					actPunchesExchange(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actPunchesExchange(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_PULLGUARD:
-					actPullGuard(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actPullGuard(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_GNPELBOWS:
-					actGnPElbows(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actGnPElbows(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_CAPITALIZESTAND:
-					actCapitalizeStanding(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actCapitalizeStanding(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_CAPITALIZEGROUND:
-					actCapitalizeGround(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actCapitalizeGround(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_KNEESONGROUND:
-					actKneesOnGround(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actKneesOnGround(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_FANCYSUB:
-					actFancySubmission(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive));
+					actFancySubmission(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive), Pbp, fightAttributes);
 					break;
 				case Moves.ACT_THAICLINCH_PUNCHES:
 					ClinchMoves.ActPunchClinch(DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterActive), DuringFighterUtils.FighterActiveOrPassive(fighter1, fighter2, fighterPassive),
