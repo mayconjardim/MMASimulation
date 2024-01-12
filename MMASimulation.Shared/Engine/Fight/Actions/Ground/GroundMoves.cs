@@ -181,5 +181,73 @@ namespace MMASimulation.Shared.Engine.Fight.Actions.Ground
 			}
 		}
 
+		public static void ActLnP(Fighter act, Fighter pas, List<FightPBP> Pbp, FightAttributes fightAttributes)
+		{
+
+			Comment.GetComment(ReadTxts.ReadFileToList("LnP"), fightAttributes);
+
+			double at = RandomUtils.FixedRandomInt(act.FighterRatings.GroundGame) + act.FighterRatings.AttackBonus(act.FighterFightAttributes);
+			at += RandomUtils.FixedRandomInt(act.FighterRatings.Control / 2);
+
+			int randomIndexDef = new Random().Next(4);
+			switch (randomIndexDef)
+			{
+				case 0: at += RandomUtils.FixedRandomInt(act.FighterRatings.Strength / 2); break;
+				case 1: at += RandomUtils.FixedRandomInt(act.FighterRatings.Agility / 2); break;
+				case 2: at += RandomUtils.FixedRandomInt(act.FighterRatings.SubDefense / 2); break;
+				case 3: at += RandomUtils.FixedRandomInt(act.FighterRatings.Submission / 2); break;
+			}
+
+			at += RandomUtils.GeSmallRandom();
+			at = DuringFighterUtils.GetGasTankFactor(act, at);
+			at -= DuringFighterUtils.GetHurtFactor(act);
+
+			double def = RandomUtils.FixedRandomInt(pas.FighterRatings.GroundGame) + pas.FighterRatings.DefenseBonus(pas.FighterFightAttributes);
+			switch (randomIndexDef)
+			{
+				case 0: def += RandomUtils.FixedRandomInt(pas.FighterRatings.Strength / 2); break;
+				case 1: def += RandomUtils.FixedRandomInt(pas.FighterRatings.SubDefense / 2); break;
+				case 2: def += RandomUtils.FixedRandomInt(pas.FighterRatings.Aggressiveness / 2); break;
+				case 3: def += RandomUtils.FixedRandomInt(pas.FighterRatings.Submission / 2); break;
+			}
+			def += RandomUtils.GeSmallRandom();
+			def = DuringFighterUtils.GetGasTankFactor(pas, def);
+			def -= DuringFighterUtils.GetHurtFactor(pas);
+
+			if (def >= at)
+			{
+				Comment.DoComment(act, pas, Comment.ExtractFailureComment(fightAttributes.FullComment), Pbp, fightAttributes);
+
+				if (!fightAttributes.IsCounter)
+				{
+					fightAttributes.IsCounter = CheckCounterAttack(act, pas, CounterProb);
+					if (fightAttributes.IsCounter)
+					{
+						CounterActions.DoCounterAttack(pas, act, Pbp, fightAttributes);
+					}
+					else
+					{
+						PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
+					}
+				}
+				else
+				{
+					fightAttributes.IsCounter = false;
+					PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalFailurePosition(fightAttributes.FullComment), fightAttributes);
+				}
+			}
+			else
+			{
+				Comment.DoComment(act, pas, Comment.ExtractComment(fightAttributes.FullComment), Pbp, fightAttributes);
+
+				act.FighterStyles.Stalling += 2;
+
+				act.FighterFightAttributes.RecoverStamina(2);
+
+				PositionUtils.ProcessAfterMovePosition(act, pas, Comment.ExtractFinalSuccessPosition(fightAttributes.FullComment), fightAttributes);
+			}
+		}
+
+
 	}
 }
